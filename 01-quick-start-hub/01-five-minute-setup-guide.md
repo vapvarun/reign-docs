@@ -28,16 +28,16 @@ Get your Reign theme up and running in just 5 minutes with this streamlined setu
 
 ## Step 2: Activate Your License (30 seconds)
 
-1. Go to **Appearance > Reign Settings**
+1. Go to **Appearance → Reign Settings**
 2. Click on the **License** tab
-3. Enter your purchase code
+3. Enter your license key from WBcom Designs account
 4. Click **Activate License**
 
 **Benefits of activation:**
-- Automatic theme updates
+- Automatic theme updates via EDD
 - Access to premium support
-- Unlock all theme features
-- Access to demo content
+- View changelog
+- Security patches
 
 ## Step 3: Install Required Plugins (1 minute)
 
@@ -55,21 +55,26 @@ After activation, you'll see a notice to install recommended plugins:
 
 ## Step 4: Import Demo Content (1.5 minutes)
 
-1. Go to **Appearance > Reign Demo Import**
-2. Choose a demo that matches your needs:
-   - **Community Demo** - Social network layout
-   - **Learning Demo** - Educational platform
-   - **Marketplace Demo** - Multi-vendor setup
-   - **Membership Demo** - Subscription site
-3. Click **Import Demo**
-4. Wait for import completion
+**Note:** Demo Import is for fresh WordPress installations only, not for existing sites or multisite.
+
+1. Go to **Dashboard → Theme Installer**
+2. Choose a demo from the list
+3. Install required plugins for that demo
+4. Click **Install Demo** button
+5. Wait for success message
+
+**Important:** Images are not imported due to copyright - placeholder images are provided instead.
 
 **What gets imported:**
 - Sample pages and posts
 - Menu structures
 - Widget configurations
 - Customizer settings
-- Sample users (for community demos)
+
+**Not imported:**
+- Actual images (placeholders only)
+- User accounts
+- Some menu links point to demo site
 
 ## Step 5: Essential Configuration (1 minute)
 
