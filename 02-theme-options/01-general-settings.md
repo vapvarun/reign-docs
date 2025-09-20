@@ -13,8 +13,10 @@ Dashboard → Appearance → Customize → General
 
 ### Method 2: Reign Settings Panel
 ```
-Dashboard → Appearance → Reign Settings → General Tab
+Dashboard → Appearance → Reign Settings
 ```
+
+**Note:** Reign Settings has tabs for Getting Started, License, Community Settings (if BuddyPress active), and Support.
 
 ### Method 3: Quick Access
 - When logged in, hover over any element
@@ -350,17 +352,17 @@ Redirect After Registration:
 ○ Custom URL: [___________]
 ```
 
-## 404 Page Settings
+## Page Mapping
 
-### 404 Page Configuration
-```
-404 Page Title: "Oops! Page Not Found"
-404 Message: "The page you're looking for doesn't exist."
-Show Search Box: ✓
-Show Recent Posts: ✓
-Show Categories: □
-Custom 404 Page: [Select Page]
-```
+### Map Custom Pages
+**Location:** Customize → General → Page Mapping
+
+Map these pages:
+- **Login Page:** Custom login page design
+- **Register Page:** Custom registration page
+- **404 Page:** Custom not found page
+
+These allow you to use custom designed pages instead of default WordPress pages.
 
 ### 404 Page Suggestions
 ```
@@ -422,8 +424,8 @@ Opacity: 0.8
 
 ## Custom Code Injection
 
-### Header Code
-**Location:** General → Custom Code → Header
+### Custom Code
+**Location:** Customize → General → Custom Code
 
 **Use For:**
 - Google Analytics
@@ -521,10 +523,10 @@ Contact Email: support@example.com
 
 ### Publishing Changes
 
-#### Save Draft vs Publish
-- **Save Draft:** Preview changes without applying
-- **Publish:** Apply changes immediately
-- **Schedule:** Set changes to go live later
+#### Save & Publish
+- Click **Publish** in the customizer to save all changes
+- Changes appear immediately on the live site
+- Use preview to test before publishing
 
 #### Reset Options
 ```

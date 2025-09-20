@@ -1,7 +1,7 @@
-# Reign Theme Documentation Structure
+# Reign Theme Documentation
 
 ## Overview
-This documentation is designed to match the WordPress database structure with doc_category "wb-reign-theme" and provide comprehensive, customer-friendly guides for all aspects of the Reign theme.
+Comprehensive documentation for Reign Theme v7.8.4, the ultimate BuddyPress community theme. This documentation is based on the actual WordPress database content and verified against the theme code.
 
 ## Documentation Categories
 
@@ -206,20 +206,23 @@ These documentation files are designed to be imported into WordPress as 'docs' p
 4. Add appropriate subcategory based on folder structure
 5. Maintain hierarchical organization
 
-## Version Control
+## Theme Information
 
-- Documentation Version: 1.0
-- Theme Version: 7.8.4
-- Last Updated: 2024
-- Compatibility: WordPress 5.0+, PHP 7.4+
+- **Theme Version:** 7.8.4
+- **Developer:** WBcom Designs
+- **License System:** Easy Digital Downloads (EDD)
+- **Purchase From:** [https://wbcomdesigns.com/downloads/reign-buddypress-theme/](https://wbcomdesigns.com/downloads/reign-buddypress-theme/)
+- **Compatibility:** WordPress 5.0+, PHP 7.4+, BuddyPress, WooCommerce
 
 ## Support Resources
 
-- Official Documentation: https://docs.wbcomdesigns.com/doc_category/wb-reign-theme/
-- Support Tickets: Through customer account
-- Community Forum: Available for licensed users
-- Video Tutorials: YouTube channel
-- Email Support: support@wbcomdesigns.com
+- **Official Documentation:** https://docs.wbcomdesigns.com/doc_category/wb-reign-theme/
+- **Support Tickets:** https://wbcomdesigns.com/support/
+- **My Account:** https://wbcomdesigns.com/my-account/
+- **Facebook Community:** https://www.facebook.com/groups/191523257634994
+- **Email Support:** support@wbcomdesigns.com
+
+**Note:** Theme is NOT sold on ThemeForest. All licenses are managed through WBcom Designs.
 
 ---
 

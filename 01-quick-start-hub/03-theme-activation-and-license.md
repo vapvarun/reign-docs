@@ -13,60 +13,43 @@ Activating your Reign theme license unlocks the full potential of your purchase 
 ✅ **Security Patches** - Immediate critical updates
 ✅ **New Features** - Be first to get new functionality
 
-## Finding Your Purchase Code
+## Getting Your License Key
 
-### If You Purchased from ThemeForest
+### Purchase from WBcom Designs
 
-1. **Log in to ThemeForest**
-   - Go to [themeforest.net](https://themeforest.net)
-   - Click "Sign In" and enter your credentials
+1. **Purchase the Theme**
+   - Visit: [https://wbcomdesigns.com/downloads/reign-buddypress-theme/](https://wbcomdesigns.com/downloads/reign-buddypress-theme/)
+   - Choose your license type
+   - Complete the purchase
 
-2. **Access Your Downloads**
-   - Hover over your username (top right)
-   - Click "Downloads"
-
-3. **Find Reign Theme**
-   - Locate "Reign - BuddyPress Theme"
-   - Click "Download" button
-   - Select "License certificate & purchase code"
-
-4. **Get Your Code**
-   - Open the downloaded text file
-   - Find "Item Purchase Code"
-   - Copy the code (looks like: abc123de-f456-78gh-90ij-klmnopqrstuv)
-
-### If You Purchased from WbcomDesigns
-
-1. **Log in to Your Account**
-   - Visit [wbcomdesigns.com](https://wbcomdesigns.com)
-   - Access "My Account"
-
-2. **View Licenses**
-   - Go to "Licenses" or "Purchase History"
-   - Find your Reign theme purchase
+2. **Access Your Account**
+   - Go to [WBcom Designs](https://wbcomdesigns.com)
+   - Log in to **My Account**
+   - Navigate to **Downloads** or **Purchase History**
+   - Find your Reign Theme purchase
    - Copy the license key
+
+**Note:** Reign Theme is NOT sold on ThemeForest. All purchases are through WBcom Designs using Easy Digital Downloads (EDD) system.
 
 ## Step-by-Step Activation Process
 
-### Method 1: Quick Activation (Recommended)
+### Activation Process
 
 1. **Navigate to Reign Settings**
    ```
-   WordPress Admin → Appearance → Reign Settings
+   WordPress Dashboard >> Reign Settings >> License Tab
    ```
 
-2. **Open License Tab**
-   - Click on "License" tab
-   - You'll see the license activation form
-
-3. **Enter Your Code**
-   - Paste your purchase code
+2. **Enter License Key**
+   - Paste your license key from WBcom Designs account
    - Ensure no extra spaces before/after
 
-4. **Activate**
+3. **Activate License**
    - Click "Activate License" button
    - Wait for confirmation message
-   - Green checkmark means success!
+   - You should see a success message confirming activation
+
+![License Activation Screen](https://docs.wbcomdesigns.com/wp-content/uploads/2020/08/License.jpg)
 
 ### Method 2: During Theme Setup
 
@@ -86,17 +69,24 @@ If you just installed Reign, you might see a welcome screen:
 
 ## Understanding License Types
 
-### Regular License
-- ✅ Use on ONE website
-- ✅ Personal or client project
-- ❌ Cannot resell or redistribute
-- ❌ Cannot use in SaaS application
+### License Usage
 
-### Extended License
-- ✅ Use on ONE website
-- ✅ Can charge end users
-- ✅ Can use in paid membership site
-- ❌ Still one website only
+Single-site license keys can also be used for staging sites. The following subdomains/locations will NOT count against your license limit:
+
+- localhost
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+- *.dev
+- .*local
+- dev.*
+- staging.*
+
+This means you can use your license on:
+- Your live site (example.com)
+- Your staging site (staging.example.com)
+- Your local development (localhost)
+- Development subdomain (dev.example.com)
 
 ### Multiple Sites?
 - Each site needs its own license
@@ -198,28 +188,21 @@ Need to move your site? Deactivate first:
 
 ## License Renewal & Support
 
-### When to Renew
+### Benefits of License Activation
 
-Your license includes:
-- **6 months support** (standard)
-- **Lifetime updates** (for theme files)
+✅ **Automatic Theme Updates** - Get updates directly from your WordPress dashboard
+✅ **View Changelog** - See what's new in each version
+✅ **Premium Support** - Access to priority support
+✅ **Security Updates** - Receive important security patches
+✅ **New Features** - Get new features as they're released
 
-Consider renewal when:
-- Support period ending
-- Need priority assistance
-- Want extended support
+### Support & Updates
 
-### How to Renew
-
-1. **Check Expiration**
-   - See date in license settings
-   - Email reminders sent 30 days before
-
-2. **Renew on ThemeForest**
-   - Log into your account
-   - Find Reign theme
-   - Click "Renew Support"
-   - Choose 6 or 12 months
+Renewal and support are managed through your WBcom Designs account:
+1. Log in to WBcom Designs account
+2. Go to Downloads
+3. Click "Renew Support" for Reign Theme
+4. Complete renewal purchase
 
 3. **Automatic Application**
    - No new code needed
@@ -288,17 +271,14 @@ Recommend activating even for testing.
 - Provide support to client
 - Handle updates for them
 
-### What about multisite?
+### Getting Support
 
-**WordPress Multisite:**
-- One license per multisite network
-- Covers all subsites
-- Main domain activation only
+**For License Issues:**
+- **Support Portal:** [https://wbcomdesigns.com/support/](https://wbcomdesigns.com/support/)
+- **Documentation:** [https://docs.wbcomdesigns.com](https://docs.wbcomdesigns.com)
+- **Email:** support@wbcomdesigns.com
 
-**Separate Installs:**
-- Each needs own license
-- Not considered multisite
-- Different databases = different sites
+**Note:** Support is provided by WBcom Designs team, not ThemeForest
 
 ## Security Best Practices
 
