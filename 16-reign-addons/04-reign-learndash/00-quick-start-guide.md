@@ -1,389 +1,169 @@
-# Reign LearnDash Addon - Quick Start Guide for First-Time Users
+# Reign LearnDash Addon - Quick Start Guide
 
-## 🎓 Build Your Professional Learning Platform in 45 Minutes
+## What This Addon Provides
 
-Create engaging online courses with Reign Theme + LearnDash - the industry leader in WordPress LMS.
+Reign LearnDash Addon enhances LearnDash with Reign theme integration, providing:
+
+**Core Features (Verified):**
+- Professional course and group layouts
+- 6 custom shortcodes for displaying courses/groups
+- Theme customization settings for LearnDash archives
+- Enhanced templates and styling
+- BuddyPress integration features
 
 ---
 
-## 📋 Before You Start
+## Prerequisites
 
 Required:
-- ✅ WordPress 5.8+
+- ✅ WordPress 4.0+
 - ✅ Reign Theme activated
 - ✅ LearnDash LMS plugin
-- ✅ Reign LearnDash license key
-- ✅ 45 minutes of focused time
+- ✅ Reign LearnDash Addon
+
+Optional:
+- BuddyPress (for enhanced social learning)
 
 ---
 
-## 🎯 Complete Setup Process
+## Installation Steps
 
-### Step 1: Installation (5 minutes)
+### Step 1: Install the Addon
 
-1. **Get the addon:**
+1. **Upload via WordPress:**
    ```
-   WBcom Account → Downloads
-   → Reign LearnDash Addon
-   → Download ZIP
-   ```
-
-2. **Install in WordPress:**
-   ```
-   Plugins → Add New → Upload
-   → Select ZIP → Install → Activate
+   WordPress Admin → Plugins → Add New → Upload Plugin
+   → Select reign-learndash-addon.zip
+   → Install Now → Activate
    ```
 
-✅ **Verify:** "Reign LearnDash Addon" is active
+2. **Verify Installation:**
+   - Check Plugins page - "Reign LearnDash Addon" should be active
+   - LearnDash templates should now use Reign styling
+
+### Step 2: Configure Basic Settings
+
+The addon works automatically with LearnDash. Available customization:
+
+**Archive Pages:**
+- Course archive layout and sidebar options
+- Group archive customization settings
+- Header images for course/group archives
+
+**Groups Archive Settings (via Customizer):**
+- Title and description
+- Columns (default: 3)
+- Template style (default: minimal)
+- Search, filters, sorting options
+- Pagination and view switcher
 
 ---
 
-### Step 2: License Setup (3 minutes)
+## Available Shortcodes
 
+The addon provides 6 shortcodes (verified):
+
+### Course Display Shortcodes
+
+#### [modern_courses] / [reign_courses]
+Display courses with modern styling:
 ```
-Reign Settings → License
-→ LearnDash Addon section
-→ Enter license → Activate
-```
-
-✅ **Verify:** Green "Active" badge shows
-
----
-
-### Step 3: Course Configuration (15 minutes)
-
-#### A. Basic LearnDash Setup
-```
-LearnDash LMS → Settings
+[modern_courses]
+[reign_courses]
 ```
 
-Configure:
-- **Permalinks:** /courses/
-- **Currency:** Your currency
-- **Registration:** Enable
-- **Progress Bar:** Enable
+### Group Display Shortcode
 
-#### B. Reign Integration
+#### [modern_groups]
+Display LearnDash groups:
 ```
-Reign Settings → LearnDash
+[modern_groups]
 ```
 
-Set these options:
+### Tab Content Shortcodes (for course pages)
 
-**Course Display:**
-```
-Layout: Grid (3 columns)
-Card Style: Modern
-Show: Price, Duration, Lessons
-Featured Ribbon: Enable
-```
+#### [reign_ld_pro_comments_tab_content]
+Display comments tab content in courses
 
-**Learning Interface:**
-```
-Lesson Sidebar: Right
-Video Position: Top
-Navigation: Tabbed
-Focus Mode: Available
-```
+#### [reign_ld_pro_instructor_tab_content]
+Display instructor information tab
 
-**User Dashboard:**
-```
-Show: Progress, Certificates, Points
-Layout: Tabbed view
-Statistics: Enable all
-```
+#### [reign_ld_pro_course_content_tab_content]
+Display course content tab
 
-✅ **Test:** View /courses/ page
+**Note:** Tab shortcodes are typically used in custom templates rather than pages/posts.
 
----
+## Quick Test
 
-### Step 4: Create First Course (12 minutes)
+### Verify Installation Works
 
-#### Quick Course Setup:
-
-1. **Create Course:**
+1. **Test Course Shortcode:**
+   Create a test page and add:
    ```
-   LearnDash → Courses → Add New
-   Title: "Introduction to [Your Topic]"
+   [modern_courses]
    ```
+   Should display courses with Reign styling.
 
-2. **Course Settings:**
-   - Price: Free (for testing)
-   - Access: Open
-   - Progression: Linear
-   - Certificate: Later
+2. **Check Archive Pages:**
+   - Visit `/courses/` - should use enhanced Reign template
+   - Visit `/groups/` - should show customized layout
 
-3. **Add Lessons:**
-   ```
-   → Builder → Add Section
-   → Add 3 Lessons:
-     - Lesson 1: Welcome
-     - Lesson 2: Core Concepts
-     - Lesson 3: Practice
-   ```
-
-4. **Add Content:**
-   - Video or text
-   - Quiz (optional)
-   - Assignment (optional)
-
-5. **Publish Course**
-
-✅ **Test:** Enroll in your course
+3. **Verify Styling:**
+   Course and group pages should match your Reign theme design.
 
 ---
 
-### Step 5: Customize Appearance (10 minutes)
+## Common Usage
 
+### Display Courses on Homepage
 ```
-Appearance → Customize → Reign LearnDash
+[modern_courses]
+```
+or
+```
+[reign_courses]
 ```
 
-#### Visual Settings:
-
-**Colors:**
-- Primary: Your brand color
-- Success: Green
-- Progress: Blue
-- Incomplete: Gray
-
-**Course Cards:**
-- ✅ Featured Image
-- ✅ Instructor Name
-- ✅ Course Progress
-- ✅ Enrollment Count
-- ✅ Rating Stars
-- ✅ Price Badge
-
-**Typography:**
-- Course Title: 22px, Bold
-- Lesson Title: 18px, Medium
-- Body Text: 16px, Regular
-
-**Publish Changes**
-
-✅ **Review:** Check course appearance
-
----
-
-## 🎉 Your LMS is Ready!
-
-### You've Successfully:
-- ✅ Installed LearnDash integration
-- ✅ Configured learning settings
-- ✅ Created first course
-- ✅ Customized design
-- ✅ Tested enrollment
-
----
-
-## 📅 Growth Roadmap
-
-### Week 1: Foundation
-**Days 1-3:**
-- [ ] Create 3 courses
-- [ ] Add 10+ lessons
-- [ ] Set up quizzes
-- [ ] Configure certificates
-
-**Days 4-7:**
-- [ ] Set pricing
-- [ ] Payment gateway
-- [ ] Email notifications
-- [ ] Student onboarding
-
-### Week 2: Enhancement
-- [ ] Course categories
-- [ ] Instructor profiles
-- [ ] Discussion forums
-- [ ] Drip content
-- [ ] Prerequisites
-
-### Week 3: Launch
-- [ ] Beta testing
-- [ ] Student feedback
-- [ ] Course improvements
-- [ ] Marketing setup
-- [ ] Go live!
-
----
-
-## 🚨 Common Issues & Solutions
-
-### "Course not showing"
+### Display Groups
 ```
-1. Check course status (Published)
-2. Settings → Permalinks → Save
-3. Clear cache
+[modern_groups]
 ```
 
-### "Can't see lessons"
-```
-1. Check lesson association
-2. Verify access settings
-3. Test as logged-in user
-```
-
-### "Progress not tracking"
-```
-1. Enable Mark Complete
-2. Check user enrollment
-3. Clear browser cookies
-```
+### Customize Groups Archive
+- Go to Appearance → Customize
+- Look for LearnDash Groups settings
+- Adjust title, columns, template style
+- Configure search, filters, pagination
 
 ---
 
-## 💡 Pro Tips for Course Creators
+## Troubleshooting
 
-### Course Structure:
-```
-Course (4-6 hours)
-├── Module 1 (1 hour)
-│   ├── Lesson 1 (15 min)
-│   ├── Lesson 2 (15 min)
-│   ├── Lesson 3 (15 min)
-│   └── Quiz 1 (15 min)
-├── Module 2 (1 hour)
-└── Final Assessment
-```
+### Shortcodes Not Working
+1. Verify plugin is activated
+2. Check LearnDash is properly configured
+3. Ensure courses/groups exist and are published
 
-### Engagement Tactics:
-1. **Video First** - 5-10 minute videos
-2. **Interactive Quizzes** - Every 3 lessons
-3. **Assignments** - Practical application
-4. **Certificates** - Completion rewards
-5. **Points/Badges** - Gamification
+### Styling Issues
+1. Clear cache
+2. Verify Reign theme is active
+3. Check for CSS conflicts
 
-### Pricing Strategy:
-- Free Preview: First module
-- Basic: $47-97
-- Professional: $197-497
-- Bundle: 20% discount
+### Template Issues
+1. Ensure LearnDash is properly installed
+2. Check permalink settings
+3. Clear cache and test again
 
 ---
 
-## 📊 Success Metrics
+## Next Steps
 
-### Track Weekly:
-- [ ] New enrollments
-- [ ] Completion rate
-- [ ] Quiz scores
-- [ ] Student feedback
-- [ ] Revenue
-
-### Target Goals:
-- Month 1: 50 enrollments
-- Month 2: 80% completion
-- Month 3: 4.5+ rating
+For detailed configuration and customization:
+- [Configuration Guide](03-configuration.md) - Theme settings
+- [Course Customization](04-course-customization.md) - Appearance options
+- [Developer Guide](05-developer-guide.md) - Hooks and filters
+- [Shortcodes Reference](06-shortcodes-reference.md) - Complete shortcode guide
 
 ---
 
-## 🎓 Student Experience Flow
-
-```
-Discovery → Preview → Enroll → Learn → Practice → Complete → Certificate
-```
-
-### Optimize Each Step:
-1. **Discovery:** SEO, social media
-2. **Preview:** Free lessons
-3. **Enroll:** Simple checkout
-4. **Learn:** Engaging content
-5. **Practice:** Hands-on exercises
-6. **Complete:** Progress tracking
-7. **Certificate:** Shareable achievement
-
----
-
-## 🔧 Daily Instructor Tasks
-
-### Morning (10 min):
-- [ ] Check new enrollments
-- [ ] Answer student questions
-- [ ] Review quiz results
-- [ ] Monitor progress
-
-### Weekly (30 min):
-- [ ] Send encouragement emails
-- [ ] Update course content
-- [ ] Create new resources
-- [ ] Analyze metrics
-
----
-
-## 📚 Essential Resources
-
-### Documentation:
-- [Full Configuration](03-configuration.md)
-- [Course Customization](04-course-customization.md)
-- [Developer Guide](05-developer-guide.md)
-- [Troubleshooting](07-troubleshooting.md)
-
-### Support:
-- 📧 [Support Ticket](https://wbcomdesigns.com/support/)
-- 💬 [Community Forum](https://wbcomdesigns.com/forums/)
-- 📺 [Video Tutorials](https://youtube.com/wbcomdesigns)
-
----
-
-## 🚀 Advanced Features to Explore
-
-### After Launch:
-1. **Groups** - Corporate training
-2. **Drip Feed** - Scheduled content
-3. **Assignments** - Submissions
-4. **Forums** - Discussion boards
-5. **Reports** - Advanced analytics
-
-### Integrations:
-- BuddyPress - Social learning
-- WooCommerce - Sell courses
-- Zoom - Live sessions
-- Mailchimp - Email marketing
-- Stripe - Payments
-
----
-
-## ✅ Launch Checklist
-
-### Technical:
-- [ ] All courses published
-- [ ] Payment processing works
-- [ ] Emails sending
-- [ ] Mobile responsive
-- [ ] SSL certificate
-
-### Content:
-- [ ] Course descriptions
-- [ ] Instructor bios
-- [ ] Preview lessons
-- [ ] Support documentation
-- [ ] Terms & conditions
-
-### Marketing:
-- [ ] Landing page
-- [ ] Email sequence
-- [ ] Social media
-- [ ] Launch offer
-- [ ] Testimonials
-
----
-
-## 🎉 Congratulations!
-
-Your LearnDash LMS is configured and ready for students!
-
-**Next Actions:**
-1. Complete your first course
-2. Invite beta students
-3. Gather feedback
-4. Iterate and improve
-5. Official launch!
-
-Remember: *"Every expert was once a beginner. Start teaching what you know!"*
-
----
-
-*LearnDash Quick Start v1.0*
-*Setup Time: 45 minutes*
-*Difficulty: Intermediate*
+*Quick Start Guide verified against Reign LearnDash Addon source code*
