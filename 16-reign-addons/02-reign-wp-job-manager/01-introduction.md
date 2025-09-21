@@ -7,81 +7,75 @@ Reign WP Job Manager Addon is a premium extension that seamlessly integrates WP 
 ## Key Benefits
 
 ### For Site Owners
-- **Professional Job Board**: Create a modern job listing platform
-- **Monetization Options**: Paid job listings and featured posts
-- **Community Integration**: Combine job board with BuddyPress
-- **Advanced Search**: Powerful filtering and search capabilities
-- **Mobile Optimized**: Responsive design for all devices
+- **Professional Job Board Platform**: Create modern job listing sites with multiple layout options
+- **Google Maps Integration**: Complete geolocation system with interactive maps
+- **Advanced Shortcode System**: 3 powerful shortcodes with extensive customization
+- **Enhanced Taxonomy System**: Extended job and resume categorization capabilities
+- **Template Control**: Complete override system for custom designs
+- **Mobile-First Design**: Responsive layouts with multiple breakpoints
 
 ### For Employers
-- **Company Profiles**: Branded company pages
-- **Job Management**: Easy job posting and management
-- **Application Tracking**: Manage candidate applications
-- **Featured Listings**: Promote important positions
-- **Social Integration**: Share jobs on social media
+- **Enhanced Job Displays**: Multiple layout options (list, grid, card, carousel)
+- **Advanced Job Categorization**: Salary ranges, career levels, industry classifications
+- **Location-Based Features**: Google Maps integration with automatic coordinates
+- **Custom Search Forms**: Branded search interfaces with styling options
+- **Template Customization**: Three different single job page designs
 
 ### For Job Seekers
-- **Advanced Filters**: Find relevant jobs quickly
-- **Resume Management**: Create and manage resumes
-- **Job Alerts**: Get notified of new opportunities
-- **One-Click Apply**: Streamlined application process
-- **Social Profiles**: Connect job profile with BuddyPress
+- **Enhanced Resume Management**: Complete resume listing system with multiple layouts
+- **Advanced Search Capabilities**: Customizable search forms with location autocomplete
+- **Improved Job Discovery**: Grid, card, and carousel display options
+- **Mobile-Optimized Experience**: Touch-friendly interfaces for all devices
+- **Location-Based Search**: Google Maps integration for geographic job hunting
 
 ## Technical Specifications
 
 | Specification | Details |
 |--------------|----------|
-| **Version** | 2.8.5 |
-| **PHP Version** | 7.4 or higher |
-| **WordPress** | 5.8 or higher |
-| **WP Job Manager** | 1.35 or higher |
-| **Reign Theme** | 7.0 or higher |
-| **BuddyPress** | Optional but recommended |
+| **Version** | 2.4.3 |
+| **Author** | Wbcom Designs |
+| **WordPress** | 5.8+ |
+| **WP Job Manager** | Latest version required |
+| **Reign Theme** | Required (active) |
+| **WP Resume Manager** | Optional (for resume features) |
+| **Google Maps API** | Optional (for location features) |
 
-## Core Features Overview
+## Core Features (Comprehensive Analysis)
 
-### 1. Job Listing Layouts
-- **Grid View**: Modern card-based job listings
-- **List View**: Detailed job information display
-- **Map View**: Geographic job locations
-- **Featured Jobs**: Highlight premium positions
-- **Company Showcase**: Employer branding options
+### 1. Advanced Shortcode System
+- **[jobmate_job_search_filter]**: Customizable job search forms with styling options
+- **[jobmate_job_listing]**: Enhanced job displays with multiple layouts (list, grid, card, carousel)
+- **[jobmate_resume_listing]**: Resume displays with WP Resume Manager integration
+- **Extensive Parameters**: 15+ parameters per shortcode for complete customization
 
-### 2. Enhanced Job Pages
-- Custom job templates
-- Company information sections
-- Application forms
-- Related jobs display
-- Social sharing buttons
+### 2. Multiple Display Layouts
+- **Job Listing Layouts**: List view, grid view, card view with responsive design
+- **Resume Listing Layouts**: Matching layouts for resume displays
+- **Carousel/Slider Functionality**: Enable slider displays with configurable columns
+- **Single Page Layouts**: Three different designs for job and resume pages
 
-### 3. Resume Management
-- Resume builder interface
-- Multiple resume support
-- Privacy controls
-- PDF export
-- Resume visibility settings
+### 3. Enhanced Taxonomy System
+- **Additional Job Taxonomies**: Salary, Career Level, Experience, Gender, Industry, Qualification
+- **Resume Taxonomies**: Experience, Age, Current/Expected Salary, Gender, Education Level, Language
+- **Advanced Filtering**: Multi-level categorization and filtering capabilities
 
-### 4. Search & Filtering
-- Keyword search
-- Location-based search
-- Category filtering
-- Salary range filters
-- Job type filters
-- Experience level filters
+### 4. Google Maps Integration
+- **Header Maps**: Display maps on job/resume listing pages
+- **Geolocation**: Automatic coordinates capture for job/resume locations
+- **Advanced Map Settings**: Zoom levels, map types, clustering, language settings
+- **Location Enhancement**: Google Places autocomplete with lat/lng capture
 
-### 5. BuddyPress Integration
-- Job activity in streams
-- Member job profiles
-- Company groups
-- Private messaging
-- Job bookmarks
+### 5. Template Override System
+- **Complete Template Control**: Override all WP Job Manager templates
+- **Custom Archive Templates**: Enhanced job and resume archive pages
+- **Single Page Templates**: Customizable individual job/resume layouts
+- **Mobile-Optimized**: Responsive templates with multiple breakpoints
 
-### 6. Widget Support
-- Recent jobs widget
-- Featured jobs widget
-- Job categories widget
-- Job locations widget
-- Company list widget
+### 6. Admin Configuration Panel
+- **Archive Page Layout Settings**: Configure listing page layouts
+- **Single Page Layout Settings**: Individual job/resume page configurations
+- **Map Settings**: Complete Google Maps API configuration
+- **Integration with Reign Settings**: Unified admin experience
 
 ## File Structure
 
