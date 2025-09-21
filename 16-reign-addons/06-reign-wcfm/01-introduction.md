@@ -2,72 +2,73 @@
 
 ## What is Reign WCFM Addon?
 
-Reign WCFM Addon is a premium extension that seamlessly integrates WCFM Marketplace with the Reign WordPress theme, creating a feature-rich multi-vendor marketplace with advanced vendor management, beautiful storefronts, and comprehensive marketplace features.
+Reign WCFM Addon v1.8.3 integrates WCFM Marketplace with the Reign theme, providing enhanced styling, BuddyPress social features, and template customization for multi-vendor marketplaces.
 
-## Key Benefits
+## Core Features (Verified)
 
-### For Marketplace Owners
-- **Advanced Vendor Management**: Complete control over vendors
-- **Commission System**: Flexible commission structures
-- **Membership Plans**: Subscription-based vendor packages
-- **Analytics Dashboard**: Comprehensive marketplace insights
-- **BuddyPress Integration**: Social marketplace features
+### BuddyPress Integration
+- **Store Tabs**: Add "Store" tab to vendor profiles showing their products
+- **Favourite Products**: Users can mark and view favorite products in profile
+- **Activity Streams**: Product creation, reviews, and orders appear in feeds
+- **Social Marketplace**: Enhanced social features when BuddyPress is active
 
-### For Vendors
-- **Professional Dashboard**: Feature-rich vendor panel
-- **Store Management**: Complete store customization
-- **Product Management**: Bulk upload and management
-- **Order Tracking**: Real-time order management
-- **Withdrawal System**: Multiple payment methods
+### Theme Integration
+- **Styling Enhancement**: WCFM elements styled to match Reign theme
+- **Store Layouts**: 2 store layout options (Layout 1 and Layout 2)
+- **Template Override System**: Custom templates for enhanced appearance
+- **Responsive Design**: Mobile-optimized store displays
 
-### For Customers
-- **Enhanced Shopping**: Improved user experience
-- **Vendor Communication**: Direct messaging
-- **Store Following**: Follow favorite vendors
-- **Product Enquiry**: Ask questions directly
-- **Reviews System**: Rate products and vendors
+### Activity Management
+- **Product Activities**: Create activities when vendors add products
+- **Review Activities**: Generate activities for product reviews
+- **Order Activities**: Show purchase activities in feeds
+- **Customizable**: Each activity type can be enabled/disabled
 
-## Technical Specifications
+## Technical Requirements
 
-| Specification | Details |
-|--------------|----------|
-| **Version** | 2.5.3 |
-| **PHP Version** | 7.4 or higher |
-| **WordPress** | 5.8 or higher |
-| **WCFM** | 6.5 or higher |
-| **WooCommerce** | 5.0 or higher |
-| **Reign Theme** | 7.0 or higher |
-| **BuddyPress** | Optional |
+| Requirement | Details |
+|-------------|---------|
+| **Version** | 1.8.3 |
+| **WordPress** | 4.0+ |
+| **Reign Theme** | Required (active) |
+| **WooCommerce** | Required |
+| **WCFM** | Required |
+| **BuddyPress** | Optional (for social features) |
 
-## Core Features
+## What This Addon Provides
 
-### 1. Store Layouts
-- Grid and list views
-- Map-based store locator
-- Featured vendor sections
-- Store categories
-- Advanced filtering
+### Template Enhancements
+- Enhanced store page layouts
+- Professional store displays
+- Custom store templates
+- Mobile-responsive design
 
-### 2. Vendor Dashboard
-- Comprehensive analytics
-- Product management
-- Order processing
-- Coupon creation
-- Staff management
+### Settings Available
+- Mark Products As Favourite (enable/disable)
+- Display Store Tab (BuddyPress vendor profiles)
+- Create Product Activity (activity streams)
+- Add Review Activity (review activities)
+- Order Activity (purchase activities)
+- Single Store Layout (Layout 1 or Layout 2)
 
-### 3. Commission Management
-- Percentage-based
-- Fixed rate
-- Category-based
-- Vendor-specific rates
-- Automatic calculations
+### Developer Features
+- Template override system
+- Custom hooks and filters
+- BuddyPress integration APIs
+- Activity stream customization
 
-### 4. Membership System
-- Subscription plans
-- Feature limitations
-- Trial periods
-- Recurring payments
-- Plan switching
+## Plugin Structure (Verified)
+
+```
+reign-wcfm-addon/
+├── admin/                  # Admin settings and license
+├── public/                 # Public-facing functionality
+│   ├── css/               # Styling files
+│   ├── js/                # JavaScript files
+│   └── buddypress/        # BuddyPress integration
+├── templates/             # Template overrides
+└── reign-wcfm-addon.php  # Main plugin file
+```
 
 ## Next Steps
 

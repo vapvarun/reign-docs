@@ -1,16 +1,306 @@
-# Reign WC Vendors Addon - Configuration Guide
+# Reign WC Vendors Addon - Configuration Guide (Complete)
 
-## What You'll Learn
-This guide shows you how to configure every aspect of your WC Vendors marketplace. We'll explain each setting in plain language so you know exactly what to choose.
+## Overview
 
-## Quick Overview
-**Time needed:** 45-60 minutes for full configuration  
-**Difficulty:** Easy (just clicking options!)  
-**Result:** A fully configured marketplace ready for vendors
+The Reign WC Vendors Addon v2.4.1 provides extensive configuration options for marketplace management, BuddyPress integration, Google Maps location services, and advanced vendor customization. This guide covers all available settings and customization options.
 
----
+## Vendor Display Configuration
 
-## Part 1: Commission Configuration
+### Shortcode Configuration
+
+#### [reign-wcvendors-sellers] Settings
+
+**Basic Configuration:**
+```
+[reign-wcvendors-sellers per_page="12" orderby="top_rated" show_search="yes"]
+```
+
+**Complete Parameter Options:**
+
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `per_page` | 10 | Any number | Vendors displayed per page |
+| `orderby` | most_recent | most_recent, total_orders, random, top_rated, most_reviewed | Vendor sorting method |
+| `show_search` | yes | yes, no | Enable search functionality |
+| `show_location` | no | yes, no | Enable location-based filtering |
+| `location_radius` | 50 | Any number (km) | Search radius for location filtering |
+| `show_address` | no | yes, no | Display vendor addresses |
+| `show_phone` | no | yes, no | Display vendor phone numbers |
+| `show_rating` | yes | yes, no | Display vendor ratings |
+| `template` | default | default, compact, detailed | Display template style |
+
+### Store Header Layout Configuration
+
+#### Layout Options (4 Available)
+
+1. **Layout One** - Basic vendor header with essential information
+2. **Layout Two** - Enhanced header with cover images and banners
+3. **Layout Three** - Professional layout with verification badges
+4. **Layout Four** - Advanced layout with social integration
+
+**Configuration Location:**
+```
+Appearance → Customize → Reign WC Vendors → Single Store Settings
+```
+
+## BuddyPress Integration Configuration
+
+### Store Profile Integration
+
+**Enable BuddyPress Features:**
+```
+Reign Settings → WC Vendors → BuddyPress Integration
+```
+
+**Profile Integration Settings:**
+- Store tab in member profiles
+- Vendor information display
+- Store product showcases
+- Social messaging integration
+
+### Favorite Products System Configuration
+
+**Enable Favorites System:**
+- Automatic heart icons on product pages
+- AJAX add/remove functionality
+- Favorites tab in user profiles
+- Compatible with BuddyPress, BuddyBoss, and PeepSo
+
+**Configuration Options:**
+```
+Reign Settings → WC Vendors → Favorite Products
+Enable: Yes
+Display Style: Heart Icon
+Profile Integration: Yes
+```
+
+### Activity Stream Integration
+
+**Activity Types Configuration:**
+- Product creation activities
+- Order placement activities
+- Product review activities
+- Social vendor interactions
+
+**Settings Location:**
+```
+Reign Settings → WC Vendors → Activity Integration
+```
+
+## Google Maps Integration Configuration
+
+### API Configuration
+
+**Required Google APIs:**
+1. Maps JavaScript API
+2. Geocoding API
+3. Places API (optional for enhanced features)
+
+**Setup Location:**
+```
+Reign Settings → WC Vendors → Google Maps
+API Key: [Your Google Maps API Key]
+Enable Location Search: Yes
+Default Radius: 50km
+```
+
+### Location-Based Features
+
+**Vendor Location Services:**
+- Distance-based vendor search
+- Store location display on vendor pages
+- Interactive maps for vendor addresses
+- Radius-based filtering in vendor listings
+
+**Configuration Example:**
+```
+[reign-wcvendors-sellers show_location="yes" location_radius="25" show_address="yes"]
+```
+
+## Widget System Configuration
+
+### Available Widgets (3 Types)
+
+#### 1. REIGN Vendor Profile Widget
+
+**Configuration Options:**
+- Store information display
+- Contact details and hours
+- Total sales and registration date
+- Store address and phone
+
+**Widget Settings:**
+```
+Appearance → Widgets → REIGN Vendor Profile Widget
+Title: Store Information
+Show Store Icon: Yes
+Show Contact Info: Yes
+Show Opening Hours: Yes
+Show Registration Date: Yes
+```
+
+#### 2. REIGN WC Vendors List Widget
+
+**Display Settings:**
+- Number of vendors to display
+- Store icons and "Visit Store" links
+- Sorting options
+- Layout style (grid/list)
+
+**Configuration:**
+```
+Number of Vendors: 5
+Order By: Top Rated
+Show Store Icons: Yes
+Show Visit Store Button: Yes
+Template: Compact
+```
+
+#### 3. REIGN Shop Owner Widget
+
+**Profile Elements:**
+- Owner profile image and details
+- Vendor messaging integration
+- Registration and contact info
+- Social media links
+
+## Advanced Template Configuration
+
+### Template Override System
+
+**Template Files Available for Override:**
+- `store-header.php` - Store header layouts
+- `vendor-list.php` - Vendor listing display
+- `vendor-sold-by.php` - Vendor information display
+- `single-store.php` - Individual store pages
+
+**Override Location:**
+```
+/wp-content/themes/reign-child/wc-vendors/templates/
+```
+
+### Customizer Integration
+
+**Customizer Panels (3 Main Sections):**
+
+#### 1. Vendors List Settings
+```
+Appearance → Customize → Reign WC Vendors → Vendors List
+```
+- Vendor rating display toggle
+- Contact information visibility
+- Search functionality settings
+- Pagination style options
+
+#### 2. Single Store Settings
+```
+Appearance → Customize → Reign WC Vendors → Single Store
+```
+- Store header layout selection
+- Banner and cover image settings
+- Vendor information display options
+- Contact form configuration
+
+#### 3. Single Product Settings
+```
+Appearance → Customize → Reign WC Vendors → Single Product
+```
+- Vendor information on product pages
+- Product header integration
+- Social sharing options
+- Review system integration
+
+## Vendor Verification System Configuration
+
+### Trust Indicators Setup
+
+**Verification Badge System:**
+- Manual verification by admin
+- Automatic verification criteria
+- Visual verification badges
+- Trust indicator display
+
+**Configuration Options:**
+```
+WC Vendors → Settings → Vendors → Verification
+Enable Verification: Yes
+Verification Criteria: Manual Admin Approval
+Badge Display: On Store Cards and Headers
+Badge Style: Professional
+```
+
+### Verification Requirements
+
+**Manual Verification Process:**
+1. Document verification
+2. Identity confirmation
+3. Business license check
+4. Payment method verification
+5. Store quality review
+
+## Performance Optimization Configuration
+
+### Caching Settings
+
+**Optimization Options:**
+```
+Reign Settings → WC Vendors → Performance
+Enable Vendor Caching: Yes
+Cache Duration: 1 hour
+Lazy Load Images: Yes
+Minify CSS/JS: Yes
+```
+
+### Mobile Optimization
+
+**Responsive Configuration:**
+- Mobile-first design approach
+- Touch-friendly interface elements
+- Optimized loading for mobile devices
+- Progressive image loading
+
+**Settings:**
+```
+Mobile Optimization: Enabled
+Touch Interface: Enhanced
+Image Loading: Progressive
+Responsive Breakpoints: Auto
+```
+
+## Search and Filtering Configuration
+
+### Advanced Search Settings
+
+**AJAX Search Configuration:**
+```
+Reign Settings → WC Vendors → Search
+Enable AJAX Search: Yes
+Search Placeholder: "Search vendors..."
+Enable Smart Suggestions: Yes
+Search Categories: Yes
+Search by Location: Yes
+```
+
+### Filter Options Configuration
+
+**Available Filters:**
+- Category filtering
+- Location-based filtering
+- Rating-based filtering
+- Verification status filtering
+- Product count filtering
+
+**Filter Display Options:**
+```
+Show Category Filter: Yes
+Show Location Filter: Yes (if Google Maps enabled)
+Show Rating Filter: Yes
+Show Verification Filter: Yes
+Filter Style: Dropdown
+Enable Multi-Select: Yes
+```
+
+## Commission Configuration
 
 ### Understanding Commissions First
 

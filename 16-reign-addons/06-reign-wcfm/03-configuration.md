@@ -1,654 +1,124 @@
 # Reign WCFM Addon - Configuration Guide
 
-## Theme Customizer Settings
+## Overview
 
-### Access Customizer Options
+The Reign WCFM Addon works automatically with WCFM once installed. Configuration options are minimal and focused on BuddyPress integration and store layout.
 
-```
-Appearance > Customize > Reign WCFM Settings
-```
+## Configuration Options (Verified)
 
-## Store Listing Configuration
-
-### Layout Options
-
-#### Grid Layout Settings
-
-```php
-// Customizer settings
-'reign_wcfm_store_layout' => array(
-    'type'    => 'select',
-    'choices' => array(
-        'grid' => 'Grid View',
-        'list' => 'List View',
-        'map'  => 'Map View'
-    ),
-    'default' => 'grid'
-)
-```
-
-**Grid Configuration:**
-
-| Setting | Options | Default | Description |
-|---------|---------|---------|-------------|
-| Columns Desktop | 2, 3, 4 | 3 | Stores per row on desktop |
-| Columns Tablet | 1, 2 | 2 | Stores per row on tablet |
-| Columns Mobile | 1 | 1 | Stores per row on mobile |
-| Items Per Page | 9, 12, 15, 18, 21 | 12 | Stores shown per page |
-| Card Style | Classic, Modern, Minimal | Modern | Store card design style |
-
-### Store Card Elements
-
-Toggle display of elements in store listings:
+### Access Settings
 
 ```
-Customizer > Reign WCFM > Store Card Elements
+Reign Settings → WCFM
 ```
 
-- ✓ **Store Banner** - Featured image/banner
-- ✓ **Store Logo** - Vendor logo/avatar
-- ✓ **Store Name** - Vendor store title
-- ✓ **Store Rating** - Average rating stars
-- ✓ **Product Count** - Total products
-- ✓ **Store Address** - Location information
-- ✓ **Featured Badge** - Premium vendors
-- ✓ **Online Status** - Vendor availability
-- ✓ **Store Categories** - Main categories
-- ✓ **Visit Store Button** - CTA button
-- ✓ **Social Links** - Social media icons
+### General Settings
 
-## Single Store Page Configuration
+**Mark Products As Favourite**
+- Enable/disable favorite products feature
+- When enabled, users can mark products as favorites
+- Favorites appear in user profiles (requires BuddyPress)
 
-### Store Header Styles
+**Display Store Tab** (requires BuddyPress)
+- Shows "Store" tab in vendor profiles
+- Displays vendor's products in their profile
+- Only appears for users who are vendors
 
-```php
-'reign_wcfm_store_header' => array(
-    'classic'  => 'Classic Header',
-    'modern'   => 'Modern Overlay',
-    'minimal'  => 'Minimal Header',
-    'custom'   => 'Custom Template'
-)
+**Create Product Activity** (requires BuddyPress)
+- Posts activity when vendors create products
+- Requires BuddyPress Activity component
+- Disabled automatically if BuddyBoss product activities are enabled
+
+**Add Review Activity** (requires BuddyPress)
+- Posts activity when products are reviewed
+- Integrates with WooCommerce review system
+- Requires BuddyPress Activity component
+
+**Order Activity** (requires BuddyPress)
+- Posts activity when orders are placed
+- Shows purchase activities in feeds
+- Requires BuddyPress Activity component
+
+### Store Settings
+
+**Single Store Layout**
+- Layout 1 - Default store layout
+- Layout 2 - Alternative store layout
+- Changes apply to all WCFM store pages
+
+## BuddyPress Integration Setup
+
+### Required Components
+
+For BuddyPress features to work:
+
+1. **BuddyPress must be active**
+2. **Required components:**
+   - Members (for profile tabs)
+   - Activity (for activity streams)
+
+### Feature Configuration
+
+1. **Enable Desired Features:**
+   - Go to Reign Settings → WCFM
+   - Check boxes for features you want
+   - Save settings
+
+2. **Test Features:**
+   - Create test vendor account
+   - Check profile for "Store" tab
+   - Test favorite products functionality
+   - Verify activities appear in feeds
+
+## Template Customization
+
+### Override Templates
+
+Copy templates from plugin to theme for customization:
+
+**From:**
+```
+/wp-content/plugins/reign-wcfm-addon/templates/
 ```
 
-### Store Sidebar Configuration
-
-```php
-// Sidebar position options
-'reign_wcfm_sidebar_position' => array(
-    'left'  => 'Left Sidebar',
-    'right' => 'Right Sidebar',
-    'none'  => 'No Sidebar'
-)
+**To:**
+```
+/wp-content/themes/your-theme/wcfm/
 ```
 
-**Available Widgets:**
-- Store Information
-- Store Location/Map
-- Store Categories
-- Best Selling Products
-- Featured Products  
-- Store Contact Form
-- Store Hours
-- Store Policies
-- Vendor Biography
+### Available Templates
 
-### Store Tabs Configuration
+- Store header layouts
+- Store listing pages
+- Store detail pages
 
-```php
-// Enable/disable store tabs
-'reign_wcfm_store_tabs' => array(
-    'products'  => true,
-    'about'     => true,
-    'policies'  => true,
-    'reviews'   => true,
-    'followers' => true,
-    'enquiry'   => true
-)
-```
+## Common Configuration Tasks
 
-## Vendor Dashboard Settings
+### Enable All BuddyPress Features
 
-### Dashboard Layout
+1. Go to Reign Settings → WCFM
+2. Enable these options:
+   - Mark Products As Favourite
+   - Display Store Tab
+   - Create Product Activity
+   - Add Review Activity
+   - Order Activity
 
-```php
-'reign_wcfm_dashboard_layout' => array(
-    'default'  => 'WCFM Default',
-    'reign'    => 'Reign Enhanced',
-    'compact'  => 'Compact View',
-    'expanded' => 'Expanded View'
-)
-```
+### Switch Store Layout
 
-### Dashboard Menu Configuration
+1. Go to Reign Settings → WCFM
+2. Under Store Settings
+3. Select Layout 1 or Layout 2
+4. Save settings
 
-```php
-// Customize dashboard menu
-add_filter('wcfm_menus', function($menus) {
-    // Menu customization
-    $menus['dashboard']['label'] = __('Overview', 'reign-wcfm');
-    $menus['products']['priority'] = 10;
-    $menus['orders']['priority'] = 20;
-    
-    // Add custom menu item
-    $menus['custom'] = array(
-        'label' => __('Custom', 'reign-wcfm'),
-        'url' => wcfm_get_endpoint_url('custom'),
-        'icon' => 'fas fa-star',
-        'priority' => 100
-    );
-    
-    return $menus;
-});
-```
+### Disable Activity Streams
 
-### Dashboard Widgets
+1. Go to Reign Settings → WCFM
+2. Uncheck activity options:
+   - Create Product Activity
+   - Add Review Activity
+   - Order Activity
 
-```php
-// Widget configuration
-'reign_wcfm_dashboard_widgets' => array(
-    'sales_stats'       => true,
-    'order_stats'       => true,
-    'product_stats'     => true,
-    'review_stats'      => true,
-    'visitor_stats'     => true,
-    'commission_stats'  => true,
-    'withdrawal_stats'  => true,
-    'notification'      => true
-)
-```
+---
 
-## Commission Configuration
-
-### Commission Types
-
-```php
-'reign_wcfm_commission' => array(
-    'mode' => 'percent', // percent, fixed, percent_fixed
-    'percent' => 10,
-    'fixed' => 2,
-    'tax_enable' => 'yes',
-    'shipping_enable' => 'yes'
-)
-```
-
-### Vendor-Specific Commission
-
-```php
-// Set individual vendor commission
-add_filter('wcfm_commission_rule', function($commission_rule, $vendor_id, $product_id) {
-    // Premium vendors get better rates
-    if (get_user_meta($vendor_id, 'premium_vendor', true)) {
-        $commission_rule['percent'] = 5; // Lower commission for premium
-    }
-    
-    // Category-based commission
-    $product_cats = wp_get_post_terms($product_id, 'product_cat', array('fields' => 'ids'));
-    if (in_array(15, $product_cats)) { // Electronics category
-        $commission_rule['percent'] = 8;
-    }
-    
-    return $commission_rule;
-}, 10, 3);
-```
-
-## Color Customization
-
-### Primary Colors
-
-```css
-/* Customizer color settings */
---reign-wcfm-primary: #2c3e50;
---reign-wcfm-secondary: #3498db;
---reign-wcfm-accent: #e74c3c;
---reign-wcfm-success: #27ae60;
---reign-wcfm-border: #ecf0f1;
-```
-
-### Component-Specific Colors
-
-```php
-'store_elements_colors' => array(
-    'store_banner_overlay'    => 'rgba(0,0,0,0.3)',
-    'store_rating_color'      => '#ffb400',
-    'featured_badge_bg'       => '#ff6b6b',
-    'online_indicator'        => '#00d084',
-    'sold_count_color'        => '#8b8b8b',
-    'dashboard_header_bg'     => '#2c3e50'
-)
-```
-
-## Typography Settings
-
-### Font Configuration
-
-```php
-'reign_wcfm_typography' => array(
-    'store_title' => array(
-        'font-family' => 'inherit',
-        'font-size'   => '24px',
-        'font-weight' => '600',
-        'line-height' => '1.4'
-    ),
-    'product_title' => array(
-        'font-family' => 'inherit',
-        'font-size'   => '16px',
-        'font-weight' => '500'
-    ),
-    'dashboard_heading' => array(
-        'font-family' => 'inherit',
-        'font-size'   => '20px',
-        'font-weight' => '600'
-    )
-)
-```
-
-## BuddyPress Integration Settings
-
-### Profile Integration
-
-```php
-// Enable store tab in BuddyPress profile
-'reign_wcfm_bp_integration' => true,
-
-// Tab position
-'reign_wcfm_bp_tab_position' => 40,
-
-// Tab visibility
-'reign_wcfm_bp_tab_visibility' => 'public',
-
-// Show sub-tabs
-'reign_wcfm_bp_subtabs' => array(
-    'products'    => true,
-    'reviews'     => true,
-    'followers'   => true,
-    'about'       => true
-)
-```
-
-### Activity Stream Integration
-
-```php
-// Activity types
-'reign_wcfm_activities' => array(
-    'new_product'      => true,
-    'product_update'   => false,
-    'new_coupon'       => true,
-    'store_review'     => true,
-    'store_follower'   => true,
-    'product_sold'     => false
-)
-```
-
-## Email Notification Settings
-
-### Email Templates
-
-```php
-'reign_wcfm_emails' => array(
-    'vendor_new_order' => array(
-        'enabled' => true,
-        'subject' => 'New order #{order_number}',
-        'heading' => 'New Order Received'
-    ),
-    'vendor_commission_invoice' => array(
-        'enabled' => true,
-        'subject' => 'Commission Invoice #{invoice_number}',
-        'heading' => 'Commission Invoice'
-    ),
-    'withdrawal_request_approved' => array(
-        'enabled' => true,
-        'subject' => 'Withdrawal Request Approved',
-        'heading' => 'Your withdrawal has been processed'
-    )
-)
-```
-
-## Membership Configuration
-
-### Membership Plans
-
-```php
-'reign_wcfm_membership' => array(
-    'enable' => true,
-    'trial_period' => 14, // days
-    'renewal_notification' => 7, // days before expiry
-    'auto_renewal' => true,
-    'plan_change' => 'immediate' // or 'next_cycle'
-)
-```
-
-### Plan Features Matrix
-
-```php
-// Define plan features
-$membership_features = array(
-    'basic' => array(
-        'product_limit' => 50,
-        'gallery_images' => 5,
-        'commission' => 15,
-        'withdrawal' => 'weekly',
-        'support' => 'standard'
-    ),
-    'premium' => array(
-        'product_limit' => 500,
-        'gallery_images' => 10,
-        'commission' => 10,
-        'withdrawal' => 'daily',
-        'support' => 'priority'
-    ),
-    'enterprise' => array(
-        'product_limit' => -1, // unlimited
-        'gallery_images' => -1,
-        'commission' => 5,
-        'withdrawal' => 'instant',
-        'support' => 'dedicated'
-    )
-);
-```
-
-## Advanced Configuration
-
-### Custom CSS
-
-```css
-/* Add via Customizer > Additional CSS */
-
-/* Store listing customization */
-.wcfm-store-wrap.reign-grid {
-    gap: 30px;
-}
-
-/* Store card hover effect */
-.reign-store-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* Dashboard customization */
-.wcfm_dashboard_reign {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-```
-
-### PHP Hooks Configuration
-
-```php
-// Modify store query
-add_filter('wcfmmp_stores_query_args', function($args) {
-    // Show only approved vendors
-    $args['meta_query'][] = array(
-        'key' => 'store_approved',
-        'value' => 'yes'
-    );
-    
-    // Sort by rating
-    $args['orderby'] = 'meta_value_num';
-    $args['meta_key'] = '_wcfmmp_avg_review_rating';
-    $args['order'] = 'DESC';
-    
-    return $args;
-});
-
-// Add custom store data
-add_action('reign_wcfm_store_card_footer', function($vendor_id) {
-    $verified = get_user_meta($vendor_id, 'wcfm_verification', true);
-    if ($verified) {
-        echo '<span class="verified-badge">Verified</span>';
-    }
-});
-```
-
-## Performance Settings
-
-### Caching Options
-
-```php
-'reign_wcfm_cache' => array(
-    'store_list'      => 3600,  // 1 hour
-    'store_data'      => 1800,  // 30 minutes
-    'product_data'    => 900,   // 15 minutes
-    'commission_data' => 7200   // 2 hours
-)
-```
-
-### Lazy Loading
-
-```php
-'reign_wcfm_lazy_load' => array(
-    'images'    => true,
-    'products'  => true,
-    'reviews'   => false,
-    'stores'    => true
-)
-```
-
-## Mobile Settings
-
-### Mobile-Specific Options
-
-```php
-'reign_wcfm_mobile' => array(
-    'simplified_dashboard' => true,
-    'touch_friendly'      => true,
-    'swipe_navigation'    => true,
-    'compact_view'        => true,
-    'quick_actions'       => true
-)
-```
-
-## SEO Configuration
-
-### Meta Tags Settings
-
-```php
-'reign_wcfm_seo' => array(
-    'store_title_format'  => '%store_name% - %site_name%',
-    'meta_description'    => true,
-    'schema_markup'       => true,
-    'og_tags'            => true,
-    'twitter_cards'      => true
-)
-```
-
-## Import/Export Settings
-
-### Backup Configuration
-
-```bash
-# Export settings
-wp option get reign_wcfm_settings --format=json > wcfm-settings.json
-
-# Import settings  
-wp option update reign_wcfm_settings --format=json < wcfm-settings.json
-```
-
-## Troubleshooting Configuration
-
-### Debug Mode
-
-```php
-// Enable debug mode
-define('REIGN_WCFM_DEBUG', true);
-define('WCFM_DEBUG', true);
-
-// Log configuration issues
-if (REIGN_WCFM_DEBUG) {
-    error_log('Reign WCFM Config: ' . print_r($config, true));
-}
-```
-
-## Complete Reign WCFM Settings
-
-### Main Settings Location
-
-**Access all Reign WCFM settings:**
-```
-WP Admin > Reign Settings > WCFM
-```
-
-### License Configuration
-
-#### Add License
-
-**Activate your license key:**
-```
-Reign Settings > License > WCFM Addon
-```
-
-License activation is required for:
-- Future updates of Reign WCFM Addon
-- Latest bug fixes
-- Security patches
-- WordPress compatibility updates
-- Premium support access
-
-#### Upgrade License
-
-**License upgrade options:**
-- Single site → 5 sites
-- 5 sites → Unlimited sites
-- Annual → Lifetime
-
-### Store Layouts Configuration
-
-**Configure store layout options:**
-```
-Reign Settings > WCFM > Store Layouts
-```
-
-Available layouts:
-- **Grid Layout** - Modern card-based design
-- **List Layout** - Detailed information view
-- **Map Layout** - Location-based display
-- **Mixed Layout** - Combination view
-
-### Setup Header with Product Search
-
-**Enable product search in header:**
-```
-Reign Settings > WCFM > Setup Header with Product Search
-```
-
-Features:
-- Ajax-powered search
-- Category filter dropdown
-- Vendor filter option
-- Search suggestions
-- Mobile-optimized
-
-```php
-// Add to header
-add_action('reign_header_icons_group', 'reign_wcfm_product_search');
-```
-
-### BuddyPress Activity Features
-
-#### BP Activity on Product Creation
-
-**Enable product creation activities:**
-```
-Reign Settings > WCFM > Create Product Activity
-```
-
-When enabled:
-- Activity posted when vendor publishes product
-- Shows product image and price
-- Links to product page
-- Can be liked/commented
-
-#### BP Activity on Product Review
-
-**Enable review activities:**
-```
-Reign Settings > WCFM > Add Review Activity
-```
-
-Features:
-- Activity when customer reviews product
-- Shows rating stars
-- Displays review excerpt
-- Links to full review
-
-### Widget Configuration
-
-#### How to Set Widgets in Reign WCFM Addon
-
-**Add WCFM widgets:**
-```
-Appearance > Widgets > WCFM Store Sidebar
-```
-
-**Available Reign WCFM Widgets:**
-- **Reign: Vendor List** - Display vendors
-- **Reign: Store Info** - Vendor information
-- **Reign: Top Products** - Best sellers
-- **Reign: Store Categories** - Categories
-- **Reign: Store Location** - Map widget
-
-**Widget Layouts:**
-1. Modern card design
-2. Classic list view
-3. Carousel slider
-4. Minimal design
-
-### System Requirements
-
-**Minimum requirements:**
-- WordPress 5.0+
-- Reign Theme (latest)
-- WCFM Free or Ultimate
-- WooCommerce 4.0+
-- PHP 7.2+
-- Memory: 256MB
-
-**Recommended:**
-- PHP 8.0+
-- Memory: 512MB
-- MySQL 5.7+
-- SSL Certificate
-
-### Additional Features
-
-#### Frontend WCFM Tabs
-
-Available vendor dashboard tabs:
-- Dashboard (overview)
-- Products (management)
-- Orders (processing)
-- Coupons (discounts)
-- Reports (analytics)
-- Withdrawal (payments)
-- Settings (store config)
-
-#### BuddyPress WCFM Backend Settings
-
-**Configure integration:**
-```
-BuddyPress > Settings > WCFM Integration
-```
-
-Options:
-- Show vendor tab in profiles
-- Display store products
-- Enable vendor messaging
-- Activity stream integration
-
-#### PeepSo WCFM Integration (Optional)
-
-**If using PeepSo:**
-```
-PeepSo > Configuration > WCFM
-```
-
-Features:
-- Vendor profiles
-- Activity generation
-- Product showcase
-- Social features
-
-## Next Steps
-
-- [Store Customization](04-store-customization.md) - Customize vendor stores
-- [Developer Guide](05-developer-guide.md) - Advanced development
-- [Troubleshooting](07-troubleshooting.md) - Common issues
-- [FAQ](08-faq.md) - Frequently asked questions
+*Configuration guide verified against Reign WCFM Addon v1.8.3 source code*

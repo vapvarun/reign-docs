@@ -1,639 +1,488 @@
-# Reign LearnDash Addon - Course Customization Guide
+# Reign LearnDash Addon - Course Customization (Complete)
 
-## What You'll Learn
-This guide shows you how to make your courses look amazing and provide the best learning experience. We'll customize layouts, colors, and features to match your brand and engage your students.
+## Overview
 
-## Quick Overview
-**Time needed:** 45-60 minutes  
-**Difficulty:** Easy (visual customization)  
-**Tools needed:** WordPress Customizer
+The Reign LearnDash Addon v4.8.2 provides extensive course customization options including multiple templates, Udemy-style layouts, advanced filtering, review systems, and BuddyPress social learning integration.
 
----
+## Course Display Templates
 
-## Part 1: Course Layout Options
+### Template Options (4 Available)
 
-### Choose Your Course Display Style
+#### 1. Classic Template
+- Traditional course card design
+- Standard layout with essential information
+- Compatible with all course types
+- Optimized for general use
 
-**Where to customize:**
 ```
-Appearance → Customize → Reign LearnDash → Course Layout
-```
-
-### Available Layout Styles
-
-| Layout Style | What It Looks Like | Best For |
-|--------------|-------------------|----------|
-| **Grid View** | Cards in rows | Visual courses |
-| **List View** | One per row with details | Professional training |
-| **Masonry** | Pinterest-style layout | Mixed content sizes |
-| **Carousel** | Sliding course cards | Homepage features |
-| **Category Tabs** | Organized by subject | Multi-topic platforms |
-
-### Course Card Layouts
-
-**Design options:**
-
-```yaml
-Card Style:
-  - Modern (clean lines)
-  - Classic (traditional)
-  - Minimal (simple)
-  - Detailed (lots of info)
-
-Card Content:
-  - Course image (always)
-  - Title and description
-  - Instructor info
-  - Price and enrollment
-  - Progress bar (for enrolled)
-  - Difficulty and duration
+[modern_courses template="classic"]
 ```
 
----
+#### 2. Minimal Template
+- Clean, simple course display
+- Reduced visual clutter
+- Focus on course essentials
+- Perfect for large course catalogs
 
-## Part 2: Course Archive Customization
-
-### Archive Page Layout
-
-**Configure main course listing:**
-
-```yaml
-Courses Per Page: 12 (good balance)
-Grid Columns: 
-  - Desktop: 3 columns
-  - Tablet: 2 columns  
-  - Mobile: 1 column
-
-Sorting Options:
-  - Newest first
-  - Price: Low to high
-  - Price: High to low
-  - Alphabetical A-Z
-  - Most popular
-  - Highest rated
-  - By category
+```
+[modern_courses template="minimal"]
 ```
 
-### Course Filtering System
+#### 3. Premium Template
+- Enhanced layout with additional details
+- Professional appearance
+- Rich course information display
+- Ideal for paid courses
 
-**Add helpful filters:**
-
-| Filter Type | Options | Benefits |
-|-------------|---------|----------|
-| **Category** | Subject areas | Easy browsing |
-| **Difficulty** | Beginner, Intermediate, Advanced | Skill matching |
-| **Duration** | Under 2 hours, 2-10 hours, 10+ hours | Time planning |
-| **Price** | Free, Under $50, $50-$100, $100+ | Budget filtering |
-| **Format** | Video, Text, Mixed | Learning preference |
-| **Instructor** | By teacher name | Follow favorites |
-
-**Enable in Customizer:**
 ```
-Appearance → Customize → Reign LearnDash → Course Filters
+[modern_courses template="premium"]
 ```
 
----
+#### 4. Detailed Template
+- Comprehensive course information display
+- Maximum course metadata
+- Advanced course statistics
+- Best for course comparison pages
 
-## Part 3: Individual Course Page Design
-
-### Course Header Customization
-
-**Header elements to include:**
-
-```yaml
-Course Banner: 
-  - Hero image or video
-  - Course title overlay
-  - Instructor photo
-  - Enrollment button
-
-Course Info:
-  - Price and discount
-  - Duration estimate
-  - Difficulty level
-  - Student count
-  - Rating and reviews
-  - Last updated date
+```
+[modern_courses template="detailed"]
 ```
 
-### Course Content Layout
+### Layout Designs (3 Options)
 
-**Organize course information:**
+#### Layout One
+- Standard grid layout with balanced spacing
+- Default typography and styling
+- Compatible with all templates
 
-**Left Sidebar (Course Info):**
-- Enrollment button
-- Course progress
-- Course materials
-- Prerequisites
-- What you'll learn
-- Certificate info
+```
+[modern_courses layout="layout_one"]
+```
 
-**Main Content Area:**
-- Course description
-- Curriculum/lessons
-- Instructor bio
-- Student reviews
-- FAQs
+#### Layout Two
+- Enhanced grid with improved typography
+- Better visual hierarchy
+- Optimized spacing and alignment
 
-**Right Sidebar (Related):**
-- Similar courses
-- Instructor's other courses
+```
+[modern_courses layout="layout_two"]
+```
+
+#### Layout Three
+- Premium styling with advanced design elements
+- Professional appearance
+- Enhanced visual effects
+
+```
+[modern_courses layout="layout_three"]
+```
+
+## Udemy-Style Course Cards
+
+### Enable Udemy-Style Design
+
+Transform course cards to match professional online learning platforms:
+
+```
+[modern_courses udemy_style="yes" template="premium" show_price="yes" show_reviews="yes"]
+```
+
+### Udemy-Style Features
+
+**Visual Elements:**
+- Professional course thumbnails with overlay effects
+- Hover animations and transitions
+- Clean typography and spacing
+- Modern card design
+
+**Course Information:**
+- Course pricing prominently displayed
+- Star ratings and review counts
+- Instructor information with avatars
+- Course statistics (lessons, students, duration)
+- Progress bars for enrolled users
+
+**Interactive Elements:**
+- Hover effects on course cards
+- Quick preview functionality
+- Social sharing buttons
+- Wishlist/favorites integration
+
+### Advanced Udemy-Style Configuration
+
+```
+[modern_courses
+    udemy_style="yes"
+    template="premium"
+    layout="layout_three"
+    show_price="yes"
+    show_reviews="yes"
+    show_instructor="yes"
+    show_students="yes"
+    show_duration="yes"
+    show_lessons="yes"
+    columns="3"]
+```
+
+## Course Review & Rating System
+
+### 5-Star Rating System
+
+**Enable Course Ratings:**
+```
+[modern_courses show_reviews="yes" template="premium"]
+```
+
+**Rating Features:**
+- Star rating display on course cards
+- Average rating calculation
+- Total review count display
+- Rating breakdown analytics
+
+### Advanced Review System
+
+**Review Components:**
+- Star ratings (1-5 stars)
+- Review titles and detailed comments
+- User information (name, avatar, date)
+- Review helpfulness voting
+- Review moderation and approval
+
+**Review Display Options:**
+```
+[modern_courses
+    show_reviews="yes"
+    template="detailed"
+    show_review_count="yes"
+    show_rating_breakdown="yes"]
+```
+
+### Review Analytics
+
+**Rating Breakdown:**
+- Percentage distribution by star rating
+- Total number of reviews
+- Average rating calculation
+- Recent review highlights
+
+## BuddyPress Social Learning Customization
+
+### Course-Group Synchronization
+
+**Enable Automatic Group Creation:**
+```
+[modern_courses buddypress_sync="yes" show_groups="yes"]
+```
+
+**Synchronization Features:**
+- Automatic BuddyPress group creation for courses
+- User synchronization between courses and groups
+- Group privacy settings based on course access
+- Role mapping (student → member, instructor → admin)
+
+### Profile Integration
+
+**Enrolled Courses Display:**
+```
+[modern_courses enrolled="yes" show_progress="yes" template="premium" columns="2"]
+```
+
+**Profile Features:**
+- Dedicated "LearnDash Courses" tab in user profiles
+- Course progress visualization
+- Achievement and completion status
+- Social sharing capabilities
+
+### Activity Stream Integration
+
+**Activity Types:**
+- Course enrollment activities
+- Lesson and topic completion
+- Quiz completion activities
+- Course review submissions
+- Achievement unlocks
+
+**Activity Display:**
+```
+[modern_courses show_activities="yes" activity_types="enrollment,completion,reviews"]
+```
+
+## Advanced Filtering & Search
+
+### Filter Configuration
+
+**Enable All Filters:**
+```
+[modern_courses
+    show_filters="yes"
+    show_search="yes"
+    show_sorting="yes"
+    show_view_switcher="yes"]
+```
+
+**Available Filters:**
+- Category filtering (dropdown, checkboxes, tag cloud)
+- Instructor filtering by name or role
+- Price type filtering (free, paid, all)
+- Enrollment status filtering
+- Progress-based filtering
+- Rating-based filtering
+
+### Search Functionality
+
+**AJAX-Powered Search:**
+- Real-time course filtering
+- No page reload required
+- Instant results display
+- Smart suggestions
+
+**Advanced Search Options:**
+```
+[modern_courses
+    show_search="yes"
+    search_placeholder="Search courses..."
+    enable_ajax_search="yes"
+    search_categories="yes"
+    search_instructors="yes"]
+```
+
+## Related Courses Customization
+
+### Algorithm Configuration
+
+**Related Course Factors:**
+- Primary: Course categories and tags
+- Secondary: Instructor relationships
+- Tertiary: Course difficulty level
+- Advanced: User enrollment history and preferences
+
+**Display Configuration:**
+```
+[modern_courses
+    show_related="yes"
+    related_count="6"
+    related_template="minimal"
+    related_columns="3"]
+```
+
+### Related Courses Display
+
+**Positioning Options:**
+- Before course content
+- After course content
+- In sidebar widget
+- Custom placement via shortcode
+
+## Widget Customization
+
+### Course Categories Widget
+
+**Configuration Options:**
+- Display format (dropdown, list, hierarchical)
+- Category count display
+- Custom styling and colors
+- Icon integration
+
+### Course Listing Widget
+
+**Display Settings:**
+- Number of courses (1-20)
+- Template selection (mini, compact, detailed)
+- Ordering options (recent, popular, rated)
+- Thumbnail size and styling
+
+### Course Search Widget
+
+**Search Features:**
+- Live search functionality
+- Category filtering integration
+- Advanced search options
+- Custom result styling
+
+## Instructor Customization
+
+### Instructor Course Pages
+
+**Display Instructor Courses:**
+```
+[modern_courses
+    instructor="current"
+    template="detailed"
+    show_instructor="yes"
+    show_students="yes"
+    show_reviews="yes"
+    show_duration="yes"]
+```
+
+**Instructor Features:**
+- Instructor biography and credentials
+- Course statistics and performance
+- Student reviews and ratings
+- Social media integration
+
+### Instructor Profile Enhancement
+
+**Enhanced Instructor Display:**
+- Professional instructor cards
+- Course portfolio showcase
 - Student testimonials
-- Social sharing
+- Achievement badges
 
----
+## Performance Optimization
 
-## Part 4: Lesson Page Customization
+### Query Optimization
 
-### Lesson Display Options
-
-**Configure lesson layout:**
-
-```yaml
-Lesson Navigation:
-  - Course outline sidebar
-  - Previous/Next buttons
-  - Progress indicator
-  - "Mark Complete" button
-
-Content Area:
-  - Video player (if video lesson)
-  - Text content
-  - Downloadable materials
-  - Assignment instructions
-  - Discussion area
+**Efficient Loading:**
+```
+[modern_courses
+    per_page="12"
+    enable_lazy_loading="yes"
+    optimize_queries="yes"
+    cache_duration="3600"]
 ```
 
-### Video Player Customization
+**Performance Best Practices:**
+- Reasonable course counts per page (12-24)
+- Image optimization and lazy loading
+- Database query caching
+- Template fragment caching
 
-**For video-based courses:**
+### Mobile Optimization
 
-| Setting | Recommended | Why |
-|---------|-------------|-----|
-| **Player Style** | Modern dark theme | Professional look |
-| **Playback Speed** | 0.5x to 2x | Student preference |
-| **Auto-advance** | Optional | Depends on content |
-| **Chapter markers** | Yes | Easy navigation |
-| **Transcript** | Yes | Accessibility |
-| **Notes feature** | Yes | Better learning |
+**Responsive Design:**
+- Mobile-first approach
+- Touch-friendly interfaces
+- Optimized loading for mobile devices
+- Progressive image loading
 
-### Lesson Sidebar Content
+## Customization Examples
 
-**What to show in lesson sidebar:**
+### Complete Learning Portal
 
-```yaml
-Course Progress:
-  - Overall completion %
-  - Current lesson
-  - Lessons remaining
-  - Time estimate
+**Homepage Configuration:**
+```
+<!-- Hero Section - Featured Courses -->
+[modern_courses
+    per_page="8"
+    columns="4"
+    template="premium"
+    udemy_style="yes"
+    category="featured"
+    show_price="yes"
+    show_reviews="yes"]
 
-Course Navigation:
-  - Clickable lesson list
-  - Lock incomplete lessons
-  - Show lesson duration
-  - Mark completion status
+<!-- Recent Courses -->
+[modern_courses
+    per_page="6"
+    columns="3"
+    orderby="date"
+    template="minimal"
+    show_filters="yes"]
 
-Additional Features:
-  - Download materials
-  - Take notes
-  - Ask questions
-  - Rate lesson
+<!-- Top Rated Courses -->
+[modern_courses
+    per_page="4"
+    columns="2"
+    orderby="rating"
+    template="detailed"
+    show_reviews="yes"
+    show_instructor="yes"]
 ```
 
----
+### Course Category Pages
 
-## Part 5: Quiz & Assessment Design
-
-### Quiz Interface Customization
-
-**Make quizzes engaging:**
-
-```yaml
-Quiz Design:
-  - Clean, distraction-free layout
-  - Progress bar showing questions left
-  - Timer display (if timed)
-  - Question counter
-  - Clear answer options
-
-Interaction Elements:
-  - Large, touch-friendly buttons
-  - Hover effects on options
-  - Immediate feedback
-  - Encouraging animations
-  - Clear submit button
+**Web Development Courses:**
+```
+[modern_courses
+    category="web-development"
+    template="premium"
+    udemy_style="yes"
+    show_filters="yes"
+    show_search="yes"
+    show_instructor="yes"
+    show_reviews="yes"
+    show_price="yes"
+    show_duration="yes"]
 ```
 
-### Results Page Design
+### User Dashboard
 
-**Show results clearly:**
+**Personal Learning Dashboard:**
+```
+<!-- Enrolled Courses -->
+[modern_courses
+    enrolled="yes"
+    show_progress="yes"
+    template="detailed"
+    columns="2"
+    show_completion="yes"]
 
-```yaml
-Results Display:
-  - Pass/fail status
-  - Score percentage
-  - Correct vs incorrect
-  - Time taken
-  - Comparison to average
-  - Next steps
-  - Retake option (if allowed)
+<!-- Recommended Courses -->
+[modern_courses
+    recommended="yes"
+    template="premium"
+    columns="3"
+    show_reviews="yes"]
 ```
 
----
+### Instructor Profile
 
-## Part 6: User Dashboard Customization
-
-### Student Dashboard Layout
-
-**Customize student experience:**
-
-```yaml
-Dashboard Sections:
-  - Welcome message
-  - Course progress overview
-  - Recently accessed
-  - Upcoming assignments
-  - Achievements/certificates
-  - Learning statistics
-  - Recommended courses
+**Instructor Course Showcase:**
 ```
-
-### Instructor Dashboard
-
-**For course creators:**
-
-```yaml
-Instructor Sections:
-  - Course analytics
-  - Student progress
-  - Recent enrollments
-  - Quiz results
-  - Student messages
-  - Revenue tracking
-  - Quick course creation
+[modern_courses
+    instructor="current"
+    template="premium"
+    show_students="yes"
+    show_reviews="yes"
+    show_duration="yes"
+    show_lessons="yes"
+    udemy_style="yes"]
 ```
-
----
-
-## Part 7: Color Scheme & Branding
-
-### Brand Color Integration
-
-**Where to set colors:**
-```
-Appearance → Customize → Colors → LearnDash
-```
-
-**Key color elements:**
-
-| Element | Purpose | Recommendation |
-|---------|---------|----------------|
-| **Primary Color** | Buttons, links | Your brand color |
-| **Secondary Color** | Headers, accents | Complementary shade |
-| **Progress Color** | Completion bars | Green (success feeling) |
-| **Text Color** | Content readability | Dark gray, not black |
-| **Background** | Page background | Light, neutral |
-| **Card Background** | Course cards | White or very light |
-
-### Typography Settings
-
-**Choose readable fonts:**
-
-```yaml
-Headings: Sans-serif (modern)
-Body Text: Sans-serif (readability)
-Sizes:
-  - Course titles: 24-28px
-  - Lesson titles: 20-24px
-  - Body text: 16-18px
-  - Small text: 14px
-```
-
----
-
-## Part 8: Mobile Learning Experience
-
-### Mobile-Specific Customizations
-
-**Optimize for mobile learning:**
-
-```yaml
-Mobile Layout:
-  - Single column design
-  - Large tap targets
-  - Simplified navigation
-  - Touch-friendly video player
-  - Easy-to-read text
-
-Mobile Features:
-  - Swipe between lessons
-  - Offline content access
-  - Progress sync
-  - Push notifications
-  - Quick actions
-```
-
-### Touch-Friendly Elements
-
-**Make mobile learning easy:**
-
-```yaml
-Button Sizes: Minimum 44px touch target
-Spacing: Adequate between clickable elements
-Scrolling: Smooth, momentum scrolling
-Zoom: Pinch-to-zoom for detailed content
-Orientation: Support both portrait/landscape
-```
-
----
-
-## Part 9: Interactive Features
-
-### Gamification Elements
-
-**Add engagement features:**
-
-```yaml
-Progress Tracking:
-  - Visual progress bars
-  - Completion percentages
-  - Milestone celebrations
-  - Achievement badges
-  - Leaderboards (optional)
-
-Reward System:
-  - Points for completion
-  - Badges for achievements
-  - Certificates for courses
-  - Social sharing
-  - Success animations
-```
-
-### Social Learning Features
-
-**If using BuddyPress integration:**
-
-```yaml
-Community Features:
-  - Student profiles
-  - Course activity feeds
-  - Discussion groups
-  - Peer connections
-  - Study groups
-  - Mentorship matching
-```
-
----
-
-## Part 10: Content Enhancement
-
-### Rich Media Integration
-
-**Enhance course content:**
-
-```yaml
-Supported Media:
-  - HD video content
-  - Interactive PDFs
-  - Audio lessons
-  - Image galleries
-  - Presentation slides
-  - Interactive elements
-  - External tool embedding
-```
-
-### Downloadable Resources
-
-**Provide valuable materials:**
-
-```yaml
-Resource Types:
-  - PDF worksheets
-  - Audio files
-  - Video downloads (limited)
-  - Templates and tools
-  - Reading lists
-  - Quick reference guides
-```
-
----
-
-## Part 11: Accessibility Features
-
-### Make Learning Accessible
-
-**Accessibility improvements:**
-
-```yaml
-Visual Accessibility:
-  - High contrast options
-  - Large text options
-  - Alt text for images
-  - Clear focus indicators
-  - Screen reader support
-
-Audio/Video Accessibility:
-  - Closed captions
-  - Transcripts
-  - Audio descriptions
-  - Keyboard navigation
-  - Speed controls
-```
-
----
-
-## Quick Customization Recipes
-
-### Recipe 1: Corporate Training Platform
-
-```yaml
-Style: Professional and clean
-Colors: Company brand colors
-Layout: Grid view with detailed cards
-Features: Progress tracking, certificates
-Navigation: Linear progression
-Assessments: Mandatory quizzes
-```
-
-### Recipe 2: Creative Skills Academy
-
-```yaml
-Style: Visual and inspiring
-Colors: Bright and creative
-Layout: Masonry with large images
-Features: Portfolio submissions
-Navigation: Flexible exploration
-Assessments: Project-based
-```
-
-### Recipe 3: Professional Certification
-
-```yaml
-Style: Authoritative and structured
-Colors: Conservative blues/grays
-Layout: List view with details
-Features: CEU tracking, compliance
-Navigation: Sequential modules
-Assessments: Rigorous testing
-```
-
-### Recipe 4: Hobby Learning Hub
-
-```yaml
-Style: Friendly and approachable
-Colors: Warm and inviting
-Layout: Grid with community features
-Features: Social sharing, discussions
-Navigation: Self-paced exploration
-Assessments: Optional, encouraging
-```
-
----
 
 ## Advanced Customization
 
-### Custom CSS Snippets
+### Custom CSS Integration
 
-**Add to Customizer → Additional CSS:**
-
+**Template-Specific Styling:**
 ```css
-/* Custom course card hover effect */
-.ld-course-card:hover {
+/* Premium Template Customization */
+.reign-course-template-premium {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Udemy-Style Cards */
+.reign-course-udemy-style {
+    transition: transform 0.3s ease;
+}
+
+.reign-course-udemy-style:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-/* Custom progress bar color */
-.ld-progress-bar {
-    background: linear-gradient(90deg, #4CAF50, #8BC34A);
-    border-radius: 10px;
-}
-
-/* Custom button styling */
-.ld-button {
-    background: #your-brand-color;
-    border-radius: 5px;
-    padding: 15px 30px;
-    font-weight: 600;
 }
 ```
 
 ### Template Overrides
 
-**For advanced customization:**
+**Custom Template Creation:**
+1. Copy template files from plugin to theme
+2. Customize HTML structure and styling
+3. Add custom functionality
+4. Maintain update compatibility
 
-1. **Copy template files** from plugin to theme
-2. **Modify layouts** in theme folder
-3. **Preserve updates** by using child theme
+### Hook Integration
 
----
+**Custom Functionality:**
+```php
+// Add custom course metadata
+add_action('reign_course_card_after_title', 'custom_course_info');
 
-## Performance Optimization
+// Modify course query
+add_filter('reign_courses_query_args', 'custom_query_modification');
 
-### Speed Up Course Pages
-
-```yaml
-Image Optimization:
-  - Compress course images
-  - Use WebP format
-  - Lazy load images
-  - CDN for video content
-
-Caching:
-  - Cache course pages
-  - Exclude user-specific content
-  - Minify CSS/JS
-  - Combine files
+// Custom review display
+add_filter('reign_course_review_display', 'custom_review_format');
 ```
 
 ---
 
-## Testing Your Customizations
-
-### Cross-Device Testing
-
-**Test on multiple devices:**
-
-1. **Desktop computers** (various screen sizes)
-2. **Tablets** (iPad, Android tablets)
-3. **Smartphones** (iPhone, Android phones)
-4. **Different browsers** (Chrome, Firefox, Safari, Edge)
-
-### User Experience Testing
-
-**Test the complete learning journey:**
-
-1. **Course discovery** - Finding courses
-2. **Enrollment process** - Easy signup
-3. **Content consumption** - Smooth learning
-4. **Progress tracking** - Clear indicators
-5. **Assessment taking** - User-friendly quizzes
-6. **Completion** - Satisfying conclusion
-
----
-
-## Common Customization Issues
-
-### Troubleshooting Design Problems
-
-**"Courses look broken after changes"**
-- Clear all caches
-- Check browser console for errors
-- Verify CSS conflicts
-- Test with default theme
-
-**"Mobile view not responsive"**
-- Check viewport meta tag
-- Verify responsive settings
-- Test CSS media queries
-- Clear mobile cache
-
-**"Colors not applying"**
-- Clear customizer cache
-- Check CSS specificity
-- Verify color codes
-- Test with browser inspector
-
----
-
-## Best Practices
-
-### Design Do's ✅
-
-- Keep layouts clean and uncluttered
-- Use consistent spacing throughout
-- Make buttons large enough for touch
-- Ensure good color contrast
-- Test on real devices
-- Prioritize readability
-- Make navigation intuitive
-
-### Design Don'ts ❌
-
-- Don't use too many fonts
-- Don't make text too small
-- Don't hide important information
-- Don't use auto-playing videos
-- Don't ignore mobile users
-- Don't forget accessibility
-- Don't overuse animations
-
----
-
-## Next Steps
-
-**Your courses look amazing! Now:**
-
-1. **[Add Developer Features →](05-developer-guide.md)**
-2. **[Create Course Content →](08-faq.md)**
-3. **[Launch Your LMS →](07-troubleshooting.md)**
-
----
-
-**Need Design Help?**  
-📧 Email: support@wbcomdesigns.com  
-🎨 Custom design service available  
-💬 Forum: wbcomdesigns.com/support  
-🎥 Design tutorials in member area
+*Comprehensive course customization guide based on complete analysis of Reign LearnDash Addon v4.8.2 source code*

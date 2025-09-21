@@ -1,386 +1,168 @@
-# Reign WCFM Addon - Quick Start Guide for First-Time Users
+# Reign WCFM Addon - Quick Start Guide
 
-## 🚀 Welcome! Let's Build Your WCFM Marketplace in 30 Minutes
+## What This Addon Provides
 
-This guide helps first-time users set up a professional multi-vendor marketplace using Reign Theme + WCFM.
+Reign WCFM Addon enhances WCFM Marketplace with Reign theme integration, providing:
+
+**Core Features (Verified):**
+- BuddyPress integration with store tabs and favorite products
+- Theme styling for WCFM elements
+- Activity stream integration for products, reviews, and orders
+- Store layout options (2 layouts available)
+- Template override system
 
 ---
 
-## 📋 Pre-Flight Checklist
+## Prerequisites
 
-Before starting, ensure you have:
-- ✅ WordPress installed (5.8+)
+Required:
+- ✅ WordPress 4.0+
 - ✅ Reign Theme activated
 - ✅ WooCommerce plugin active
 - ✅ WCFM Marketplace plugin installed
-- ✅ Your Reign WCFM license key
+
+Optional:
+- BuddyPress (for social features)
 
 ---
 
-## 🎯 5-Step Setup Process
+## Installation Steps
 
-### Step 1: Install Reign WCFM Addon (5 minutes)
+### Step 1: Install the Addon
 
-1. **Get your addon file:**
+1. **Upload via WordPress:**
    ```
-   Login → wbcomdesigns.com/my-account
-   Downloads → Reign WCFM Addon
-   Download ZIP file
-   ```
-
-2. **Install the addon:**
-   ```
-   WP Admin → Plugins → Add New
-   Upload Plugin → Choose File
-   Select: reign-wcfm-addon.zip
-   Install Now → Activate
+   WordPress Admin → Plugins → Add New → Upload Plugin
+   → Select reign-wcfm-addon.zip
+   → Install Now → Activate
    ```
 
-✅ **Check:** "Reign WCFM Addon" appears in plugins list
+2. **Verify Installation:**
+   - Check Plugins page - "Reign WCFM Addon" should be active
+   - WCFM stores should now use Reign theme styling
+
+### Step 2: Configure Settings
+
+The addon works automatically with WCFM. Available customization:
+
+**Reign Settings → WCFM (verified options):**
+
+1. **General Settings:**
+   - Mark Products As Favourite (enable/disable)
+   - Display Store Tab (for BuddyPress vendor profiles)
+   - Create Product Activity (BuddyPress activity streams)
+   - Add Review Activity (review activities in feeds)
+   - Order Activity (purchase activities in feeds)
+
+2. **Store Settings:**
+   - Single Store Layout: Layout 1 or Layout 2
 
 ---
 
-### Step 2: License Activation (2 minutes)
+## Available Features
 
-1. Navigate to: `Reign Settings → License`
-2. Find: "Reign WCFM Addon" section
-3. Enter your license key
-4. Click "Activate"
+### BuddyPress Integration (when BuddyPress is active)
 
-✅ **Check:** Green "Active" status shows
+#### For Customers:
+- **Favourite Products Tab** - Save and view favorite products in profile
+- **Activity Feeds** - See product creation, reviews, and order activities
 
----
+#### For Vendors:
+- **Store Tab** - Display vendor's products in their profile
+- **Activity Streams** - Vendor activities appear in feeds
 
-### Step 3: Essential Configuration (10 minutes)
+### Store Enhancements
 
-#### A. WCFM Basic Setup
+#### Visual Improvements:
+- Reign theme styling applied to all WCFM elements
+- 2 store layout options available
+- Responsive design improvements
 
-1. **Go to:** `WCFM → Settings`
-2. **Configure Store Settings:**
-   ```
-   Store URL: /store/ (default)
-   Store List URL: /store-list/
-   Registration: Enable vendor registration
-   ```
-
-#### B. Reign Integration Setup
-
-1. **Go to:** `Reign Settings → WCFM`
-2. **Set these options:**
-
-   **Store Display:**
-   ```
-   Layout: Modern Grid
-   Columns: 3
-   Items per page: 12
-   Card Style: Modern
-   ```
-
-   **Vendor Dashboard:**
-   ```
-   Style: Reign Enhanced
-   Menu Position: Vertical
-   Color Scheme: Match theme
-   ```
-
-#### C. Commission Structure
-
-1. **Go to:** `WCFM → Settings → Commission`
-2. **Set rates:**
-   ```
-   Commission Type: Percentage
-   Admin Fee: 15% (adjustable)
-   ```
-
-✅ **Check:** Visit `/store-list/` to see your marketplace
+#### Template System:
+- Custom template overrides
+- Enhanced store displays
+- Mobile-optimized layouts
 
 ---
 
-### Step 4: Visual Customization (8 minutes)
+## Quick Test
 
-1. **Open Customizer:**
-   ```
-   Appearance → Customize → Reign WCFM Settings
-   ```
+### Verify Installation Works
 
-2. **Design Your Stores:**
+1. **Check Store Pages:**
+   - Visit existing WCFM store pages
+   - Should display with Reign theme styling
 
-   **Colors:**
-   - Primary: Your brand color
-   - Secondary: Complementary color
-   - Success: Green (#27ae60)
+2. **Test BuddyPress Features (if BP active):**
+   - Check vendor profiles for "Store" tab
+   - Enable favorite products and test functionality
+   - Enable activities and create test product
 
-   **Store Cards:**
-   Enable these elements:
-   - ✅ Store Banner
-   - ✅ Store Logo
-   - ✅ Store Rating
-   - ✅ Product Count
-   - ✅ Online Status
-   - ✅ Visit Store Button
-
-3. **Typography:**
-   - Store Name: 20px, Bold
-   - Product Count: 14px, Regular
-   - Button Text: 14px, Medium
-
-4. **Click:** Publish
-
-✅ **Check:** Stores display with your styling
+3. **Verify Layout Options:**
+   - Go to Reign Settings → WCFM → Store Settings
+   - Switch between Layout 1 and Layout 2
+   - Visit store page to see changes
 
 ---
 
-### Step 5: Create Test Vendor (5 minutes)
+## Common Usage
 
-#### Quick Vendor Setup:
+### Using with BuddyPress
 
-1. **Register as vendor:**
-   - Visit: `/store-list/`
-   - Click: "Become a Vendor"
-   - Complete registration
+1. **Enable Integration:**
+   - Go to Reign Settings → WCFM
+   - Enable desired BuddyPress features
+   - Configure activity settings
 
-2. **Admin approval:**
-   - Go to: `WCFM → Vendors`
-   - Approve new vendor
-   - Set capabilities
+2. **For Vendors:**
+   - Vendor profiles will show "Store" tab
+   - Products, reviews, and orders create activities
+   - Store information visible in profile
 
-3. **Configure vendor store:**
-   - Login as vendor
-   - Access: Vendor Dashboard
-   - Add:
-     - Store banner
-     - Logo/avatar
-     - Store description
-     - First product
+3. **For Customers:**
+   - Can mark products as favorites
+   - View favorites in profile "Favourite" tab
+   - See marketplace activities in feeds
 
-✅ **Check:** New vendor appears in store list
+### Store Customization
 
----
+1. **Choose Layout:**
+   - Reign Settings → WCFM → Store Settings
+   - Select Layout 1 or Layout 2
+   - Changes apply to all store pages
 
-## 🎉 Setup Complete! Here's What You Built:
-
-### Your Marketplace Now Has:
-- ✅ Multi-vendor functionality
-- ✅ Professional store layouts
-- ✅ Vendor dashboards
-- ✅ Commission system
-- ✅ Customized design
+2. **Template Overrides:**
+   - Copy files from plugin to theme
+   - Customize as needed for your brand
 
 ---
 
-## 📅 Your First Week Action Plan
+## Troubleshooting
 
-### Day 1-2: Foundation
-- [ ] Add 3-5 test products
-- [ ] Configure email notifications
-- [ ] Set up payment methods
-- [ ] Test checkout process
+### Settings Not Saving
+1. Clear all caches
+2. Check theme settings are saved
+3. Verify plugin is properly activated
 
-### Day 3-4: Vendors
-- [ ] Create vendor guidelines
-- [ ] Set up vendor categories
-- [ ] Configure withdrawal options
-- [ ] Test vendor dashboard
+### BuddyPress Features Missing
+1. Verify BuddyPress is active
+2. Check user roles and capabilities
+3. Enable required BuddyPress components
 
-### Day 5-7: Launch Prep
-- [ ] Invite first vendors
-- [ ] Create help documentation
-- [ ] Set up support system
-- [ ] Plan marketing campaign
+### Styling Issues
+1. Clear cache
+2. Verify Reign theme is active
+3. Check for CSS conflicts
 
 ---
 
-## 🚨 Quick Fixes for Common Issues
+## Next Steps
 
-### "Store page not found"
-```bash
-Settings → Permalinks → Save Changes
-```
-
-### "Dashboard looks weird"
-```bash
-1. Clear browser cache
-2. Clear site cache
-3. Deactivate/reactivate addon
-```
-
-### "Vendors can't add products"
-```bash
-WCFM → Capability → Check product permissions
-```
+For detailed configuration and customization:
+- [Configuration Guide](03-configuration.md) - Theme settings
+- [Store Customization](04-store-customization.md) - Appearance options
+- [Developer Guide](05-developer-guide.md) - Hooks and filters
 
 ---
 
-## 📈 Growing Your Marketplace
-
-### Week 2: Enhance Features
-1. **Social Integration**
-   - Enable BuddyPress features
-   - Add activity feeds
-   - Create vendor groups
-
-2. **Advanced Store Features**
-   - Store SEO settings
-   - Store followers system
-   - Store inquiry forms
-
-3. **Marketing Tools**
-   - Featured vendors
-   - Store coupons
-   - Email campaigns
-
-### Week 3: Optimization
-1. **Performance**
-   - Enable caching
-   - Optimize images
-   - CDN setup
-
-2. **Analytics**
-   - Google Analytics
-   - Vendor analytics
-   - Sales reports
-
----
-
-## 🎯 Success Checklist
-
-### Technical Setup ✅
-- [ ] WCFM installed and configured
-- [ ] Reign WCFM addon activated
-- [ ] License verified
-- [ ] Pages created
-- [ ] Permalinks set
-
-### Business Setup 📊
-- [ ] Commission rates defined
-- [ ] Vendor terms created
-- [ ] Payment methods configured
-- [ ] Shipping zones set
-- [ ] Tax settings configured
-
-### Design Setup 🎨
-- [ ] Colors customized
-- [ ] Layouts selected
-- [ ] Widgets placed
-- [ ] Menus configured
-- [ ] Homepage designed
-
----
-
-## 📚 Learning Resources
-
-### Essential Guides:
-- [Complete Configuration](03-configuration.md)
-- [Store Customization](04-marketplace-customization.md)
-- [Developer Guide](05-developer-guide.md)
-
-### Video Tutorials:
-- Getting Started with WCFM
-- Customizing Vendor Stores
-- Managing Commissions
-
-### Support Channels:
-- 📧 [Support Ticket](https://wbcomdesigns.com/support/)
-- 💬 [Community Forum](https://wbcomdesigns.com/forums/)
-- 📺 [YouTube Channel](https://youtube.com/wbcomdesigns)
-
----
-
-## 💡 Pro Tips from Successful Marketplaces
-
-1. **Quality Over Quantity**
-   - Start with 10 excellent vendors
-   - Not 100 mediocre ones
-
-2. **Vendor Success = Your Success**
-   - Provide vendor training
-   - Share marketing tips
-   - Celebrate top performers
-
-3. **Communication is Key**
-   - Weekly vendor newsletter
-   - Quick support responses
-   - Clear policies
-
-4. **Build Community**
-   - Vendor forums
-   - Success stories
-   - Collaborative promotions
-
----
-
-## 📊 Track Your Progress
-
-### 30-Day Goals:
-- [ ] 20 active vendors
-- [ ] 100+ products
-- [ ] First 10 sales
-- [ ] 50 customer accounts
-- [ ] 4.5+ star rating
-
-### Key Metrics:
-```
-Vendor Growth Rate: ___ per week
-Product Addition Rate: ___ per day
-Conversion Rate: ____%
-Average Order Value: $___
-Vendor Satisfaction: ___/5
-```
-
----
-
-## 🔧 Daily Admin Tasks (10 min/day)
-
-### Morning (5 min):
-1. Check pending vendors
-2. Review reported products
-3. Approve withdrawals
-4. Check system health
-
-### Evening (5 min):
-1. Review daily sales
-2. Respond to vendor queries
-3. Update featured products
-4. Plan tomorrow's tasks
-
----
-
-## 🚀 Ready to Launch!
-
-Your WCFM marketplace is configured and ready. Remember:
-
-> "The best marketplace is one that grows steadily with quality vendors who succeed alongside you."
-
-### Your Next Steps:
-1. Complete vendor guidelines
-2. Create your first vendor
-3. Add sample products
-4. Test purchase flow
-5. Invite beta vendors
-
-**Welcome to the Reign WCFM family!** 🎉
-
----
-
-## 🆘 Emergency Contacts
-
-### Critical Issues:
-- **Support Email:** support@wbcomdesigns.com
-- **Priority Support:** (for license holders)
-- **Documentation:** docs.wbcomdesigns.com
-- **Status Page:** status.wbcomdesigns.com
-
-### Before Contacting Support:
-```
-Gather:
-- WordPress version: ___
-- PHP version: ___
-- Error messages: ___
-- Steps to reproduce: ___
-```
-
----
-
-*Quick Start Guide v1.0*
-*Setup Time: 30 minutes*
-*Difficulty: Beginner-Friendly*
+*Quick Start Guide verified against Reign WCFM Addon v1.8.3 source code*

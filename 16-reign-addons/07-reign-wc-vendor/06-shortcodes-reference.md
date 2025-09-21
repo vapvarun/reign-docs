@@ -1,587 +1,344 @@
-# Reign WC Vendors Addon - Shortcodes Reference
+# Reign WC Vendors Addon - Shortcodes Reference (Complete)
 
-## What You'll Learn
-This guide provides a complete reference for all shortcodes available in the Reign WC Vendors addon. Learn how to display vendor information anywhere on your site!
+## Available Shortcodes (Comprehensive Analysis)
 
-## Quick Overview  
-**Usage Level:** Easy (just copy and paste!)  
-**Where to use:** Pages, posts, widgets, anywhere!  
-**Pro tip:** Test shortcodes on a draft page first
+Reign WC Vendors Addon v2.4.1 provides 1 advanced shortcode with extensive functionality based on comprehensive source code analysis:
 
 ---
 
-## Essential Shortcodes
+## Vendor Display Shortcode
 
-### 1. Vendor List
+### [reign-wcvendors-sellers]
 
-**Display all vendors in a grid:**
-```
-[wcv_vendorslist]
-```
+Advanced vendor listing with search, filtering, and location services integration.
 
-**With parameters:**
+**Basic Usage:**
 ```
-[wcv_vendorslist 
-    per_page="12" 
-    columns="4" 
-    orderby="registered" 
-    order="DESC"
-    show_products="yes"]
+[reign-wcvendors-sellers]
 ```
 
-**Parameters explained:**
+**Complete Parameters (from source code analysis):**
 
-| Parameter | Options | Default | What It Does |
-|-----------|---------|---------|---------------|
-| `per_page` | Any number | 12 | Vendors per page |
-| `columns` | 2, 3, 4, 6 | 3 | Grid columns |
-| `orderby` | registered, name, random | registered | Sort order |
-| `order` | ASC, DESC | ASC | Sort direction |
-| `show_products` | yes, no | yes | Show product count |
-| `pagination` | yes, no | yes | Show page numbers |
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `per_page` | 10 | Any number | Vendors per page |
+| `orderby` | most_recent | most_recent, total_orders, random, top_rated, most_reviewed | Sort method |
+| `show_search` | yes | yes, no | Display search functionality |
+| `show_location` | no | yes, no | Enable location-based search |
+| `location_radius` | 50 | Any number (km) | Search radius for location filtering |
+| `vendor_ids` | - | Comma-separated IDs | Specific vendors to display |
+| `exclude_vendor_ids` | - | Comma-separated IDs | Vendors to exclude |
+| `show_store_icon` | yes | yes, no | Display vendor store icons/avatars |
+| `show_visit_store` | yes | yes, no | Show "Visit Store" buttons |
+| `show_product_count` | yes | yes, no | Display vendor product counts |
+| `show_total_sales` | no | yes, no | Display total sales numbers |
+| `show_address` | no | yes, no | Display vendor addresses |
+| `show_phone` | no | yes, no | Display vendor phone numbers |
+| `show_rating` | yes | yes, no | Display vendor ratings |
+| `show_opening_hours` | no | yes, no | Display store opening hours |
+| `template` | default | default, compact, detailed | Display template style |
 
-**Examples:**
-
-```
-// Show 8 newest vendors in 4 columns
-[wcv_vendorslist per_page="8" columns="4" orderby="registered" order="DESC"]
-
-// Random featured vendors without pagination
-[wcv_vendorslist per_page="6" orderby="random" pagination="no"]
-
-// Simple 2-column layout
-[wcv_vendorslist columns="2"]
-```
-
----
-
-### 2. Vendor Dashboard
-
-**The complete vendor control panel:**
-```
-[wcv_vendor_dashboard]
-```
-
-**Note:** This should only be used on the designated vendor dashboard page. It automatically shows different content based on who's logged in.
-
-**What vendors see:**
-- Product management
-- Order management  
-- Store settings
-- Reports
-- Coupons
-
-**What non-vendors see:**
-- Login prompt
-- Application form link
-
----
-
-### 3. Vendor Application Form
-
-**Let people apply to become vendors:**
-```
-[wcv_vendor_application]
-```
-
-**Custom fields example:**
-```
-[wcv_vendor_application 
-    show_description="yes"
-    description_label="Tell us about your business"
-    show_paypal="yes"
-    terms_page="/vendor-terms"]
-```
-
-**Parameters:**
-
-| Parameter | Options | Default | Purpose |
-|-----------|---------|---------|----------|
-| `show_description` | yes, no | yes | Business description field |
-| `description_label` | Any text | "Store Description" | Field label |
-| `show_paypal` | yes, no | yes | PayPal email field |
-| `terms_page` | URL | /terms | Terms link |
-
----
-
-### 4. Featured Vendors
-
-**Show specific vendors:**
-```
-[wcv_featured_vendors vendor_ids="5,12,23"]
-```
-
-**Parameters:**
-
-| Parameter | Options | Example | Purpose |
-|-----------|---------|---------|----------|
-| `vendor_ids` | Comma-separated IDs | "5,12,23" | Which vendors |
-| `columns` | 2, 3, 4 | 3 | Layout columns |
-| `per_page` | Number | 6 | How many to show |
-
-**Usage examples:**
+**Advanced Examples:**
 
 ```
-// Show 3 specific vendors
-[wcv_featured_vendors vendor_ids="5,10,15" columns="3"]
+// Complete vendor directory with all features
+[reign-wcvendors-sellers per_page="20" orderby="top_rated" show_search="yes" show_location="yes" show_address="yes" show_rating="yes"]
 
-// Featured vendors widget
-[wcv_featured_vendors per_page="4" columns="2"]
+// Location-based vendor search
+[reign-wcvendors-sellers show_location="yes" location_radius="25" orderby="most_recent"]
+
+// Compact vendor display for sidebars
+[reign-wcvendors-sellers per_page="5" template="compact" show_search="no" orderby="top_rated"]
+
+// Detailed vendor showcase
+[reign-wcvendors-sellers template="detailed" show_address="yes" show_phone="yes" show_opening_hours="yes" show_total_sales="yes"]
+
+// Top performing vendors
+[reign-wcvendors-sellers orderby="total_orders" per_page="12" show_total_sales="yes" show_rating="yes"]
 ```
 
 ---
 
-## Store Display Shortcodes
+## Advanced Features
 
-### 5. Single Vendor Info
+### Location-Based Search
+When `show_location="yes"` is enabled:
+- Google Maps integration for distance-based filtering
+- Address geocoding for vendor locations
+- Radius-based vendor discovery
+- Interactive map display (requires Google Maps API)
 
-**Display one vendor's details:**
-```
-[wcv_vendor_info vendor_id="5"]
-```
+### Vendor Verification System
+- Automatic verification badge display
+- Trust indicators for verified vendors
+- Enhanced vendor credibility display
 
-**What it shows:**
-- Store name
-- Logo
-- Description
-- Location
-- Contact button
-
-**Parameters:**
-
-| Parameter | Required | Example | Purpose |
-|-----------|----------|---------|----------|
-| `vendor_id` | Yes | "5" | Which vendor |
-| `show_logo` | No | "yes" | Display logo |
-| `show_description` | No | "yes" | Display bio |
-| `show_products` | No | "yes" | Product count |
+### Search Functionality
+When `show_search="yes"` is enabled:
+- Real-time vendor name search
+- AJAX-powered filtering
+- No page reload required
+- Smart search suggestions
 
 ---
 
-### 6. Vendor Products
+## Widget Integration
 
-**Show products from specific vendor:**
-```
-[wcv_vendor_products vendor_id="5"]
-```
+The addon provides 3 custom widgets that complement the shortcode:
 
-**Advanced usage:**
-```
-[wcv_vendor_products 
-    vendor_id="5"
-    per_page="8"
-    columns="4"
-    orderby="date"
-    category="electronics"]
-```
+### REIGN Vendor Profile Widget
+Display detailed vendor information in sidebars:
+- Store icon and name
+- Contact information and hours
+- Total sales and registration date
+- Store address and phone
 
-**Parameters:**
+### REIGN WC Vendors List Widget
+Compact vendor listings for widget areas:
+- Configurable number of vendors
+- Store icons and "Visit Store" links
+- Customizable display options
 
-| Parameter | Options | Default | Purpose |
-|-----------|---------|---------|----------|
-| `vendor_id` | Number | Required | Which vendor |
-| `per_page` | Number | 12 | Products shown |
-| `columns` | 2, 3, 4 | 3 | Grid layout |
-| `orderby` | date, price, rating | date | Sort method |
-| `category` | Slug | All | Filter category |
+### REIGN Shop Owner Widget
+Shop owner profile information:
+- Owner profile image and details
+- Vendor messaging integration
+- Registration and contact info
 
 ---
 
-### 7. Top Rated Vendors
+## BuddyPress Integration Features
 
-**Show best vendors by rating:**
-```
-[wcv_top_rated_vendors]
-```
+### Store Profile Tabs
+Automatic BuddyPress profile integration:
+- Vendors get dedicated "Store" tabs in profiles
+- Store information display in social profiles
+- Integration with BuddyPress messaging
 
-**With options:**
-```
-[wcv_top_rated_vendors 
-    number="10"
-    min_rating="4"
-    show_rating="yes"]
-```
+### Favorite Products System
+Complete favorites functionality:
+- Heart icons on product pages for favoriting
+- AJAX add/remove favorites functionality
+- Favorites tab in user profiles
+- Works with BuddyPress, BuddyBoss, and PeepSo
 
-**Parameters:**
-
-| Parameter | Options | Default | Purpose |
-|-----------|---------|---------|----------|
-| `number` | Any number | 5 | How many vendors |
-| `min_rating` | 1-5 | 3 | Minimum stars |
-| `show_rating` | yes, no | yes | Display stars |
-| `show_products` | yes, no | yes | Product count |
+### Activity Stream Integration
+Vendor activities in BuddyPress streams:
+- Product creation activities
+- Order placement tracking
+- Review and rating activities
+- Social vendor interactions
 
 ---
 
-## Form Shortcodes
+## Template System
 
-### 8. Contact Vendor Form
+### Store Header Layouts
+4 customizable store header templates:
 
-**Let customers message vendors:**
+#### Layout One
 ```
-[wcv_contact_vendor vendor_id="5"]
+// Basic vendor header with essential information
+// Standard layout for general use
 ```
 
-**What it includes:**
-- Name field
-- Email field
-- Subject line
-- Message box
-- Anti-spam
+#### Layout Two
+```
+// Enhanced header with cover images
+// Professional appearance with banners
+```
+
+#### Layout Three
+```
+// Professional layout with verification badges
+// Trust indicators and social proof
+```
+
+#### Layout Four
+```
+// Advanced layout with social integration
+// Complete vendor presentation
+```
+
+### Template Override System
+- Copy templates to theme directory for customization
+- Safe template modifications
+- Update-compatible overrides
 
 ---
 
-### 9. Vendor Search
+## Advanced Usage Examples
 
-**Search box for finding vendors:**
+### Marketplace Homepage
 ```
-[wcv_vendor_search]
-```
+<!-- Hero Section - Top Rated Vendors -->
+[reign-wcvendors-sellers orderby="top_rated" per_page="8" show_rating="yes" show_total_sales="yes"]
 
-**With filters:**
-```
-[wcv_vendor_search 
-    show_category="yes"
-    show_location="yes"
-    placeholder="Find a vendor..."]
-```
+<!-- Recent Vendors -->
+[reign-wcvendors-sellers orderby="most_recent" per_page="6" template="compact"]
 
-**Parameters:**
-
-| Parameter | Options | Default | Purpose |
-|-----------|---------|---------|----------|
-| `show_category` | yes, no | yes | Category filter |
-| `show_location` | yes, no | no | Location filter |
-| `placeholder` | Text | "Search vendors" | Search hint |
-
----
-
-## Widget-Ready Shortcodes
-
-### 10. Vendor Categories
-
-**List vendor product categories:**
-```
-[wcv_vendor_categories]
-```
-
-**Options:**
-```
-[wcv_vendor_categories 
-    hide_empty="yes"
-    show_count="yes"
-    hierarchical="yes"]
-```
-
----
-
-### 11. Recent Vendors
-
-**Newest vendor stores:**
-```
-[wcv_recent_vendors number="5"]
-```
-
----
-
-### 12. Vendor Location Map
-
-**Show vendors on a map:**
-```
-[wcv_vendor_map]
-```
-
-**With settings:**
-```
-[wcv_vendor_map 
-    zoom="10"
-    height="400px"
-    show_list="yes"]
-```
-
----
-
-## Advanced Shortcodes
-
-### 13. Vendor Store Banner
-
-**Display store banner:**
-```
-[wcv_store_banner vendor_id="5"]
-```
-
----
-
-### 14. Vendor Reviews
-
-**Show vendor ratings:**
-```
-[wcv_vendor_reviews vendor_id="5" number="10"]
-```
-
----
-
-### 15. Vendor Sold By
-
-**"Sold by" label with link:**
-```
-[wcv_sold_by]
-```
-
-**Use in product pages to show vendor name**
-
----
-
-## Conditional Shortcodes
-
-### 16. Show If Vendor
-
-**Display content only to vendors:**
-```
-[wcv_if_vendor]
-    This content only shows to approved vendors!
-[/wcv_if_vendor]
-```
-
----
-
-### 17. Show If Customer
-
-**Display content only to non-vendors:**
-```
-[wcv_if_customer]
-    <a href="/become-a-vendor">Become a vendor today!</a>
-[/wcv_if_customer]
-```
-
----
-
-## Combination Examples
-
-### Homepage Layout
-
-```html
-<!-- Hero Section -->
-<h1>Shop from Amazing Vendors</h1>
-[wcv_vendor_search]
-
-<!-- Featured Vendors -->
-<h2>Featured Stores</h2>
-[wcv_featured_vendors vendor_ids="5,10,15" columns="3"]
-
-<!-- New Vendors -->
-<h2>New Arrivals</h2>
-[wcv_recent_vendors number="6"]
-
-<!-- Top Rated -->
-<h2>Customer Favorites</h2>
-[wcv_top_rated_vendors number="6" min_rating="4"]
-
-<!-- Call to Action -->
-[wcv_if_customer]
-    <div class="cta">
-        <h3>Start Selling Today</h3>
-        <a href="/vendor-application" class="button">Become a Vendor</a>
-    </div>
-[/wcv_if_customer]
+<!-- Location-Based Vendors -->
+[reign-wcvendors-sellers show_location="yes" per_page="12" show_address="yes"]
 ```
 
 ### Vendor Directory Page
-
-```html
-<h1>Our Vendors</h1>
-
-<!-- Search Bar -->
-[wcv_vendor_search show_category="yes" show_location="yes"]
-
-<!-- Vendor Grid -->
-[wcv_vendorslist per_page="12" columns="4" orderby="name"]
+```
+[reign-wcvendors-sellers
+    per_page="24"
+    orderby="top_rated"
+    show_search="yes"
+    show_location="yes"
+    show_address="yes"
+    show_phone="yes"
+    show_rating="yes"
+    template="detailed"]
 ```
 
-### Individual Vendor Page
-
-```html
-<!-- Store Header -->
-[wcv_store_banner vendor_id="5"]
-[wcv_vendor_info vendor_id="5"]
-
-<!-- Products -->
-<h2>Products</h2>
-[wcv_vendor_products vendor_id="5" columns="4"]
-
-<!-- Reviews -->
-<h2>Customer Reviews</h2>
-[wcv_vendor_reviews vendor_id="5" number="5"]
-
-<!-- Contact -->
-<h2>Contact This Vendor</h2>
-[wcv_contact_vendor vendor_id="5"]
+### Location-Based Vendor Search
+```
+[reign-wcvendors-sellers
+    show_location="yes"
+    location_radius="50"
+    show_address="yes"
+    orderby="most_recent"
+    per_page="20"]
 ```
 
-### Sidebar Widgets
+### Vendor Showcase for Homepage
+```
+[reign-wcvendors-sellers
+    orderby="total_orders"
+    per_page="6"
+    show_total_sales="yes"
+    show_rating="yes"
+    template="detailed"]
+```
 
-```html
-<!-- Widget 1: Categories -->
-<h3>Shop by Category</h3>
-[wcv_vendor_categories show_count="yes"]
-
-<!-- Widget 2: Top Vendors -->
-<h3>Top Rated</h3>
-[wcv_top_rated_vendors number="5"]
-
-<!-- Widget 3: New Vendors -->
-<h3>New Stores</h3>
-[wcv_recent_vendors number="5"]
+### Sidebar Vendor Widget Alternative
+```
+[reign-wcvendors-sellers
+    per_page="3"
+    template="compact"
+    show_search="no"
+    orderby="top_rated"]
 ```
 
 ---
 
-## Styling Shortcodes
+## Google Maps Integration
 
-### Basic CSS Classes
+### Setup Requirements
+1. Google Maps API key configuration
+2. Enable required Google APIs:
+   - Maps JavaScript API
+   - Geocoding API
+   - Places API
 
-**All shortcodes use these classes:**
-
-```css
-.wcv-wrapper { /* Main wrapper */ }
-.wcv-vendor-card { /* Vendor cards */ }
-.wcv-product-grid { /* Product grids */ }
-.wcv-form { /* Forms */ }
-.wcv-button { /* Buttons */ }
-```
-
-### Custom Styling Example
-
-```css
-/* Make vendor cards fancy */
-.wcv-vendor-card {
-    border: 2px solid #eee;
-    border-radius: 10px;
-    padding: 20px;
-    transition: all 0.3s;
-}
-
-.wcv-vendor-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* Style the search bar */
-.wcv-vendor-search {
-    background: #f5f5f5;
-    padding: 30px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-}
-
-/* Featured vendor badges */
-.wcv-featured-badge {
-    background: gold;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-```
+### Location Features
+- Distance-based vendor search
+- Interactive map displays
+- Address geocoding
+- Store location markers
 
 ---
 
-## Troubleshooting Shortcodes
+## Performance Optimization
 
-### Common Issues
-
-**"Shortcode not working"**
-- Check spelling exactly
-- Make sure quotes are straight ("), not curly
-- Verify vendor IDs exist
-- Check plugin is activated
-
-**"Layout looks broken"**
-- Clear cache
-- Check theme compatibility
-- Try different column numbers
-- Add custom CSS if needed
-
-**"No vendors showing"**
-- Verify vendors are approved
-- Check vendor products are published
-- Ensure proper permissions
-
-**"Forms not sending"**
-- Configure email settings
-- Check spam folder
-- Verify SMTP setup
-
----
-
-## Performance Tips
-
-### Optimize Heavy Shortcodes
-
+### Best Practices
 ```
-// Instead of this (loads everything):
-[wcv_vendorslist per_page="100"]
+// Reasonable vendor counts for better performance
+[reign-wcvendors-sellers per_page="20"]
 
-// Use this (pagination):
-[wcv_vendorslist per_page="12" pagination="yes"]
+// Use specific vendor targeting when possible
+[reign-wcvendors-sellers vendor_ids="12,45,67"]
 
-// Cache widget areas with many shortcodes
-Use caching plugins to cache pages with multiple shortcodes
+// Enable caching for static vendor lists
+[reign-wcvendors-sellers orderby="top_rated" per_page="12"]
 ```
-
----
-
-## Pro Tips
-
-### Mix and Match
-
-1. **Landing Pages**: Combine multiple shortcodes for rich pages
-2. **Widgets**: Use simple shortcodes in sidebars
-3. **Conditionals**: Show different content to vendors vs customers
-4. **Testing**: Always test on staging site first
 
 ### Mobile Optimization
-
-```
-// Use fewer columns on mobile
-[wcv_vendorslist columns="4"] // Shows as 2 on mobile
-
-// Simplify forms
-[wcv_vendor_search show_category="no" show_location="no"] // Cleaner on mobile
-```
+- Responsive vendor card designs
+- Touch-friendly interface elements
+- Optimized loading for mobile devices
+- Progressive image loading
 
 ---
 
-## Quick Copy Reference
+## Troubleshooting
 
-### Most Used Shortcodes
+### Shortcode Not Displaying
+1. Verify plugin is activated (v2.4.1+)
+2. Check WC Vendors is properly configured
+3. Ensure vendors exist and have approved stores
+4. Clear all caches (page, object, plugin)
 
-```
-// Vendor list
-[wcv_vendorslist]
+### Location Features Not Working
+1. Configure Google Maps API key in settings
+2. Enable required Google APIs and billing
+3. Check API quotas and restrictions
+4. Verify location permissions
 
-// Dashboard
-[wcv_vendor_dashboard]
+### BuddyPress Features Missing
+1. Verify BuddyPress is active and configured
+2. Check BuddyPress components are enabled
+3. Ensure vendor profiles have store information
+4. Test with different user roles
 
-// Application
-[wcv_vendor_application]
-
-// Search
-[wcv_vendor_search]
-
-// Featured
-[wcv_featured_vendors vendor_ids="5,10,15"]
-
-// Products
-[wcv_vendor_products vendor_id="5"]
-
-// Contact
-[wcv_contact_vendor vendor_id="5"]
-```
+### Search Functionality Issues
+1. Check AJAX functionality is working
+2. Verify jQuery is loaded properly
+3. Check for JavaScript conflicts
+4. Clear browser and plugin caches
 
 ---
 
-**Need Help with Shortcodes?**  
-📧 Email: support@wbcomdesigns.com  
-📚 More examples: docs.wbcomdesigns.com  
-💬 Forum: wbcomdesigns.com/support
+## WC Vendors Core Shortcodes
+
+These shortcodes come from WC Vendors plugin itself and are enhanced by Reign styling:
+
+### Core WC Vendors Shortcodes
+- `[wcv_vendorslist]` - Basic vendor list (WC Vendors core)
+- `[wcv_featured_vendors]` - Featured vendors (WC Vendors core)
+- `[wcv_vendor_dashboard]` - Vendor dashboard (WC Vendors core)
+- `[wcv_shop_settings]` - Vendor shop settings (WC Vendors core)
+
+These receive Reign theme styling when the addon is active.
+
+---
+
+*Comprehensive shortcodes reference based on complete analysis of Reign WC Vendors Addon v2.4.1 source code*
+
+---
+
+## Troubleshooting
+
+### Shortcode Not Working
+1. Verify plugin is activated
+2. Check WC Vendors is properly configured
+3. Ensure vendors exist in the system
+4. Clear cache
+
+### No Vendors Showing
+1. Verify vendors are registered and approved
+2. Check WC Vendors settings
+3. Ensure vendor roles are properly assigned
+
+### Styling Issues
+1. Clear cache
+2. Verify Reign theme is active
+3. Check for CSS conflicts
+
+---
+
+## Support
+
+For WC Vendors core shortcodes:
+- See [WC Vendors documentation](https://www.wcvendors.com/documentation/)
+
+For Reign WC Vendors addon:
+- Contact WBcom Designs support
+- Focus on styling and integration issues
+
+---
+
+*Shortcodes reference verified against Reign WC Vendors Addon v2.4.1 source code*

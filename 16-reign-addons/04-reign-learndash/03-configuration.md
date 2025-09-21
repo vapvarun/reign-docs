@@ -1,981 +1,340 @@
-# Reign LearnDash Addon - Configuration Guide
+# Reign LearnDash Addon - Configuration Guide (Complete)
 
-## What You'll Learn
-This guide shows you how to configure every aspect of your LearnDash LMS with the Reign addon. We'll explain each setting in simple terms so you can make the right choices for your learning platform.
+## Overview
 
-## Quick Overview
-**Time needed:** 60-90 minutes for complete configuration  
-**Difficulty:** Easy (mostly clicking options!)  
-**Result:** A fully configured learning management system
+The Reign LearnDash Addon v4.8.2 provides extensive configuration options for course display, BuddyPress integration, review systems, and social learning features. This guide covers all available settings and customization options.
+
+## Course Display Configuration
+
+### Layout Templates (4 Available)
+
+1. **Classic Template** - Traditional course card design
+2. **Minimal Template** - Clean, simple course display
+3. **Premium Template** - Enhanced layout with additional details
+4. **Detailed Template** - Comprehensive course information display
+
+### Layout Options (3 Designs)
+
+1. **Layout One** - Default grid layout with standard spacing
+2. **Layout Two** - Enhanced grid with improved typography
+3. **Layout Three** - Advanced layout with premium styling
+
+### Udemy-Style Course Cards
+
+Enable professional course cards similar to Udemy:
+```
+[modern_courses udemy_style="yes" template="premium" show_price="yes" show_reviews="yes"]
+```
+
+**Udemy-style features include:**
+- Course thumbnails with overlay effects
+- Star ratings and review counts
+- Course pricing display
+- Progress bars for enrolled users
+- Instructor information with avatars
+- Course statistics (lessons, students, duration)
+
+## Course & Group Filtering Configuration
+
+### Advanced Filter Options
+
+**Category Filtering:**
+- Dropdown category selector
+- Multi-select category checkboxes
+- Category tag cloud interface
+
+**Instructor Filtering:**
+- Filter by instructor name/username
+- Filter by instructor role
+- Instructor-specific course pages
+
+**Price Type Filtering:**
+- Free courses only
+- Paid courses only
+- All courses (mixed)
+
+**Enrollment Status Filtering:**
+- Show enrolled courses only
+- Show non-enrolled courses
+- Show all courses with enrollment indicators
+
+**Progress-Based Filtering:**
+- Minimum progress percentage
+- Maximum progress percentage
+- Completion status filtering
+
+## BuddyPress Integration Configuration
+
+### Course-Group Synchronization
+
+**Automatic Group Creation:**
+- Enable/disable automatic BuddyPress group creation for courses
+- Configure group privacy settings (public, private, hidden)
+- Set default group roles (member, moderator, admin)
+
+**User Synchronization:**
+- Sync course enrollment with group membership
+- Automatic role assignment based on course progress
+- Group leader assignment for instructors
+
+### Activity Stream Configuration
+
+**Activity Types (All Configurable):**
+- Course enrollment activities
+- Course completion activities
+- Lesson completion activities
+- Topic completion activities
+- Quiz completion activities
+- Course review and rating activities
+- Group joining/leaving activities
+
+**Activity Settings:**
+- Enable/disable specific activity types
+- Configure activity privacy levels
+- Set activity notification preferences
+
+### Profile Integration
+
+**LearnDash Courses Tab:**
+- Add dedicated courses tab to user profiles
+- Display enrolled courses with progress
+- Show completed courses and achievements
+- Configure tab position and visibility
+
+**Profile Display Options:**
+- Grid or list view for enrolled courses
+- Progress bars and completion indicators
+- Course ratings and review access
+- Social sharing features
+
+## Review & Rating System Configuration
+
+### Rating System Setup
+
+**5-Star Rating System:**
+- Enable/disable course ratings
+- Configure rating display options
+- Set rating submission permissions
+
+**Review Management:**
+- Enable detailed course reviews
+- Configure review moderation settings
+- Set review character limits
+- Enable/disable guest reviews
+
+**Rating Analytics:**
+- Display rating breakdowns by star count
+- Show average ratings with review counts
+- Configure rating aggregation methods
+
+### Review Display Configuration
+
+**Review Elements:**
+- Star rating visualization
+- Review titles and detailed comments
+- User information display (avatar, name, date)
+- Review helpfulness voting
+- Review sorting and filtering
+
+## Widget Configuration
+
+### Course Categories Widget
+
+**Configuration Options:**
+- Display format (dropdown, list, cloud)
+- Category count display
+- Hierarchical category display
+- Custom styling options
+
+### Course Listing Widget
+
+**Display Settings:**
+- Number of courses to display
+- Course ordering options (recent, popular, rated)
+- Template selection (mini, compact, detailed)
+- Thumbnail size and display
+
+### Course Search Widget
+
+**Search Features:**
+- Live search functionality
+- Category filtering integration
+- Advanced search options
+- Search result styling
+
+## Related Courses Configuration
+
+### Algorithm Settings
+
+**Relationship Factors:**
+- Category-based recommendations (primary)
+- Tag-based associations
+- Instructor relationships
+- Course difficulty level matching
+- User enrollment history
+
+**Display Configuration:**
+- Number of related courses (1-12)
+- Related courses section title
+- Template selection for related courses
+- Positioning (before/after course content)
+
+### Customization Options
+
+**Related Courses Display:**
+- Grid layout with configurable columns
+- Course card template selection
+- Show/hide course metadata
+- Custom CSS styling options
+
+## Advanced Configuration
+
+### Performance Optimization
+
+**Query Optimization:**
+- Chunked user queries for large enrollments
+- Efficient database query caching
+- Memory-efficient user retrieval
+- Optimized course metadata loading
+
+**Caching Configuration:**
+- Course data caching duration
+- User progress caching
+- Review and rating caching
+- Template fragment caching
+
+### Template Customization
+
+**Template Override System:**
+- Copy templates to theme directory
+- Safe template customization
+- Version-compatible overrides
+- Template hierarchy management
+
+**Available Templates:**
+- Course archive templates
+- Single course page templates
+- Group archive templates
+- Profile integration templates
+- Widget templates
+
+## Configuration Examples
+
+### Complete Learning Portal Setup
+
+**Homepage Course Display:**
+```
+[modern_courses per_page="8" columns="4" template="premium" udemy_style="yes" show_filters="yes" show_search="yes"]
+```
+
+**Category Page Configuration:**
+```
+[modern_courses category="web-development" template="detailed" show_instructor="yes" show_reviews="yes" show_price="yes"]
+```
+
+**User Profile Integration:**
+```
+[modern_courses enrolled="yes" show_progress="yes" template="premium" columns="2"]
+```
+
+### BuddyPress Social Learning Setup
+
+**Group-Course Synchronization:**
+```
+[modern_courses buddypress_sync="yes" show_groups="yes"]
+[modern_groups buddypress_sync="yes" show_courses="yes"]
+```
+
+**Activity Stream Integration:**
+- Enable all course-related activities
+- Configure activity privacy settings
+- Set up activity notifications
+
+### Instructor-Focused Configuration
+
+**Instructor Course Pages:**
+```
+[modern_courses instructor="current" template="detailed" show_students="yes" show_reviews="yes" show_duration="yes"]
+```
+
+**Instructor Profile Enhancement:**
+- Enable instructor information display
+- Show instructor ratings and reviews
+- Display instructor course statistics
+
+## Admin Panel Configuration
+
+### LearnDash Integration Settings
+
+**Course Display Options:**
+- Default template selection
+- Default layout configuration
+- Column count settings
+- Pagination preferences
+
+**Review System Settings:**
+- Enable/disable rating system
+- Configure review permissions
+- Set moderation requirements
+- Configure rating calculations
+
+### BuddyPress Settings
+
+**Group Integration:**
+- Enable automatic group creation
+- Configure default group settings
+- Set group privacy preferences
+- Configure role synchronization
+
+**Activity Logging:**
+- Select activity types to log
+- Configure activity visibility
+- Set notification preferences
+
+### Performance Settings
+
+**Optimization Options:**
+- Database query caching
+- Template fragment caching
+- Image optimization settings
+- JavaScript/CSS minification
+
+## Troubleshooting Configuration
+
+### Common Configuration Issues
+
+**Templates Not Applying:**
+1. Clear all caches (page, object, plugin)
+2. Verify template parameter spelling
+3. Check theme compatibility
+4. Test with default settings
+
+**BuddyPress Integration Issues:**
+1. Verify BuddyPress components are active
+2. Check user permissions and roles
+3. Test group synchronization settings
+4. Validate activity logging configuration
+
+**Performance Issues:**
+1. Optimize course count per page
+2. Enable appropriate caching
+3. Check database query efficiency
+4. Monitor server resource usage
+
+### Configuration Best Practices
+
+**Course Display:**
+- Use appropriate course counts (12-24 per page)
+- Enable relevant filters for user experience
+- Choose templates based on content type
+- Optimize images and thumbnails
+
+**Social Learning:**
+- Configure appropriate activity types
+- Set reasonable privacy settings
+- Enable relevant profile features
+- Test group synchronization thoroughly
 
 ---
 
-## Part 1: Core LearnDash Settings
-
-### Step 1: General LMS Configuration
-
-**Where to go:**
-```
-WP Admin → LearnDash LMS → Settings → General
-```
-
-**Essential settings:**
-
-| Setting | Recommended Value | Why |
-|---------|------------------|-----|
-| **Course Builder** | Course Builder | Easier course creation |
-| **Shared Course Steps** | Enabled | Share lessons between courses |
-| **Course Navigation Widget** | Enabled | Better navigation |
-| **Lesson Video Progression** | Enabled | Ensure students watch videos |
-| **Quiz Result Points** | Enabled | Show quiz scores |
-| **Statistics Widgets** | Enabled | Track progress |
-
-### Step 2: Course Access Settings
-
-**Course progression options:**
-
-| Access Type | How It Works | Best For |
-|-------------|--------------|----------|
-| **Open** | Anyone can access | Free courses |
-| **Buy Now** | Payment required | Paid courses |
-| **Recurring** | Subscription model | Ongoing access |
-| **Closed** | Admin enrollment only | Private training |
-
-**Recommended settings:**
-```yaml
-Default Access Mode: Buy Now
-Course Prerequisites: Enabled
-Lesson Progression: Linear (students must complete in order)
-Quiz Progression: Required (must pass to continue)
-```
-
----
-
-## Part 2: Course Display Configuration
-
-### Course Archive Settings
-
-**Where to go:**
-```
-Appearance → Customize → Reign LearnDash → Course Archive
-```
-
-**Layout options:**
-
-```yaml
-Courses Per Page: 12
-Grid Layout: 3 columns (desktop), 1 column (mobile)
-Sorting Options:
-  - Newest first
-  - Price: Low to high
-  - Price: High to low
-  - Alphabetical
-  - Most enrolled
-  - Highest rated
-```
-
-### Course Card Configuration
-
-**What to show on course cards:**
-
-| Element | Show? | Purpose |
-|---------|-------|----------|
-| **Course Image** | ✅ Always | Visual appeal |
-| **Course Title** | ✅ Always | Identification |
-| **Instructor Name** | ✅ Yes | Credibility |
-| **Course Price** | ✅ Yes | Clear pricing |
-| **Course Duration** | ✅ Yes | Time commitment |
-| **Difficulty Level** | ✅ Yes | Skill matching |
-| **Student Count** | Optional | Social proof |
-| **Course Rating** | After 5 ratings | Quality indicator |
-| **Course Progress** | Enrolled only | Track completion |
-
-**Configure in:**
-```
-Appearance → Customize → Reign LearnDash → Course Cards
-```
-
----
-
-## Part 3: User Experience Settings
-
-### Student Dashboard Configuration
-
-**Dashboard sections to enable:**
-
-```yaml
-User Profile: Yes (show progress)
-My Courses: Yes (enrolled courses)
-Course Progress: Yes (completion status)
-Achievements: Yes (certificates, badges)
-Assignments: Yes (if using assignments)
-Quiz Results: Yes (performance tracking)
-Discussion Forums: Yes (if using bbPress)
-```
-
-### Lesson Display Settings
-
-**Where to configure:**
-```
-LearnDash LMS → Settings → Lessons
-```
-
-**Recommended settings:**
-
-| Setting | Value | Benefit |
-|---------|-------|----------|
-| **Lesson Progression** | Linear | Structured learning |
-| **Show Lesson List** | Yes | Clear navigation |
-| **Lesson Comments** | Enabled | Student interaction |
-| **Lesson Timer** | Optional | Focus sessions |
-| **Video Progression** | Enabled | Ensure completion |
-| **Auto-Complete** | After timer | Automatic progress |
-
-### Quiz Configuration
-
-**Essential quiz settings:**
-
-```yaml
-Quiz Attempts: 3 maximum
-Passing Grade: 70%
-Show Correct Answers: After completion
-Quiz Timer: Course dependent
-Question Randomization: Enabled
-Result Display: Percentage + Letter grade
-```
-
----
-
-## Part 4: Payment & Enrollment
-
-### Payment Gateway Setup
-
-**Option 1: PayPal Integration**
-
-**Where to configure:**
-```
-LearnDash LMS → Settings → PayPal
-```
-
-**Settings:**
-```yaml
-PayPal Email: your-paypal@email.com
-Currency: USD (or your local currency)
-Country: Your country code
-Sandbox Mode: Enable for testing
-NotifyURL: Auto-generated
-ReturnURL: Thank you page
-CancelURL: Course page
-```
-
-**Option 2: WooCommerce Integration** (Recommended)
-
-**Benefits:**
-- More payment gateways
-- Better checkout experience
-- Advanced e-commerce features
-- Detailed sales reports
-
-**Setup:**
-1. Install WooCommerce
-2. Go to **LearnDash LMS** → **Add-ons**
-3. Enable **WooCommerce Integration**
-4. Configure product creation
-
-### Pricing Strategies
-
-**Common pricing models:**
-
-| Model | How It Works | Best For |
-|-------|--------------|----------|
-| **One-time Purchase** | Pay once, lifetime access | Skill courses |
-| **Subscription** | Monthly/yearly recurring | Ongoing programs |
-| **Tiered Pricing** | Different access levels | Comprehensive programs |
-| **Bundle Pricing** | Multiple courses together | Course series |
-| **Free + Premium** | Basic free, advanced paid | Lead generation |
-
----
-
-## Part 5: User Roles & Permissions
-
-### Understanding LearnDash Roles
-
-**Default user roles:**
-
-| Role | Capabilities | Use Case |
-|------|--------------|----------|
-| **Student** | Take courses, view progress | Course learners |
-| **Instructor** | Create courses, manage students | Course creators |
-| **Group Leader** | Manage assigned groups | Team leaders |
-| **Administrator** | Full access | Site owners |
-
-### Configure Instructor Permissions
-
-**Where to set:**
-```
-LearnDash LMS → Settings → General → Course Builder
-```
-
-**Instructor capabilities:**
-
-```yaml
-Can Create Courses: Yes
-Can Edit Own Courses: Yes
-Can Delete Courses: No (admin only)
-Can Manage Students: Yes (enrolled in their courses)
-Can View Reports: Yes (own courses only)
-Can Issue Certificates: Yes
-Can Create Quizzes: Yes
-Can Moderate Comments: Yes
-```
-
-### Group Management Settings
-
-**For corporate training:**
-
-```yaml
-Group Leaders Can:
-  - Enroll users in group courses
-  - View group progress reports
-  - Assign courses to group
-  - Export group data
-  - Communicate with group members
-```
-
----
-
-## Part 6: Certificates & Awards
-
-### Certificate Configuration
-
-**Where to set up:**
-```
-LearnDash LMS → Certificates
-```
-
-**Certificate settings:**
-
-```yaml
-Automatic Issuance: Yes
-Download Format: PDF
-Certificate Template: Custom design
-Include Information:
-  - Student name
-  - Course title
-  - Completion date
-  - Instructor signature
-  - Unique certificate ID
-```
-
-### Badges & Achievements
-
-**Set up achievement system:**
-
-1. **Enable badges:**
-   - Install "BadgeOS" plugin
-   - Configure achievement types
-   - Set earning criteria
-
-2. **Common achievements:**
-   - Course completion
-   - Quiz mastery (90%+ score)
-   - Perfect attendance
-   - Fast learner
-   - Community participation
-
----
-
-## Part 7: Content Protection
-
-### Lesson Protection Settings
-
-**Prevent content theft:**
-
-```yaml
-Disable Right-Click: Enabled
-Disable Text Selection: Enabled
-Watermark Videos: Recommended
-Login Required: Always
-IP Address Tracking: For suspicious activity
-Device Limits: 3 devices per user
-```
-
-### Video Protection
-
-**For video courses:**
-
-```yaml
-Video Hosting: Vimeo Pro or Wistia
-DRM Protection: Enabled
-Playback Speed Control: Limited
-Skip Prevention: Enabled
-Download Prevention: Enabled
-Time-based Access: Optional
-```
-
----
-
-## Part 8: Assessment Configuration
-
-### Quiz Settings Deep Dive
-
-**Advanced quiz options:**
-
-```yaml
-Question Types Enabled:
-  - Multiple Choice
-  - True/False
-  - Fill in the Blank
-  - Essay
-  - Ordering
-  - Matching
-  - Image Choice
-
-Grading Options:
-  - Automatic grading (non-essay)
-  - Manual review (essay questions)
-  - Partial credit
-  - Negative scoring
-```
-
-### Assignment Configuration
-
-**If using assignments:**
-
-```yaml
-File Upload Types: PDF, DOC, DOCX, TXT
-Max File Size: 10MB
-Submission Deadline: Course dependent
-Late Submissions: Penalty or block
-Instructor Review: Required
-Rubric Grading: Enabled
-```
-
----
-
-## Part 9: Communication Settings
-
-### Course Forums Integration
-
-**With bbPress plugin:**
-
-```yaml
-Course Forums: Enabled
-Forum per Course: Yes
-Student Participation: Encouraged
-Instructor Moderation: Yes
-Anonymous Posts: No
-Email Notifications: Yes
-```
-
-### Private Messaging
-
-**Student-instructor communication:**
-
-```yaml
-Private Messages: Enabled
-Message Notifications: Email + Dashboard
-Instructor Response Time: 24-48 hours
-File Attachments: Limited types
-Message History: Preserved
-```
-
----
-
-## Part 10: Reports & Analytics
-
-### Progress Tracking
-
-**What to track:**
-
-```yaml
-Student Progress:
-  - Course completion percentage
-  - Time spent per lesson
-  - Quiz attempts and scores
-  - Last activity date
-  - Certificate status
-
-Course Analytics:
-  - Enrollment numbers
-  - Completion rates
-  - Average scores
-  - Popular content
-  - Drop-off points
-```
-
-### Export Options
-
-**Data export formats:**
-- CSV files for Excel
-- PDF reports
-- Email summaries
-- API integration
-
----
-
-## Part 11: Mobile Learning Configuration
-
-### Mobile App Settings
-
-**If using LearnDash mobile app:**
-
-```yaml
-Offline Content: Limited lessons
-Push Notifications: Course updates
-App Branding: Your logo and colors
-In-App Purchases: Course enrollment
-Progress Sync: Real-time
-```
-
-### Mobile Web Optimization
-
-```yaml
-Responsive Design: Enabled
-Touch-Friendly: Quiz interfaces
-Mobile Video: Optimized streaming
-Offline Reading: PDF downloads
-Mobile Navigation: Simplified
-```
-
----
-
-## Part 12: SEO & Marketing Configuration
-
-### Course SEO Settings
-
-**Help courses rank in Google:**
-
-```yaml
-SEO Plugin: Yoast or RankMath
-Course URLs: /courses/course-name/
-Meta Descriptions: Compelling course summaries
-Schema Markup: Course structured data
-Sitemap Inclusion: Enabled
-```
-
-### Social Sharing
-
-```yaml
-Share Buttons: Course pages
-Open Graph: Course images and descriptions
-Twitter Cards: Course previews
-LinkedIn Integration: Professional courses
-```
-
----
-
-## Configuration for Different Learning Models
-
-### Corporate Training Setup
-
-```yaml
-Access: Closed (admin enrollment)
-Groups: Department-based
-Reporting: Detailed completion tracking
-Certificates: Required for compliance
-Forum: Internal discussions
-Branding: Company colors and logo
-```
-
-### Online School Setup
-
-```yaml
-Access: Paid enrollment
-Progression: Semester-based
-Grading: Letter grades
-Assignments: Heavy use
-Forums: Class discussions
-Calendar: Semester scheduling
-```
-
-### Professional Development
-
-```yaml
-Access: Individual purchase
-Certificates: CEU credits
-Self-paced: Flexible timing
-Practical: Hands-on projects
-Networking: Peer connections
-Portfolio: Work samples
-```
-
-### Hobby/Interest Courses
-
-```yaml
-Access: Mix of free and paid
-Progression: Self-paced
-Community: Strong forums
-Creativity: Project sharing
-Casual: Low pressure
-Inspiration: Success stories
-```
-
----
-
-## Quick Settings Reference
-
-### Most Important Setting Locations
-
-```
-General: LearnDash LMS → Settings → General
-Courses: LearnDash LMS → Settings → Courses  
-Lessons: LearnDash LMS → Settings → Lessons
-Quizzes: LearnDash LMS → Settings → Quizzes
-Display: Appearance → Customize → Reign LearnDash
-Payments: LearnDash LMS → Settings → PayPal
-```
-
-### Recommended Starter Settings
-
-```yaml
-Course Access: Buy Now
-Lesson Progression: Linear
-Quiz Passing: 70%
-Certificates: Automatic
-Reports: Enabled
-Mobile: Responsive
-SEO: Optimized
-Security: Protected
-```
-
----
-
-## Complete Reign LearnDash Settings
-
-### Main Settings Location
-
-**Access all Reign LearnDash settings:**
-```
-WP Admin → Reign Settings → LearnDash
-```
-
-### License Configuration
-
-#### Add License
-
-**Activate your license:**
-```
-Reign Settings → License → LearnDash Addon
-```
-
-License activation required for:
-- Future updates
-- Bug fixes
-- Security patches
-- WordPress compatibility
-- Premium support
-
-#### Upgrade License
-
-**Available upgrades:**
-- Single site → 5 sites
-- 5 sites → Unlimited
-- Annual → Lifetime
-
-### General Settings
-
-**Configure general options:**
-```
-Reign Settings → LearnDash → General Settings
-```
-
-Key settings:
-- Enable course grid
-- Show progress bars
-- Display certificates
-- Course catalog layout
-- Student dashboard settings
-
-### Course Display Settings
-
-#### Course Archive Page
-
-**Configure course listing:**
-```
-Reign Settings → LearnDash → Course Archive Page
-```
-
-Options:
-- Grid/List layout
-- Columns (2, 3, 4)
-- Items per page
-- Sort order
-- Filter display
-
-#### Enable/Disable Filters on Course Archive
-
-**Control filter visibility:**
-```
-Reign Settings → LearnDash → Course Archive Filters
-```
-
-Available filters:
-- Category filter
-- Price filter
-- Difficulty level
-- Duration filter
-- Instructor filter
-
-### Single Course Configuration
-
-#### Single Course Layout Customization
-
-**Manage course page layout:**
-```
-Reign Settings → LearnDash → Single Course Layout
-```
-
-Layout options:
-- **Layout 1:** Sidebar right
-- **Layout 2:** Sidebar left
-- **Layout 3:** Full width
-- **Layout 4:** Tabbed view
-
-#### Multiple Layouts for Single Course Page
-
-**How to manage multiple layouts:**
-1. Go to course edit page
-2. Select layout from metabox
-3. Override global settings
-4. Preview changes
-5. Publish course
-
-#### Hide Course Content Tab
-
-**Remove content tab from single course:**
-```php
-// Add to functions.php
-add_filter('reign_learndash_course_tabs', function($tabs) {
-    unset($tabs['content']);
-    return $tabs;
-});
-```
-
-#### Display Custom Course Features
-
-**Show custom features on single course:**
-```
-Reign Settings → LearnDash → Course Features
-```
-
-Features to display:
-- Course duration
-- Skill level
-- Language
-- Certificate
-- Prerequisites
-- Course materials
-
-### Course Reviews
-
-#### Enable/Disable Course Review Display
-
-**Control review visibility:**
-```
-Reign Settings → LearnDash → Course Reviews
-```
-
-Options:
-- Enable reviews
-- Show rating stars
-- Review count
-- Review form position
-- Moderation required
-
-#### Prevent Guest Users from Submitting Reviews
-
-**Restrict reviews to enrolled students:**
-```
-Reign Settings → LearnDash → Review Restrictions
-```
-
-Settings:
-- Require enrollment
-- Require course completion
-- One review per student
-- Edit own reviews only
-
-### Lesson & Topic Settings
-
-#### Single Lesson Layout Customization
-
-**Configure lesson pages:**
-```
-Reign Settings → LearnDash → Single Lesson Layout
-```
-
-Options:
-- Video position
-- Navigation style
-- Progress indicator
-- Materials section
-
-#### Single Topic Layout Customization
-
-**Configure topic pages:**
-```
-Reign Settings → LearnDash → Single Topic Layout
-```
-
-Customizations:
-- Content width
-- Sidebar widgets
-- Navigation arrows
-- Timer display
-
-### Related Courses
-
-#### Manage Related Courses
-
-**Set up course relationships:**
-```
-Reign Settings → LearnDash → Related Courses
-```
-
-Options:
-- Auto-suggest related
-- Manual selection
-- Category-based
-- Tag-based
-- Instructor-based
-
-#### Related Course Settings
-
-**Configure display:**
-```php
-// Related courses configuration
-'related_courses' => array(
-    'enabled' => true,
-    'number' => 3,
-    'columns' => 3,
-    'position' => 'after_content'
-)
-```
-
-### BuddyPress Integration
-
-#### LearnDash BuddyPress Integration
-
-**Enable BP features:**
-```
-Reign Settings → LearnDash → BuddyPress Integration
-```
-
-Features:
-- Course tab in profiles
-- Achievement display
-- Progress sharing
-- Study groups
-- Course discussions
-
-#### Redirect to Instructor's BP Profile
-
-**Enable instructor profile links:**
-```
-Reign Settings → LearnDash → Instructor Profile Redirect
-```
-
-When enabled:
-- Instructor name links to BP profile
-- Shows instructor courses
-- Displays achievements
-- Social features enabled
-
-### Group Features
-
-#### LearnDash Group Settings
-
-**Configure group features:**
-```
-Reign Settings → LearnDash → Group Settings
-```
-
-Options:
-- Group courses
-- Group leaders
-- Group enrollment
-- Group reports
-
-#### Group Archive Page
-
-**Configure group listing:**
-```
-Reign Settings → LearnDash → Group Archive Page
-```
-
-Settings:
-- Layout style
-- Groups per page
-- Sort order
-- Filter options
-
-#### Single Group Layouts
-
-**Customize group pages:**
-```
-Reign Settings → LearnDash → Single Group Layouts
-```
-
-Layout options:
-- **Layout 1:** Classic
-- **Layout 2:** Modern
-- **Layout 3:** Minimal
-- **Layout 4:** Extended
-
-#### Custom Group Features
-
-**Additional group features:**
-- Group forums
-- Group assignments
-- Group certificates
-- Group leaderboards
-- Private messaging
-
-### Course & Group Sync
-
-#### LearnDash Course Sync
-
-**Sync courses with BuddyPress groups:**
-```
-Reign Settings → LearnDash → Course Sync
-```
-
-Sync options:
-- Auto-create groups
-- Sync enrollments
-- Sync instructors
-- Sync discussions
-
-#### LearnDash Group Sync
-
-**Sync LearnDash groups:**
-```
-Reign Settings → LearnDash → Group Sync
-```
-
-Features:
-- BP group integration
-- Member sync
-- Activity stream
-- Group courses
-
-### Shortcodes
-
-#### Modern Courses Shortcode
-
-**Display courses with modern layout:**
-```
-[reign_learndash_courses
-    number="6"
-    columns="3"
-    orderby="date"
-    order="DESC"
-    category=""
-    show="all"]
-```
-
-Parameters:
-- `number` - Courses to display
-- `columns` - Grid columns
-- `orderby` - Sort field
-- `order` - Sort direction
-- `category` - Filter by category
-- `show` - all/enrolled/not-enrolled
-
-#### Modern Groups Shortcode
-
-**Display groups with modern layout:**
-```
-[reign_learndash_groups
-    number="6"
-    columns="3"
-    show_progress="yes"
-    show_users="yes"]
-```
-
-Parameters:
-- `number` - Groups to display
-- `columns` - Grid columns
-- `show_progress` - Progress bar
-- `show_users` - User count
-
-### System Requirements
-
-**Minimum requirements:**
-- WordPress 5.0+
-- Reign Theme (latest)
-- LearnDash LMS 3.0+
-- PHP 7.2+
-- Memory: 256MB
-
-**Recommended:**
-- PHP 8.0+
-- Memory: 512MB
-- MySQL 5.7+
-- SSL Certificate
-
-### Additional Features
-
-#### Installation
-
-**How to install Reign LearnDash Addon:**
-1. Upload plugin ZIP file
-2. Activate plugin
-3. Enter license key
-4. Configure settings
-5. Start creating courses
-
-#### Plugin Requirements
-
-**Does it require any other plugin?**
-- Yes, requires LearnDash LMS
-- Optional: BuddyPress for social features
-- Optional: WooCommerce for payments
-- Optional: bbPress for forums
-
-## Testing Your Configuration
-
-### Essential Tests Before Launch
-
-1. **Create test student account**
-2. **Enroll in test course**
-3. **Complete lesson progression**
-4. **Take quiz and get certificate**
-5. **Test payment process**
-6. **Check mobile experience**
-7. **Verify email notifications**
-8. **Test instructor dashboard**
-
----
-
-## Performance Optimization
-
-### Speed Up Your LMS
-
-```yaml
-Caching: WP Rocket or W3 Total Cache
-CDN: Cloudflare for global delivery
-Image Optimization: Compress course images
-Database: Regular cleanup
-Hosting: LMS-optimized servers
-Video: External hosting (Vimeo/Wistia)
-```
-
----
-
-## Next Steps
-
-**Your LMS is configured! Now:**
-
-1. **[Customize Course Appearance →](04-course-customization.md)**
-2. **[Set Up Developer Tools →](05-developer-guide.md)**
-3. **[Create Your First Course →](08-faq.md)**
-
----
-
-**Need Configuration Help?**  
-📧 Email: support@wbcomdesigns.com  
-📚 Full Docs: docs.wbcomdesigns.com  
-💬 Community: facebook.com/groups/wbcom  
-🎥 Training videos available in member portal
+*Comprehensive configuration guide based on complete analysis of Reign LearnDash Addon v4.8.2 source code*

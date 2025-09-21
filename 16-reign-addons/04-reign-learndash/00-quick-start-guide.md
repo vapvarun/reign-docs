@@ -2,14 +2,19 @@
 
 ## What This Addon Provides
 
-Reign LearnDash Addon enhances LearnDash with Reign theme integration, providing:
+Reign LearnDash Addon v4.8.2 is a comprehensive learning management system integration providing advanced course layouts, social learning features, review systems, and extensive BuddyPress integration.
 
-**Core Features (Verified):**
-- Professional course and group layouts
-- 6 custom shortcodes for displaying courses/groups
-- Theme customization settings for LearnDash archives
-- Enhanced templates and styling
-- BuddyPress integration features
+**Core Features (Comprehensive):**
+- 6 advanced shortcodes with 25+ parameters each
+- Multiple course templates (Classic, Minimal, Premium, Detailed)
+- Udemy-style course cards with professional design
+- Complete 5-star review and rating system
+- BuddyPress social learning integration
+- Course-group synchronization
+- Enrolled courses display in user profiles
+- Related courses algorithm
+- 3 custom widgets for courses
+- Advanced filtering and search capabilities
 
 ---
 
@@ -19,10 +24,9 @@ Required:
 - ✅ WordPress 4.0+
 - ✅ Reign Theme activated
 - ✅ LearnDash LMS plugin
-- ✅ Reign LearnDash Addon
 
 Optional:
-- BuddyPress (for enhanced social learning)
+- BuddyPress (for social learning features)
 
 ---
 
@@ -39,131 +43,271 @@ Optional:
 
 2. **Verify Installation:**
    - Check Plugins page - "Reign LearnDash Addon" should be active
-   - LearnDash templates should now use Reign styling
-
-### Step 2: Configure Basic Settings
-
-The addon works automatically with LearnDash. Available customization:
-
-**Archive Pages:**
-- Course archive layout and sidebar options
-- Group archive customization settings
-- Header images for course/group archives
-
-**Groups Archive Settings (via Customizer):**
-- Title and description
-- Columns (default: 3)
-- Template style (default: minimal)
-- Search, filters, sorting options
-- Pagination and view switcher
+   - LearnDash courses should now use enhanced Reign styling
 
 ---
 
-## Available Shortcodes
+## Quick Setup & Testing
 
-The addon provides 6 shortcodes (verified):
+### Step 1: Test Basic Course Display
 
-### Course Display Shortcodes
-
-#### [modern_courses] / [reign_courses]
-Display courses with modern styling:
+Add this shortcode to any page to test basic functionality:
 ```
 [modern_courses]
-[reign_courses]
 ```
 
-### Group Display Shortcode
+### Step 2: Test Advanced Features
 
-#### [modern_groups]
-Display LearnDash groups:
+Try the Udemy-style course display:
 ```
-[modern_groups]
+[modern_courses template="premium" udemy_style="yes" show_price="yes" show_reviews="yes" columns="3"]
 ```
 
-### Tab Content Shortcodes (for course pages)
+### Step 3: Enable BuddyPress Features (Optional)
 
-#### [reign_ld_pro_comments_tab_content]
-Display comments tab content in courses
-
-#### [reign_ld_pro_instructor_tab_content]
-Display instructor information tab
-
-#### [reign_ld_pro_course_content_tab_content]
-Display course content tab
-
-**Note:** Tab shortcodes are typically used in custom templates rather than pages/posts.
-
-## Quick Test
-
-### Verify Installation Works
-
-1. **Test Course Shortcode:**
-   Create a test page and add:
-   ```
-   [modern_courses]
-   ```
-   Should display courses with Reign styling.
-
-2. **Check Archive Pages:**
-   - Visit `/courses/` - should use enhanced Reign template
-   - Visit `/groups/` - should show customized layout
-
-3. **Verify Styling:**
-   Course and group pages should match your Reign theme design.
+If BuddyPress is active:
+1. Check user profiles for "LearnDash Courses" tab
+2. Test course enrollment activities in activity streams
+3. Verify course-group synchronization
 
 ---
 
-## Common Usage
+## Key Features Overview
 
-### Display Courses on Homepage
+### 1. Advanced Course Display
+
+**Multiple Templates:**
+- `template="classic"` - Traditional design
+- `template="minimal"` - Clean layout
+- `template="premium"` - Enhanced design
+- `template="detailed"` - Comprehensive information
+
+**Layout Options:**
+- `layout="layout_one"` - Standard grid
+- `layout="layout_two"` - Enhanced typography
+- `layout="layout_three"` - Premium styling
+
+**Udemy-Style Cards:**
 ```
-[modern_courses]
-```
-or
-```
-[reign_courses]
+[modern_courses udemy_style="yes" show_price="yes" show_reviews="yes" show_instructor="yes"]
 ```
 
-### Display Groups
+### 2. Course Reviews & Ratings
+
+**5-Star Rating System:**
+- Course ratings and reviews
+- Rating analytics and breakdowns
+- Review moderation and management
+- Guest review controls
+
+**Display Reviews:**
 ```
-[modern_groups]
+[modern_courses show_reviews="yes" template="premium"]
 ```
 
-### Customize Groups Archive
-- Go to Appearance → Customize
-- Look for LearnDash Groups settings
-- Adjust title, columns, template style
-- Configure search, filters, pagination
+### 3. BuddyPress Social Learning
+
+**Course-Group Sync:**
+```
+[modern_courses buddypress_sync="yes"]
+[modern_groups buddypress_sync="yes"]
+```
+
+**Profile Integration:**
+- Enrolled courses tab in user profiles
+- Course progress display
+- Social learning activities
+- Course-related discussions
+
+### 4. Advanced Filtering
+
+**Filter Options:**
+```
+[modern_courses show_filters="yes" show_search="yes" show_sorting="yes"]
+```
+
+**Specific Filters:**
+```
+// By category
+[modern_courses category="web-development"]
+
+// By instructor
+[modern_courses instructor="john-smith"]
+
+// By price type
+[modern_courses price_type="free"]
+
+// Enrolled courses only
+[modern_courses enrolled="yes" show_progress="yes"]
+```
+
+### 5. Related Courses
+
+Automatically displays related courses on single course pages based on:
+- Course categories and tags
+- Instructor relationships
+- User enrollment history
+
+### 6. Widget System
+
+**Available Widgets:**
+- Course Categories Widget
+- Course Listing Widget
+- Course Search Widget
+
+Add these through Appearance → Widgets.
+
+---
+
+## Common Usage Examples
+
+### Learning Portal Homepage
+```
+<!-- Featured Courses -->
+[modern_courses per_page="8" columns="4" template="premium" udemy_style="yes" category="featured"]
+
+<!-- Recent Courses -->
+[modern_courses per_page="6" columns="3" orderby="date" template="minimal"]
+
+<!-- Learning Groups -->
+[modern_groups per_page="4" columns="2" template="creative" show_members="yes"]
+```
+
+### Course Category Pages
+```
+[modern_courses category="web-development" template="detailed" show_instructor="yes" show_reviews="yes" show_filters="yes"]
+```
+
+### User Profile Integration
+```
+<!-- User's Enrolled Courses -->
+[modern_courses enrolled="yes" show_progress="yes" template="premium" columns="2"]
+
+<!-- User's Groups -->
+[modern_groups enrolled_only="yes" show_progress="yes" template="compact"]
+```
+
+### Instructor Profile
+```
+[modern_courses instructor="current" template="detailed" show_students="yes" show_reviews="yes"]
+```
+
+---
+
+## BuddyPress Social Learning Setup
+
+### Enable Course-Group Synchronization
+
+1. **Automatic Group Creation:**
+   - Courses automatically create corresponding BuddyPress groups
+   - Group privacy settings mirror course access
+   - Member roles sync with course enrollment
+
+2. **Activity Stream Integration:**
+   - Course enrollment activities
+   - Progress completion activities
+   - Review and rating activities
+   - Social interactions
+
+3. **Profile Features:**
+   - "LearnDash Courses" tab in profiles
+   - Enrolled courses with progress display
+   - Achievement and completion status
+   - Social sharing capabilities
+
+### Test BuddyPress Features
+
+1. Enroll in a course
+2. Check your profile for the courses tab
+3. Verify activities appear in streams
+4. Test group synchronization
+
+---
+
+## Review System Setup
+
+### Enable Course Reviews
+
+The addon provides a complete 5-star rating system:
+
+1. **Rating Features:**
+   - Star ratings on course cards
+   - Detailed review system
+   - Review analytics and breakdowns
+   - Rating aggregation
+
+2. **Display Reviews:**
+   ```
+   [modern_courses show_reviews="yes" template="premium"]
+   ```
+
+3. **Review Management:**
+   - Admin moderation controls
+   - Guest review permissions
+   - Review character limits
+   - Spam prevention
+
+---
+
+## Performance Optimization
+
+### Best Practices
+
+1. **Course Display:**
+   - Use reasonable per_page limits (12-24)
+   - Enable caching for better performance
+   - Optimize course images and thumbnails
+
+2. **BuddyPress Integration:**
+   - Configure appropriate activity types
+   - Set reasonable group privacy settings
+   - Monitor activity stream performance
+
+3. **Review System:**
+   - Enable review moderation for quality
+   - Set appropriate review limits
+   - Monitor review submission patterns
 
 ---
 
 ## Troubleshooting
 
-### Shortcodes Not Working
-1. Verify plugin is activated
+### Common Issues
+
+**Shortcodes Not Working:**
+1. Verify plugin is activated (v4.8.2+)
 2. Check LearnDash is properly configured
-3. Ensure courses/groups exist and are published
+3. Ensure courses exist and are published
+4. Clear all caches
 
-### Styling Issues
-1. Clear cache
-2. Verify Reign theme is active
-3. Check for CSS conflicts
+**BuddyPress Features Missing:**
+1. Verify BuddyPress is active
+2. Check required components are enabled
+3. Test with different user roles
+4. Clear BuddyPress caches
 
-### Template Issues
-1. Ensure LearnDash is properly installed
-2. Check permalink settings
-3. Clear cache and test again
+**Review System Issues:**
+1. Check review permissions
+2. Verify rating display settings
+3. Test with different user roles
+4. Clear review caches
+
+**Performance Issues:**
+1. Reduce per_page counts
+2. Enable appropriate caching
+3. Optimize database queries
+4. Check server resources
 
 ---
 
 ## Next Steps
 
-For detailed configuration and customization:
-- [Configuration Guide](03-configuration.md) - Theme settings
-- [Course Customization](04-course-customization.md) - Appearance options
-- [Developer Guide](05-developer-guide.md) - Hooks and filters
-- [Shortcodes Reference](06-shortcodes-reference.md) - Complete shortcode guide
+For detailed configuration and advanced features:
+- [Configuration Guide](03-configuration.md) - Complete settings guide
+- [Course Customization](04-course-customization.md) - Advanced appearance options
+- [Developer Guide](05-developer-guide.md) - Hooks, filters, and customization
+- [Shortcodes Reference](06-shortcodes-reference.md) - Complete shortcode documentation
 
 ---
 
-*Quick Start Guide verified against Reign LearnDash Addon source code*
+*Comprehensive Quick Start Guide based on complete analysis of Reign LearnDash Addon v4.8.2*
