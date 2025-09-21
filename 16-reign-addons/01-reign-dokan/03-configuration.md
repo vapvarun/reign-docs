@@ -1,660 +1,281 @@
 # Reign Dokan Addon - Configuration Guide
 
-## Theme Customizer Settings
+## Overview
 
-### Access Customizer Options
+This guide covers all configuration options available in Reign Dokan Addon v3.5.4. All settings are managed through WordPress Customizer and theme modifications.
 
-```
-Appearance > Customize > Reign Dokan Settings
-```
+## Accessing Configuration
 
-## Store Listing Configuration
+Navigate to: **Appearance → Customize → Dokan Settings**
 
-### Layout Options
+## Available Theme Settings (Verified)
 
-#### Grid Layout Settings
+### Store Header Settings
+
+#### reign_dokan_store_header_location
+- **Type:** Boolean
+- **Default:** `true`
+- **Purpose:** Control where store header appears
+- **Options:**
+  - `true` - Display store header
+  - `false` - Hide store header
+
+#### reign_dokan_store_header_layout
+- **Type:** String
+- **Default:** `'fullwidth'`
+- **Purpose:** Store header layout style
+- **Options:**
+  - `'fullwidth'` - Full width header
+  - `'contained'` - Contained width
+
+### Product Page Settings
+
+#### reign_dokan_show_vendor_header_on_pro_page
+- **Type:** Boolean
+- **Default:** `false`
+- **Purpose:** Display vendor header on single product pages
+- **Options:**
+  - `true` - Show vendor header
+  - `false` - Hide vendor header
+
+#### reign_dokan_show_vendor_header_width
+- **Type:** String
+- **Default:** `'fullwidth'`
+- **Purpose:** Width of vendor header on product pages
+- **Options:**
+  - `'fullwidth'` - Full width
+  - `'contained'` - Contained width
+
+#### reign_dokan_show_vendor_pros_on_pro_page
+- **Type:** Boolean
+- **Default:** `false`
+- **Purpose:** Show other products from same vendor
+- **Options:**
+  - `true` - Display vendor products
+  - `false` - Hide vendor products
+
+#### reign_dokan_num_of_vendor_pros_on_pro_page
+- **Type:** Integer
+- **Default:** `10`
+- **Purpose:** Number of vendor products to display
+- **Range:** 1-50 products
+
+#### reign_dokan_show_sold_by_in_pro_meta
+- **Type:** Boolean
+- **Default:** `true`
+- **Purpose:** Show "Sold by [Vendor]" in product meta
+- **Options:**
+  - `true` - Display sold by
+  - `false` - Hide sold by
+
+#### reign_dokan_show_vendor_info_in_pro_page
+- **Type:** Boolean
+- **Default:** `false`
+- **Purpose:** Display vendor information box on product page
+- **Options:**
+  - `true` - Show vendor info
+  - `false` - Hide vendor info
+
+### Store Layout Settings
+
+#### reign_dokan_store_list_layout
+- **Type:** String
+- **Default:** `'layout_one'`
+- **Purpose:** Store listing page layout style
+- **Options:**
+  - `'layout_one'` - Grid layout
+  - `'layout_two'` - List layout
+  - Custom layouts if added
+
+#### store_layout
+- **Type:** String
+- **Default:** `'left'`
+- **Purpose:** Sidebar position on store pages
+- **Options:**
+  - `'left'` - Left sidebar
+  - `'right'` - Right sidebar
+  - `'none'` - No sidebar
+
+## Programmatic Configuration
+
+### Reading Settings
 
 ```php
-// Customizer settings
-'reign_dokan_store_layout' => array(
-    'type'    => 'select',
-    'choices' => array(
-        'grid' => 'Grid View',
-        'list' => 'List View',
-    ),
-    'default' => 'grid'
-)
+// Get a setting value
+$header_enabled = get_theme_mod('reign_dokan_store_header_location', true);
+$products_count = get_theme_mod('reign_dokan_num_of_vendor_pros_on_pro_page', 10);
+$store_layout = get_theme_mod('reign_dokan_store_list_layout', 'layout_one');
 ```
 
-**Grid Configuration:**
-
-| Setting | Options | Default | Description |
-|---------|---------|---------|-------------|
-| Columns Desktop | 2, 3, 4 | 3 | Store cards per row on desktop |
-| Columns Tablet | 1, 2 | 2 | Store cards per row on tablet |
-| Columns Mobile | 1 | 1 | Store cards per row on mobile |
-| Items Per Page | 6, 9, 12, 15, 18 | 12 | Stores shown per page |
-| Card Style | Classic, Modern, Minimal | Modern | Store card design style |
-
-#### List Layout Settings
+### Updating Settings
 
 ```php
-// List view specific options
-'reign_dokan_list_style' => array(
-    'compact'  => 'Compact List',
-    'detailed' => 'Detailed List',
-    'table'    => 'Table View'
-)
+// Set a setting value programmatically
+set_theme_mod('reign_dokan_show_vendor_pros_on_pro_page', true);
+set_theme_mod('reign_dokan_num_of_vendor_pros_on_pro_page', 20);
 ```
 
-### Store Card Elements
+### Using in Templates
 
-Toggle display of elements in store listings:
-
-```
-Customizer > Reign Dokan > Store Card Elements
-```
-
-- ☑ **Store Banner** - Featured image/banner
-- ☑ **Store Logo** - Vendor logo/avatar  
-- ☑ **Store Name** - Vendor store title
-- ☑ **Store Rating** - Star ratings
-- ☑ **Product Count** - Number of products
-- ☑ **Store Address** - Location info
-- ☑ **Featured Badge** - For featured vendors
-- ☑ **Online Status** - Show if vendor online
-- ☑ **Store Categories** - Product categories
-- ☑ **Visit Store Button** - CTA button
-
-## Single Store Page Configuration
-
-### Store Header Styles
-
-#### Style 1: Classic Header
-```css
-.store-header-classic {
-    banner: full-width;
-    logo: left-aligned;
-    info: below-banner;
+```php
+// In your template files
+if (get_theme_mod('reign_dokan_show_vendor_header_on_pro_page', false)) {
+    // Display vendor header
+    dokan_get_template_part('store-header');
 }
 ```
 
-#### Style 2: Modern Header
-```css
-.store-header-modern {
-    banner: contained;
-    logo: overlay-center;
-    info: overlay-bottom;
-}
+## Shortcode Configuration
+
+### Store Listing Shortcode Settings
+
+Configure via shortcode parameters:
+```
+[rda_dokan_store_listing
+    per_page="12"        // Stores per page
+    search="yes"         // Enable search
+    per_row="3"          // Stores per row
+    featured="no"        // Show featured only
+    enable_slider="false" // Carousel mode
+]
 ```
 
-#### Style 3: Minimal Header
-```css
-.store-header-minimal {
-    banner: none;
-    logo: inline;
-    info: single-row;
-}
+### Vendors Display Settings
+
 ```
-
-### Store Sidebar Configuration
-
-```php
-// Sidebar position options
-'reign_dokan_sidebar_position' => array(
-    'left'  => 'Left Sidebar',
-    'right' => 'Right Sidebar', 
-    'none'  => 'No Sidebar'
-)
-```
-
-**Available Widgets:**
-- Store Info
-- Store Location/Map
-- Store Categories
-- Best Selling Products
-- Featured Products
-- Store Contact Form
-- Store Opening Hours
-- Store Policies
-
-### Store Tabs Configuration
-
-```php
-// Enable/disable store tabs
-'reign_dokan_store_tabs' => array(
-    'products' => true,
-    'reviews'  => true,
-    'terms'    => true,
-    'support'  => true
-)
-```
-
-## Vendor Dashboard Settings
-
-### Dashboard Menu Items
-
-```php
-// Control dashboard menu
-add_filter('dokan_get_dashboard_nav', function($menus) {
-    // Customize menu items
-    return $menus;
-});
-```
-
-**Default Menu Structure:**
-```
-Dashboard
-├── Products
-│   ├── All Products
-│   └── Add New
-├── Orders
-├── Coupons
-├── Reports
-├── Reviews
-├── Withdraw
-├── Store Settings
-└── Payment Settings
-```
-
-### Dashboard Widgets
-
-```php
-// Widget areas
-'reign_dokan_dashboard_widgets' => array(
-    'sales_overview'    => true,
-    'recent_orders'     => true,
-    'product_stats'     => true,
-    'review_summary'    => true,
-    'announcement'      => true
-)
-```
-
-## Color Customization
-
-### Primary Colors
-
-```css
-/* Customizer color settings */
---reign-dokan-primary: #3498db;
---reign-dokan-secondary: #2ecc71;
---reign-dokan-accent: #e74c3c;
---reign-dokan-text: #2c3e50;
---reign-dokan-border: #ecf0f1;
-```
-
-### Component-Specific Colors
-
-```php
-// Store elements
-'store_banner_overlay'    => 'rgba(0,0,0,0.3)',
-'store_rating_color'      => '#ffb400',
-'featured_badge_bg'       => '#ff6b6b',
-'online_indicator'        => '#00d084',
-'sold_count_color'        => '#8b8b8b'
-```
-
-## Typography Settings
-
-### Font Configuration
-
-```php
-'reign_dokan_typography' => array(
-    'store_title' => array(
-        'font-family' => 'inherit',
-        'font-size'   => '24px',
-        'font-weight' => '600',
-        'line-height' => '1.4'
-    ),
-    'product_title' => array(
-        'font-family' => 'inherit',
-        'font-size'   => '16px',
-        'font-weight' => '500'
-    )
-)
+[rda_dokan_vendors
+    title="Featured Vendors"  // Section title
+    per_row="3"               // Vendors per row
+    count="6"                 // Number to show
+    show_featured_only="true" // Featured filter
+    layout="layout-type-1"    // Layout style
+]
 ```
 
 ## BuddyPress Integration Settings
 
-### Profile Integration
+BuddyPress features activate automatically when BuddyPress is active. No additional configuration required.
+
+### Features Enabled:
+- Vendor store tab in profiles
+- Favorite products functionality
+- Activity stream integration
+
+### Customizing BP Tab Names
 
 ```php
-// Enable store tab in BuddyPress profile
-'reign_dokan_bp_integration' => true,
-
-// Tab position
-'reign_dokan_bp_tab_position' => 30,
-
-// Tab visibility
-'reign_dokan_bp_tab_visibility' => 'public'
+// Change tab name via filter
+add_filter('reign_dokan_store_primary_bp_tab_name', function() {
+    return __('My Shop', 'textdomain');
+});
 ```
 
-### Activity Stream Integration
+## Developer Filters for Configuration
+
+### Modify Store Listing
 
 ```php
-// Activity types
-'reign_dokan_activities' => array(
-    'new_product'    => true,
-    'new_review'     => true,
-    'store_updated'  => false,
-    'product_sold'   => false
-)
-```
-
-## Advanced Configuration
-
-### Custom CSS
-
-```css
-/* Add via Customizer > Additional CSS */
-
-/* Store listing customization */
-.dokan-store-wrap.reign-grid {
-    gap: 30px;
-}
-
-/* Store card hover effect */
-.reign-store-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* Custom badge */
-.reign-featured-vendor::before {
-    content: 'FEATURED';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff6b6b;
-    color: white;
-    padding: 5px 10px;
-    font-size: 11px;
-    border-radius: 3px;
-}
-```
-
-### PHP Hooks Configuration
-
-```php
-// functions.php customization
-
-// Modify store listing query
-add_filter('dokan_store_listing_args', function($args) {
+// Customize store listing query
+add_filter('rda_dokan_seller_listing_args', function($args) {
+    $args['number'] = 20;
     $args['orderby'] = 'registered';
     $args['order'] = 'DESC';
     return $args;
 });
+```
 
-// Add custom store meta
-add_action('reign_dokan_store_card_footer', function($vendor_id) {
-    $verified = get_user_meta($vendor_id, 'dokan_verification', true);
-    if ($verified) {
-        echo '<span class="verified-badge">Verified</span>';
-    }
-});
+### Adjust Products Display
 
-// Customize products per page
-add_filter('dokan_store_products_per_page', function() {
-    return 24;
+```php
+// Change products shown per store
+add_filter('rda_store_list_loop_products_to_display', function() {
+    return 5; // Show 5 products
 });
 ```
 
-## Performance Settings
-
-### Lazy Loading
+### Customize Template Arguments
 
 ```php
-'reign_dokan_lazy_load' => array(
-    'images'   => true,
-    'products' => true,
-    'reviews'  => false
-)
-```
-
-### Cache Settings
-
-```php
-// Cache duration in seconds
-'reign_dokan_cache' => array(
-    'store_list'    => 3600,  // 1 hour
-    'store_data'    => 1800,  // 30 minutes
-    'product_data'  => 900,   // 15 minutes
-)
-```
-
-## Mobile-Specific Settings
-
-### Mobile Layout Options
-
-```php
-'reign_dokan_mobile' => array(
-    'simplified_header' => true,
-    'touch_friendly'    => true,
-    'infinite_scroll'   => false,
-    'compact_view'      => true
-)
-```
-
-### Responsive Breakpoints
-
-```css
-/* Customizable breakpoints */
-@media (max-width: 768px) { /* Tablet */ }
-@media (max-width: 480px) { /* Mobile */ }
-```
-
-## SEO Configuration
-
-### Meta Tags
-
-```php
-// Store page meta
-'reign_dokan_seo' => array(
-    'store_title_format' => '%store_name% - %site_name%',
-    'meta_description'   => true,
-    'og_tags'           => true,
-    'schema_markup'     => true
-)
-```
-
-## Widget Areas
-
-### Register Widget Areas
-
-```php
-// Available widget areas
-'Store Listing Top'
-'Store Listing Bottom'
-'Store Sidebar'
-'Store Header'
-'Vendor Dashboard Sidebar'
-```
-
-## Email Notification Settings
-
-### Customize Email Templates
-
-```php
-// Email customization
-add_filter('dokan_email_heading', function($heading, $email) {
-    // Customize email headings
-    return $heading;
-}, 10, 2);
-```
-
-## Import/Export Settings
-
-### Export Configuration
-
-```bash
-# Export settings via WP-CLI
-wp option get reign_dokan_settings --format=json > dokan-settings.json
-```
-
-### Import Configuration
-
-```bash
-# Import settings
-wp option update reign_dokan_settings --format=json < dokan-settings.json
-```
-
-## Complete Reign Dokan Settings
-
-### Main Settings Location
-
-**Access all Reign Dokan settings:**
-```
-WP Admin > Reign Settings > Dokan
-```
-
-### Store Header Configuration
-
-**Set Store Header Location:**
-- Above store banner
-- Below store banner
-- Inside banner overlay
-- Custom position via hook
-
-### Product Search in Header
-
-**Enable product search:**
-```php
-// Add to header
-add_action('reign_header_icons_group', 'reign_dokan_product_search');
-```
-
-### BuddyPress Features
-
-#### Show Products on Vendor BP Profile
-
-**Enable setting:**
-```
-Reign Settings > Dokan > Show product on Registered Vendor's BP Profile
-```
-
-Adds products tab to vendor's BuddyPress profile.
-
-#### BP Activity on Product Creation
-
-**Enable activity:**
-```
-Reign Settings > Dokan > Create Product Activity
-```
-
-Features:
-- Posts activity when vendor publishes product
-- Shows product image and price
-- Links to product page
-
-#### BP Activity on Product Review
-
-**Enable review activity:**
-```
-Reign Settings > Dokan > Add Review Activity
-```
-
-Creates activity when customers review products.
-
-### Favorite Products Feature
-
-#### Mark Products as Favorite
-
-**Enable favorites:**
-```
-Reign Settings > Dokan > Mark Products as Favourite
-```
-
-Features:
-- Heart icon on products
-- Favorites tab in BP profile
-- Activity stream integration
-- Customizable tab settings
-
-**Configuration options:**
-```php
-function reign_dokan_favorite_settings() {
-    return array(
-        'tab_label' => 'My Favorites',
-        'tab_slug' => 'favorites',
-        'tab_position' => 30,
-        'show_count' => true,
-        'activity_enabled' => true
-    );
-}
-```
-
-### Product Page Settings
-
-**Configure product pages:**
-```
-Reign Settings > Dokan > Product Page Settings
-```
-
-Options:
-- Vendor info position
-- More products section
-- Store location display
-- Contact vendor button
-
-### Withdraw Options
-
-**Configure withdrawals:**
-```
-Dokan > Settings > Withdraw
-```
-
-| Method | Min Amount | Schedule | Auto |
-|--------|-----------|----------|------|
-| PayPal | $50 | Weekly | Yes |
-| Bank | $100 | Monthly | No |
-| Stripe | $25 | Instant | Yes |
-
-### Store Page Appearance
-
-**Set store header template:**
-```
-Dokan > Settings > Appearance
-```
-
-Options:
-- Default (banner + info)
-- Compact (minimal)
-- Extended (with tabs)
-- Custom template
-
-**Vendor Setup Wizard Logo:**
-- Size: 270px × 90px
-- Falls back to site title
-
-### Widget Configuration
-
-#### How to Set Widgets
-
-**Add vendor widgets:**
-```
-Appearance > Widgets > Dokan Store Sidebar
-```
-
-**Available Reign widgets:**
-- Reign: Vendors (4 layouts)
-- Reign: Store Info
-- Reign: Top Products
-- Reign: Store Categories
-
-#### Widget Layouts
-
-1. **Layout 1:** Grid with overlay
-2. **Layout 2:** List with details
-3. **Layout 3:** Carousel slider
-4. **Layout 4:** Compact cards
-
-### Elementor Integration
-
-#### Single Store with Elementor
-
-1. Enable Dokan Elementor module
-2. Templates > Add New > Single Store
-3. Use Dokan Elementor widgets
-4. Customize and publish
-
-#### Reign Vendor Listing Widget
-
-**Setup Elementor widget:**
-- Drag Reign Vendor widget
-- Configure display options
-- Set responsive columns
-- Apply Elementor styling
-
-### StoreMate Compatibility
-
-#### Available Shortcodes
-
-```
-[rda_dokan_vendors
-    count="6"
-    per_row="3"
-    show_featured_only="1"
-    layout="layout-type-1"]
-
-[rda_dokan_store_listing
-    per_page="10"
-    featured="yes"
-    selected_vendors="1,2,3"]
-```
-
-#### StoreMate Filters
-
-```php
-// Customize store listing
-add_filter('rda_dokan_store_listing_per_page', function($num) {
-    return 20;
+// Modify store list template args
+add_filter('rda_dokan_store_list_args', function($args) {
+    $args['show_products'] = false;
+    $args['image_size'] = 'thumbnail';
+    return $args;
 });
-
-// Override templates
-add_filter('reign_dokan_locate_template', function($template, $name) {
-    // Custom template logic
-    return $template;
-}, 10, 2);
 ```
 
-### Single Cart Icon
+## Configuration Best Practices
 
-**Configure unified cart:**
-```
-Reign Settings > Dokan > Single Cart Icon
-```
+### Performance Optimization
+1. Limit products per vendor (10-20 recommended)
+2. Use pagination for store listings
+3. Enable search only if needed
+4. Consider caching for heavy traffic
 
-Features:
-- Combine vendor carts
-- Show total items
-- Mini cart preview
-- Vendor grouping
+### User Experience
+1. Keep store headers visible for branding
+2. Show "Sold by" for transparency
+3. Display 3-4 stores per row on desktop
+4. Enable vendor products on product pages
 
-### Template Overrides
+### Mobile Optimization
+1. Set per_row="1" for mobile views
+2. Reduce products shown on mobile
+3. Simplify headers for small screens
 
-**Templates overridden by addon:**
-- `store-listing.php`
-- `store-header.php`
-- `store-sidebar.php`
-- `vendor-products.php`
-- `store-toc.php`
+## Template File Settings
 
-**Override location:**
-```
-/themes/reign-child/dokan/
-```
+Templates using these settings:
 
-### System Requirements
-
-**Minimum:**
-- WordPress 5.0+
-- Reign Theme (latest)
-- Dokan Lite 3.0+
-- WooCommerce 4.0+
-- PHP 7.2+
-- Memory: 256MB
-
-**Recommended:**
-- PHP 8.0+
-- Memory: 512MB
-- MySQL 5.7+
+| Template File | Settings Used |
+|--------------|---------------|
+| store.php | store_layout |
+| store-lists-loop.php | reign_dokan_store_list_layout |
+| store-header.php | reign_dokan_store_header_location, reign_dokan_store_header_layout |
+| single-product.php | All product page settings |
 
 ## Troubleshooting Configuration
 
-### Debug Mode
+### Settings Not Applying?
+1. Clear cache (browser and server)
+2. Check theme mod is saved
+3. Verify template is using setting
+4. Check for filter overrides
 
+### Default Values Loading?
+- Settings may not be saved yet
+- Use Customizer to save once
+- Check database for theme_mods
+
+### Custom Settings Needed?
+Add your own settings:
 ```php
-// Enable debug mode
-define('REIGN_DOKAN_DEBUG', true);
-
-// Log configuration issues
-if (REIGN_DOKAN_DEBUG) {
-    error_log('Reign Dokan Config: ' . print_r($config, true));
-}
+// Add custom setting
+add_action('customize_register', function($wp_customize) {
+    $wp_customize->add_setting('my_custom_dokan_setting', array(
+        'default' => 'value',
+        'type' => 'theme_mod',
+    ));
+});
 ```
 
-## Next Steps
+## Configuration Checklist
 
-- [Store Customization](04-store-customization.md) - Customize individual stores
-- [Developer Guide](05-developer-guide.md) - Advanced development
-- [Troubleshooting](06-troubleshooting.md) - Common issues
+- [ ] Store header location configured
+- [ ] Product page vendor display set
+- [ ] Number of vendor products defined
+- [ ] Store listing layout selected
+- [ ] Sidebar position chosen
+- [ ] Shortcode parameters tested
+- [ ] BuddyPress features verified
+- [ ] Mobile settings optimized
+
+## Getting Help
+
+- **Developer Guide**: [Developer Documentation](./05-developer-guide.md)
+- **Shortcodes**: [Shortcode Reference](./07-shortcodes-reference.md)
+- **Support**: Contact WBcom Designs
+
+---
+
+*All settings verified against Reign Dokan Addon v3.5.4 source code*

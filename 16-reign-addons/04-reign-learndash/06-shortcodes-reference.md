@@ -1,799 +1,363 @@
 # Reign LearnDash Addon - Shortcodes Reference
 
-## What You'll Learn
-This guide provides a complete reference for all shortcodes available in the Reign LearnDash addon. Learn how to display courses, user progress, and learning content anywhere on your site!
+## Overview
 
-## Quick Overview  
-**Usage Level:** Easy (just copy and paste!)  
-**Where to use:** Pages, posts, widgets, anywhere!  
-**Pro tip:** Test shortcodes on a draft page first
+This guide provides a complete reference for all shortcodes available in the Reign LearnDash addon, including both standard LearnDash shortcodes and Reign-specific enhancements.
 
 ---
 
-## Essential Course Shortcodes
+## Reign Custom Shortcodes (Verified from Plugin)
 
-### 1. Course List
+These shortcodes are actually implemented in the Reign LearnDash addon plugin:
 
-**Display all courses in a grid:**
-```
-[learndash_courses]
-```
+### 1. [modern_courses] / [reign_courses]
 
-**With parameters:**
+**Modern course display with advanced filtering and templates.**
+
+Both shortcodes are identical - `[reign_courses]` is an alias for `[modern_courses]`.
+
+**Basic Usage:**
 ```
-[learndash_courses 
-    per_page="12" 
-    columns="3" 
-    orderby="date" 
-    order="DESC"
-    category="web-development"]
+[modern_courses]
+[reign_courses]
 ```
 
-**Parameters explained:**
+**Full Parameters:**
 
-| Parameter | Options | Default | What It Does |
-|-----------|---------|---------|---------------|
-| `per_page` | Any number | 12 | Courses per page |
-| `columns` | 1, 2, 3, 4 | 3 | Grid columns |
-| `orderby` | date, title, menu_order, price | date | Sort method |
-| `order` | ASC, DESC | DESC | Sort direction |
-| `category` | Category slug | All | Filter by category |
-| `tag` | Tag slug | All | Filter by tag |
-| `price` | free, paid, open | All | Filter by price type |
-| `featured` | true, false | false | Show only featured |
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `per_page` | 12 | Any number | Courses per page |
+| `columns` | 3 | 1-6 | Number of columns in grid |
+| `template` | classic | classic, minimal, premium, detailed | Visual template style |
+| `view` | grid | grid, list | Layout view type |
+| `course_ids` | - | Comma-separated IDs | Specific courses to display |
+| `category` | - | Category slug | Filter by category |
+| `tag` | - | Tag slug | Filter by tag |
+| `instructor` | - | Username or ID | Filter by instructor |
+| `instructor_role` | - | Role name | Filter by instructor role |
+| `price_type` | all | free, paid, all | Filter by price |
+| `enrolled` | all | yes, no, all | Show enrolled/not enrolled |
+| `orderby` | date | date, title, menu_order, rand, popularity, rating | Sort method |
+| `order` | DESC | ASC, DESC | Sort direction |
+| `show_filters` | yes | yes, no | Display filter options |
+| `show_search` | yes | yes, no | Display search bar |
+| `show_sorting` | yes | yes, no | Display sorting dropdown |
+| `show_progress` | yes | yes, no | Show progress bars |
+| `show_reviews` | yes | yes, no | Display ratings |
+| `progress_min` | - | 0-100 | Minimum progress % |
+| `progress_max` | - | 0-100 | Maximum progress % |
+| `pagination` | numbers | numbers, load_more, infinite, both, none | Pagination style |
 
 **Examples:**
 
 ```
-// Show 6 newest courses in 2 columns
-[learndash_courses per_page="6" columns="2" orderby="date"]
+// Display 6 courses in 2 columns
+[modern_courses per_page="6" columns="2"]
 
-// Free courses only
-[learndash_courses price="free" per_page="8"]
+// Show only free courses with premium template
+[modern_courses price_type="free" template="premium"]
 
-// Featured courses for homepage
-[learndash_courses featured="true" per_page="4"]
+// Featured courses by specific instructor
+[modern_courses instructor="john-smith" tag="featured" columns="3"]
+
+// Enrolled courses with progress tracking
+[modern_courses enrolled="yes" show_progress="yes" orderby="title"]
+
+// Category-specific without filters
+[modern_courses category="advanced" show_filters="no" show_search="no"]
+
+// Specific courses in minimal style
+[modern_courses course_ids="101,102,103" template="minimal" pagination="none"]
 ```
+
+**Template Styles:**
+
+- **Classic**: Traditional course card with thumbnail, title, description, price, enrollment count
+- **Minimal**: Clean design focusing on title and thumbnail
+- **Premium**: Rich visual design with hover effects, instructor avatar, prominent ratings
+- **Detailed**: Comprehensive information including full description, lesson count, duration
 
 ---
 
-### 2. Single Course Info
+### 2. [modern_groups]
 
-**Display specific course details:**
+**Modern LearnDash groups display with advanced templates.**
+
+**Basic Usage:**
 ```
-[course_info course_id="123"]
-```
-
-**What it shows:**
-- Course title and description
-- Instructor information
-- Price and enrollment button
-- Duration and difficulty
-- Student count and ratings
-
-**Parameters:**
-
-| Parameter | Required | Example | Purpose |
-|-----------|----------|---------|----------|
-| `course_id` | Yes | "123" | Which course |
-| `show_price` | No | "yes" | Display price |
-| `show_instructor` | No | "yes" | Show instructor |
-| `show_progress` | No | "yes" | User progress (if enrolled) |
-
----
-
-### 3. Course Categories
-
-**List all course categories:**
-```
-[learndash_course_categories]
-```
-
-**With options:**
-```
-[learndash_course_categories 
-    show_count="yes"
-    hide_empty="yes"
-    orderby="name"]
+[modern_groups]
 ```
 
 **Parameters:**
 
-| Parameter | Options | Default | Purpose |
-|-----------|---------|---------|----------|
-| `show_count` | yes, no | yes | Course count per category |
-| `hide_empty` | yes, no | no | Hide categories with no courses |
-| `orderby` | name, count, id | name | Sort method |
-| `order` | ASC, DESC | ASC | Sort direction |
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `per_page` | 12 | Any number | Groups per page |
+| `columns` | 3 | 1-6 | Number of columns |
+| `template` | minimal | minimal, premium, detailed, creative, compact | Visual template |
+| `orderby` | date | date, title, menu_order, member_count, course_count | Sort method |
+| `order` | DESC | ASC, DESC | Sort direction |
+| `show_filters` | yes | yes, no | Display filters |
+| `show_search` | yes | yes, no | Display search |
+| `show_sorting` | yes | yes, no | Display sorting |
+| `show_view_switcher` | yes | yes, no | Grid/list switcher |
+| `show_pagination` | yes | yes, no | Display pagination |
+| `pagination_type` | numbers | numbers, load_more, infinite | Pagination style |
+
+**Examples:**
+
+```
+// Display 8 groups in 4 columns
+[modern_groups per_page="8" columns="4"]
+
+// Premium template sorted by member count
+[modern_groups template="premium" orderby="member_count"]
+
+// Groups with load more pagination
+[modern_groups pagination_type="load_more" show_filters="no"]
+```
 
 ---
 
-## User Progress Shortcodes
+### 3. Course Tab Content Shortcodes
 
-### 4. User Profile
+These shortcodes are used to display specific course information, typically within course page tabs:
 
-**Show user's learning progress:**
+#### [reign_ld_pro_comments_tab_content]
+
+**Display course comments/discussions.**
+
+```
+[reign_ld_pro_comments_tab_content]
+```
+
+- Must be used within a course page context
+- Displays course comments and discussion threads
+- Integrates with WordPress comment system
+
+#### [reign_ld_pro_instructor_tab_content]
+
+**Display instructor information.**
+
+```
+[reign_ld_pro_instructor_tab_content]
+```
+
+- Shows instructor bio and avatar
+- Lists other courses by the same instructor
+- Must be used within a course page context
+
+#### [reign_ld_pro_course_content_tab_content]
+
+**Display main course content/curriculum.**
+
+```
+[reign_ld_pro_course_content_tab_content course_id="123" user_id="456"]
+```
+
+**Parameters:**
+- `course_id` - Course ID (uses current if not specified)
+- `user_id` - User ID (uses current if not specified)
+
+- Displays course lessons, topics, and quizzes
+- Shows progress for enrolled users
+- Must be used within a course page context
+
+---
+
+## Standard LearnDash Shortcodes (Work with Reign Theme)
+
+### Essential Course Shortcodes
+
+#### [ld_course_list]
+**Display user's enrolled courses:**
+```
+[ld_course_list]
+[ld_course_list status="in_progress"]
+[ld_course_list status="completed"]
+```
+
+#### [learndash_course_progress]
+**Show course progress:**
+```
+[learndash_course_progress course_id="123"]
+[learndash_course_progress course_id="123" user_id="456"]
+```
+
+#### [ld_profile]
+**Display user learning profile:**
 ```
 [ld_profile]
-```
-
-**For specific user:**
-```
 [ld_profile user_id="456"]
 ```
 
-**What it includes:**
-- Enrolled courses
-- Course progress
-- Completed courses
-- Certificates earned
-- Quiz results
-- Points/achievements
-
----
-
-### 5. Course Progress
-
-**Show progress for specific course:**
+#### [learndash_payment_buttons]
+**Course payment/enrollment buttons:**
 ```
-[course_progress course_id="123"]
+[learndash_payment_buttons course_id="123"]
 ```
 
-**Advanced usage:**
-```
-[course_progress 
-    course_id="123"
-    user_id="456"
-    show_percentage="yes"
-    show_details="yes"]
-```
+### Quiz and Certificate Shortcodes
 
----
-
-### 6. My Courses
-
-**List user's enrolled courses:**
+#### [ld_quiz_list]
+**List quizzes:**
 ```
-[ld_course_list]
+[ld_quiz_list]
+[ld_quiz_list course_id="123"]
 ```
 
-**Filter by status:**
+#### [learndash_course_certificate]
+**Display course certificate:**
 ```
-[ld_course_list status="in_progress"]
-```
-
-**Status options:**
-- `all` - All enrolled courses
-- `in_progress` - Currently taking
-- `completed` - Finished courses
-- `not_started` - Enrolled but not started
-
----
-
-## Assessment Shortcodes
-
-### 7. Quiz List
-
-**Show quizzes for a course:**
-```
-[course_quizzes course_id="123"]
+[learndash_course_certificate course_id="123"]
 ```
 
-**Quiz results:**
+### Navigation Shortcodes
+
+#### [course_content]
+**Course navigation/outline:**
 ```
-[quiz_results quiz_id="789" user_id="456"]
+[course_content course_id="123"]
+[course_content course_id="123" num="10"]
+```
+
+#### [ld_navigation]
+**Course navigation menu:**
+```
+[ld_navigation course_id="123"]
+```
+
+### User Dashboard Shortcodes
+
+#### [learndash_user_status]
+**User's course status:**
+```
+[learndash_user_status]
+```
+
+#### [ld_user_course_points]
+**Display user's points:**
+```
+[ld_user_course_points]
 ```
 
 ---
 
-### 8. Certificate Display
+## Usage Tips
 
-**Show user certificates:**
-```
-[ld_certificates]
-```
+### Combining Shortcodes
 
-**Specific certificate:**
-```
-[ld_certificate certificate_id="101" user_id="456"]
-```
-
----
-
-## Instructor Shortcodes
-
-### 9. Instructor Profile
-
-**Display instructor information:**
-```
-[instructor_profile instructor_id="789"]
-```
-
-**What it shows:**
-- Instructor bio and photo
-- Courses they teach
-- Ratings and reviews
-- Social links
-- Experience/credentials
-
----
-
-### 10. Instructor Courses
-
-**List courses by specific instructor:**
-```
-[instructor_courses instructor_id="789"]
-```
-
-**With layout options:**
-```
-[instructor_courses 
-    instructor_id="789"
-    columns="2"
-    show_ratings="yes"]
-```
-
----
-
-## Navigation & Login Shortcodes
-
-### 11. Course Navigation
-
-**Add course navigation menu:**
-```
-[course_navigation course_id="123"]
-```
-
-**What it includes:**
-- Course outline
-- Lesson links
-- Progress indicators
-- Next/previous buttons
-
----
-
-### 12. Learning Dashboard
-
-**Complete student dashboard:**
-```
-[learndash_user_dashboard]
-```
-
-**What students see:**
-- Course overview
-- Recent activity
-- Upcoming assignments
-- Achievement progress
-- Quick actions
-
----
-
-### 13. Login Form
-
-**LearnDash-specific login:**
-```
-[learndash_login]
-```
-
-**With redirect:**
-```
-[learndash_login redirect="/my-courses/"]
-```
-
----
-
-## Course Content Shortcodes
-
-### 14. Lesson List
-
-**Show lessons for a course:**
-```
-[course_lessons course_id="123"]
-```
-
-**Advanced options:**
-```
-[course_lessons 
-    course_id="123"
-    show_status="yes"
-    show_duration="yes"
-    num="10"]
-```
-
----
-
-### 15. Course Outline
-
-**Complete course structure:**
-```
-[course_outline course_id="123"]
-```
-
-**Shows:**
-- All lessons organized
-- Quizzes and assignments
-- Completion status
-- Time estimates
-
----
-
-### 16. Recent Courses
-
-**Latest published courses:**
-```
-[recent_courses num="5"]
-```
-
----
-
-## Search & Filter Shortcodes
-
-### 17. Course Search
-
-**Search form for courses:**
-```
-[course_search]
-```
-
-**With filters:**
-```
-[course_search 
-    show_categories="yes"
-    show_difficulty="yes"
-    show_price_filter="yes"]
-```
-
----
-
-### 18. Featured Courses
-
-**Highlight specific courses:**
-```
-[featured_courses course_ids="123,456,789"]
-```
-
-**Parameters:**
-
-| Parameter | Example | Purpose |
-|-----------|---------|----------|
-| `course_ids` | "123,456,789" | Specific courses |
-| `columns` | "3" | Layout columns |
-| `show_excerpt` | "yes" | Course descriptions |
-
----
-
-## Group Learning Shortcodes
-
-### 19. Group Courses
-
-**Show courses for a group:**
-```
-[group_courses group_id="456"]
-```
-
----
-
-### 20. Group Progress
-
-**Track group learning:**
-```
-[group_progress group_id="456"]
-```
-
-**Shows:**
-- Group member progress
-- Completion rates
-- Group statistics
-- Leaderboards
-
----
-
-## Interactive Shortcodes
-
-### 21. Course Enrollment Button
-
-**Add enrollment button anywhere:**
-```
-[course_enrollment course_id="123"]
-```
-
-**Custom button text:**
-```
-[course_enrollment course_id="123" button_text="Start Learning Now!"]
-```
-
----
-
-### 22. Course Rating
-
-**Display course ratings:**
-```
-[course_rating course_id="123"]
-```
-
-**Rating form:**
-```
-[course_rating_form course_id="123"]
-```
-
----
-
-## Conditional Shortcodes
-
-### 23. Show If Enrolled
-
-**Content only for enrolled students:**
-```
-[if_enrolled course_id="123"]
-    Welcome to the course! Here are your exclusive materials.
-[/if_enrolled]
-```
-
----
-
-### 24. Show If Completed
-
-**Content for course graduates:**
-```
-[if_completed course_id="123"]
-    Congratulations! You've completed the course.
-    <a href="/advanced-course">Try our advanced course next!</a>
-[/if_completed]
-```
-
----
-
-### 25. Show If Not Enrolled
-
-**Promotional content:**
-```
-[if_not_enrolled course_id="123"]
-    <div class="enrollment-cta">
-        <h3>Ready to start learning?</h3>
-        <p>Join thousands of students in this popular course.</p>
-        [course_enrollment course_id="123"]
-    </div>
-[/if_not_enrolled]
-```
-
----
-
-## Advanced Shortcodes
-
-### 26. Course Statistics
-
-**Display course stats:**
-```
-[course_stats course_id="123"]
-```
-
-**Shows:**
-- Total enrollments
-- Completion rate
-- Average rating
-- Total lessons/quizzes
-
----
-
-### 27. Learning Achievements
-
-**Show user badges/achievements:**
-```
-[user_achievements user_id="456"]
-```
-
----
-
-### 28. Course Calendar
-
-**Upcoming course events:**
-```
-[course_calendar]
-```
-
-**For specific course:**
-```
-[course_calendar course_id="123"]
-```
-
----
-
-## Page Layout Examples
-
-### Homepage Layout
+Create rich layouts by combining multiple shortcodes:
 
 ```html
-<!-- Hero Section -->
-<h1>Start Learning Today</h1>
-[course_search]
+<!-- Course catalog page -->
+<div class="course-filters">
+  [modern_courses show_filters="yes" show_search="yes"]
+</div>
 
-<!-- Featured Courses -->
-<h2>Featured Courses</h2>
-[featured_courses course_ids="123,456,789" columns="3"]
+<!-- Student dashboard -->
+<div class="student-dashboard">
+  [ld_profile]
+  [modern_courses enrolled="yes" show_progress="yes"]
+</div>
 
-<!-- Course Categories -->
-<h2>Browse by Category</h2>
-[learndash_course_categories show_count="yes"]
-
-<!-- Recent Courses -->
-<h2>Latest Courses</h2>
-[recent_courses num="6"]
-
-<!-- Call to Action -->
-[if_not_logged_in]
-    <div class="cta-section">
-        <h3>Ready to Start Learning?</h3>
-        <a href="/register" class="button">Create Free Account</a>
-    </div>
-[/if_not_logged_in]
+<!-- Instructor page -->
+<div class="instructor-courses">
+  [reign_ld_pro_instructor_tab_content]
+  [modern_courses instructor="current" template="detailed"]
+</div>
 ```
 
-### Course Archive Page
+### Performance Optimization
 
-```html
-<h1>All Courses</h1>
+1. **Limit results**: Use `per_page` parameter
+2. **Use specific filters**: Category/tag filtering is faster than showing all
+3. **Enable caching**: Works with object caching plugins
+4. **Optimize images**: Ensure course thumbnails are optimized
 
-<!-- Search and Filters -->
-[course_search show_categories="yes" show_difficulty="yes"]
+### Styling
 
-<!-- Course Grid -->
-[learndash_courses per_page="12" columns="3" orderby="date"]
-```
-
-### Student Dashboard
-
-```html
-<h1>My Learning Dashboard</h1>
-
-<!-- Main Dashboard -->
-[learndash_user_dashboard]
-
-<!-- My Courses -->
-<h2>My Courses</h2>
-[ld_course_list]
-
-<!-- Achievements -->
-<h2>My Achievements</h2>
-[user_achievements]
-
-<!-- Certificates -->
-<h2>My Certificates</h2>
-[ld_certificates]
-```
-
-### Individual Course Page
-
-```html
-<!-- Course Header -->
-[course_info course_id="123"]
-
-<!-- Enrollment Check -->
-[if_not_enrolled course_id="123"]
-    <h2>Course Outline</h2>
-    [course_outline course_id="123"]
-    
-    <h2>What You'll Learn</h2>
-    <!-- Course benefits and outcomes -->
-    
-    [course_enrollment course_id="123"]
-[/if_not_enrolled]
-
-[if_enrolled course_id="123"]
-    <h2>Your Progress</h2>
-    [course_progress course_id="123"]
-    
-    <h2>Course Content</h2>
-    [course_lessons course_id="123"]
-[/if_enrolled]
-
-<!-- Reviews -->
-<h2>Student Reviews</h2>
-[course_rating course_id="123"]
-
-<!-- Instructor -->
-<h2>Your Instructor</h2>
-[instructor_profile instructor_id="789"]
-```
-
-### Instructor Page
-
-```html
-<h1>Meet Your Instructor</h1>
-
-<!-- Instructor Bio -->
-[instructor_profile instructor_id="789"]
-
-<!-- Their Courses -->
-<h2>Courses by This Instructor</h2>
-[instructor_courses instructor_id="789" columns="2"]
-
-<!-- Student Reviews -->
-<h2>What Students Say</h2>
-<!-- Custom testimonials -->
-```
-
----
-
-## Styling Shortcodes
-
-### CSS Classes for Customization
-
-**All shortcodes use these base classes:**
+All Reign shortcodes include CSS classes for customization:
 
 ```css
-.learndash-wrapper { /* Main container */ }
-.ld-course-card { /* Course cards */ }
-.ld-course-grid { /* Course grid layout */ }
-.ld-progress-bar { /* Progress indicators */ }
-.ld-button { /* Action buttons */ }
-.ld-user-dashboard { /* Dashboard layout */ }
-```
-
-### Custom Styling Examples
-
-```css
-/* Style course cards */
-.ld-course-card {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 20px;
-    transition: transform 0.3s;
-}
-
-.ld-course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-/* Progress bar styling */
-.ld-progress-bar {
-    background: #f0f0f0;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.ld-progress-bar-fill {
-    background: linear-gradient(90deg, #4CAF50, #8BC34A);
-    height: 20px;
-    border-radius: 20px;
-    transition: width 0.5s ease;
-}
-
-/* Button styling */
-.ld-button {
-    background: #your-brand-color;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.ld-button:hover {
-    background: #darker-brand-color;
-    color: white;
-}
+.reign-courses-container { }
+.reign-courses-grid { }
+.reign-course-card { }
+.reign-course-{template} { }
+.reign-columns-{number} { }
+.modern-groups-container { }
+.modern-group-card { }
 ```
 
 ---
 
-## Troubleshooting Shortcodes
+## Troubleshooting
 
-### Common Issues
+### Shortcode not working
+- Ensure Reign LearnDash addon is active
+- Check for typos in shortcode name
+- Verify parameters are valid
+- Clear cache if using caching plugin
 
-**"Shortcode not displaying"**
-- Check spelling exactly
-- Verify course/user IDs exist
-- Ensure LearnDash is active
-- Clear cache
-
-**"Layout looks broken"**
-- Check CSS conflicts
-- Verify column numbers
-- Test with default theme
-- Clear browser cache
-
-**"No courses showing"**
-- Check course publication status
+### Courses/Groups not displaying
+- Check publication status
 - Verify user permissions
-- Confirm category/tag exists
+- Confirm categories/tags exist
 - Test with simpler parameters
 
-**"User-specific content not working"**
-- Ensure user is logged in
-- Check user enrollment status
-- Verify user ID format
-- Test with current user
+### Styling issues
+- Check for theme conflicts
+- Verify CSS is loading
+- Test with default parameters
+- Check responsive breakpoints
 
 ---
 
-## Performance Tips
+## Developer Hooks
 
-### Optimize Shortcode Performance
+### Filters for customization
 
+```php
+// Modify course query
+add_filter('reign_courses_query_args', function($args) {
+    // Customize query
+    return $args;
+});
+
+// Modify course output
+add_filter('reign_courses_output', function($output, $atts) {
+    // Customize output
+    return $output;
+}, 10, 2);
+
+// Modify groups query
+add_filter('modern_groups_query_args', function($args) {
+    // Customize query
+    return $args;
+});
 ```
-// Use specific parameters to limit results
-[learndash_courses per_page="6"] // Instead of showing all
 
-// Cache-friendly: avoid user-specific shortcodes on cached pages
-// Use AJAX loading for dynamic content
+### Actions for extending
 
-// Minimize nested shortcodes
-// Use specific IDs when possible
-```
+```php
+// Before courses display
+do_action('reign_before_courses_shortcode', $atts);
 
----
+// After courses display
+do_action('reign_after_courses_shortcode', $output);
 
-## Pro Tips
+// Before groups display
+do_action('modern_before_groups_shortcode', $atts);
 
-### Advanced Usage
-
-1. **Combine shortcodes** for rich layouts
-2. **Use conditional shortcodes** for personalization
-3. **Test on staging** before going live
-4. **Document custom shortcodes** for your team
-5. **Use widgets** for sidebar content
-
-### Mobile Optimization
-
-```
-// Use fewer columns on mobile
-[learndash_courses columns="3"] // Shows as 1 on mobile automatically
-
-// Simplify content for mobile
-[if_mobile]
-    [learndash_courses per_page="4" columns="1"]
-[/if_mobile]
-
-[if_desktop]
-    [learndash_courses per_page="12" columns="3"]
-[/if_desktop]
+// After groups display
+do_action('modern_after_groups_shortcode', $output);
 ```
 
 ---
 
-## Quick Copy Reference
+## Support
 
-### Most Used Shortcodes
-
-```
-// Course listings
-[learndash_courses]
-
-// User dashboard
-[learndash_user_dashboard]
-
-// User profile
-[ld_profile]
-
-// Course search
-[course_search]
-
-// Course categories
-[learndash_course_categories]
-
-// User courses
-[ld_course_list]
-
-// Course enrollment
-[course_enrollment course_id="123"]
-
-// Course progress
-[course_progress course_id="123"]
-
-// Course info
-[course_info course_id="123"]
-
-// Login form
-[learndash_login]
-```
-
----
-
-**Need Help with Shortcodes?**  
-📧 Email: support@wbcomdesigns.com  
-📚 More examples: docs.wbcomdesigns.com  
-💬 Forum: wbcomdesigns.com/support  
-🎥 Video tutorials in member area
+For additional help with shortcodes:
+- 📧 Email: support@wbcomdesigns.com
+- 📚 Documentation: docs.wbcomdesigns.com
+- 💬 Forum: wbcomdesigns.com/support

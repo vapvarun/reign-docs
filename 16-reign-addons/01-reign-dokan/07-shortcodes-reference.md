@@ -1,805 +1,359 @@
 # Reign Dokan Addon - Shortcodes Reference
 
-## What You'll Find Here
-A complete guide to all shortcodes available with the Reign Dokan addon. Copy, paste, and customize these shortcodes to display marketplace content exactly how you want it.
+## Available Shortcodes
 
-## Quick Overview
-**Total shortcodes:** 30+ powerful options
-**Difficulty:** Easy - just copy and paste!
-**Pro tip:** Test shortcodes on a draft page first
+Reign Dokan Addon provides **2 custom shortcodes** for enhanced marketplace displays.
 
 ---
 
-## Part 1: Store Display Shortcodes
+## 1. [rda_dokan_vendors]
 
-### Store Listing Grid
+### Purpose
+Display featured or selected vendors with customizable layouts and optional carousel mode.
 
-**Display all vendor stores:**
+### All Parameters
 
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `title` | string | 'Featured Vendor' | Section heading/title |
+| `per_row` | string | '3' | Number of vendors per row (1-6) |
+| `count` | string | '6' | Total vendors to display |
+| `show_featured_only` | boolean | false | Show only featured vendors |
+| `enable_slider` | boolean | false | Enable carousel/slider mode |
+| `layout` | string | 'layout-type-1' | Layout style (layout-type-1, layout-type-2) |
+| `selected_vendors` | string | '' | Comma-separated vendor IDs to display specific vendors |
+
+### Usage Examples
+
+#### Basic Usage
 ```
-[dokan-stores]
-```
-
-**With parameters:**
-
-```
-[dokan-stores 
-    per_page="12"
-    columns="3"
-    search="yes"
-    category="yes"
-    featured="yes"]
-```
-
-**All parameters:**
-
-| Parameter | Options | Default | Description |
-|-----------|---------|---------|-------------|
-| `per_page` | Number | 10 | Stores per page |
-| `columns` | 1-6 | 3 | Grid columns |
-| `search` | yes/no | yes | Show search bar |
-| `category` | yes/no | yes | Category filter |
-| `featured` | yes/no | no | Featured only |
-| `order` | ASC/DESC | ASC | Sort order |
-| `orderby` | name/date/random | name | Sort by |
-| `with_products_only` | yes/no | no | Hide empty stores |
-
-### Featured Stores
-
-**Show only featured vendors:**
-
-```
-[dokan-stores featured="yes" per_page="6" columns="3"]
+[rda_dokan_vendors]
 ```
 
-### Best Selling Vendors
-
-**Display top performing stores:**
-
+#### Show Featured Vendors
 ```
-[dokan-best-selling-vendor 
-    no_of_vendor="8"
-    title="Top Sellers"]
+[rda_dokan_vendors show_featured_only="true" count="8" title="Premium Vendors"]
 ```
 
----
-
-## Part 2: Product Display Shortcodes
-
-### Vendor Products
-
-**Show products from specific vendor:**
-
+#### Display Specific Vendors
 ```
-[dokan-vendor-products 
-    vendor_id="5"
-    per_page="12"
-    columns="4"]
+[rda_dokan_vendors selected_vendors="12,45,67,89" per_row="4"]
 ```
 
-### Best Selling Products
-
-**Marketplace best sellers:**
-
+#### Carousel Mode
 ```
-[dokan-best-selling-product 
-    no_of_product="8"
-    columns="4"
-    title="Best Sellers"]
+[rda_dokan_vendors enable_slider="true" count="12" per_row="4"]
 ```
 
-### Top Rated Products
-
-**Highest rated products:**
-
+#### Custom Layout
 ```
-[dokan-top-rated-product 
-    no_of_product="8"
-    title="Top Rated"]
+[rda_dokan_vendors layout="layout-type-2" per_row="3" count="9"]
 ```
 
-**Product parameters:**
+#### Full Example
+```
+[rda_dokan_vendors
+    title="Top Rated Sellers"
+    per_row="4"
+    count="8"
+    show_featured_only="true"
+    enable_slider="false"
+    layout="layout-type-1"
+]
+```
 
-| Parameter | Options | Default | Description |
-|-----------|---------|---------|-------------|
-| `no_of_product` | Number | 8 | Products to show |
-| `columns` | 1-6 | 4 | Grid columns |
-| `title` | Text | blank | Section title |
-| `vendor_id` | Number | all | Specific vendor |
-| `category` | Slug | all | Product category |
+### Template Used
+- `/dokan/widgets/rda-sellers.php`
+
+### CSS Classes
+- `.rda-dokan-vendors-wrapper`
+- `.vendor-item`
+- `.vendor-info`
+- `.vendor-products`
 
 ---
 
-## Part 3: Vendor Dashboard Shortcodes
+## 2. [rda_dokan_store_listing]
 
-### Vendor Dashboard
+### Purpose
+Display a searchable store listing with pagination and filtering options.
 
-**Complete vendor dashboard:**
+### All Parameters
 
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `per_page` | integer | 10 | Number of stores per page |
+| `search` | string | 'yes' | Enable search bar ('yes'/'no') |
+| `per_row` | integer | 3 | Stores per row (1-6) |
+| `featured` | string | 'no' | Show featured stores only ('yes'/'no') |
+| `enable_slider` | boolean | false | Enable carousel mode |
+| `selected_vendors` | string | '' | Comma-separated vendor IDs for specific vendors |
+
+### Usage Examples
+
+#### Basic Store Listing
 ```
-[dokan-dashboard]
-```
-
-**Dashboard includes:**
-- Sales overview
-- Product management
-- Orders management
-- Withdrawal requests
-- Store settings
-- Reports
-
-### Vendor Registration
-
-**Vendor signup form:**
-
-```
-[dokan-vendor-registration]
+[rda_dokan_store_listing]
 ```
 
-**Custom registration:**
-
+#### With Search and Pagination
 ```
-[dokan-vendor-registration 
-    role="seller"
-    redirect="/vendor-dashboard/"]
+[rda_dokan_store_listing per_page="12" search="yes" per_row="4"]
 ```
 
----
-
-## Part 4: Customer Account Shortcodes
-
-### Customer Dashboard
-
-**Customer order tracking:**
-
+#### Featured Stores Only
 ```
-[dokan-customer-dashboard]
+[rda_dokan_store_listing featured="yes" search="no" per_page="6"]
 ```
 
-### Customer Migration
-
-**Convert customer to vendor:**
-
+#### Specific Vendors in Grid
 ```
-[dokan-customer-migration]
+[rda_dokan_store_listing selected_vendors="10,20,30,40" per_row="2"]
 ```
 
-**Migration form parameters:**
-
+#### Slider Mode
 ```
-[dokan-customer-migration 
-    title="Become a Seller"
-    button_text="Start Selling"]
+[rda_dokan_store_listing enable_slider="true" per_row="3" per_page="9"]
 ```
 
----
-
-## Part 5: Store Components
-
-### Store Header
-
-**Display store banner and info:**
-
+#### No Search, More Stores
 ```
-[dokan-store-header vendor_id="5"]
+[rda_dokan_store_listing search="no" per_page="20" per_row="4"]
 ```
 
-### Store Products
+### Template Used
+- `/dokan/store-lists.php`
+- `/dokan/store-lists-loop.php`
 
-**Products from current store:**
+### CSS Classes
+- `.rda-dokan-store-lists-wrapper`
+- `.dokan-seller-wrap`
+- `.store-content`
+- `.store-footer`
 
-```
-[dokan-store-products]
-```
-
-### Store Categories
-
-**Vendor's product categories:**
-
-```
-[dokan-store-categories 
-    vendor_id="5"
-    show_count="yes"]
-```
-
-### Store Contact Form
-
-**Contact vendor form:**
-
-```
-[dokan-store-contact vendor_id="5"]
-```
+### Search Functionality
+When `search="yes"`, the shortcode displays:
+- Search input field
+- Search button
+- Results filter by store name
+- GET parameter: `dokan_seller_search`
 
 ---
 
-## Part 6: Marketplace Statistics
+## Developer Filters
 
-### Vendor Count
+### For [rda_dokan_vendors]
 
-**Total number of vendors:**
+None specific - uses template system for customization.
 
-```
-[dokan-vendor-count]
-```
+### For [rda_dokan_store_listing]
 
-**With custom text:**
-
-```
-[dokan-vendor-count 
-    before="We have "
-    after=" amazing vendors!"]
-```
-
-### Product Count
-
-**Total marketplace products:**
-
-```
-[dokan-product-count]
-```
-
-### Sales Statistics
-
-**Marketplace overview:**
-
-```
-[dokan-marketplace-stats 
-    show_vendors="yes"
-    show_products="yes"
-    show_orders="yes"]
-```
-
----
-
-## Part 7: Search & Filter Shortcodes
-
-### Store Search
-
-**Vendor search form:**
-
-```
-[dokan-store-search 
-    placeholder="Search stores..."
-    button_text="Search"]
-```
-
-### Product Search
-
-**Search with vendor filter:**
-
-```
-[dokan-product-search 
-    show_vendor_filter="yes"
-    show_category_filter="yes"]
-```
-
-### Location Filter
-
-**Search by location:**
-
-```
-[dokan-store-location-filter 
-    show_map="yes"
-    radius_search="yes"]
-```
-
----
-
-## Part 8: Geolocation Shortcodes
-
-### Store Map
-
-**Display all vendors on map:**
-
-```
-[dokan-stores-map 
-    width="100%"
-    height="400px"
-    zoom="12"]
-```
-
-**Map parameters:**
-
-| Parameter | Options | Default | Description |
-|-----------|---------|---------|-------------|
-| `width` | px/% | 100% | Map width |
-| `height` | px | 400px | Map height |
-| `zoom` | 1-20 | 12 | Zoom level |
-| `center_lat` | Number | auto | Center latitude |
-| `center_lng` | Number | auto | Center longitude |
-
-### Vendor Location
-
-**Single vendor map:**
-
-```
-[dokan-vendor-location 
-    vendor_id="5"
-    height="300px"]
-```
-
----
-
-## Part 9: Vendor Application
-
-### Application Form
-
-**Vendor application process:**
-
-```
-[dokan-vendor-application]
-```
-
-### Application Status
-
-**Check application status:**
-
-```
-[dokan-application-status]
-```
-
----
-
-## Part 10: Social & Reviews
-
-### Store Reviews
-
-**Display vendor reviews:**
-
-```
-[dokan-store-reviews 
-    vendor_id="5"
-    per_page="10"]
-```
-
-### Review Form
-
-**Add review for vendor:**
-
-```
-[dokan-store-review-form vendor_id="5"]
-```
-
-### Social Links
-
-**Vendor social profiles:**
-
-```
-[dokan-store-social 
-    vendor_id="5"
-    show_icons="yes"]
-```
-
----
-
-## Part 11: Subscription Shortcodes
-
-### Subscription Packs
-
-**Display membership plans:**
-
-```
-[dokan-subscription-packs]
-```
-
-**Custom pack display:**
-
-```
-[dokan-subscription-packs 
-    columns="3"
-    featured_first="yes"
-    show_free="no"]
-```
-
-### Current Subscription
-
-**Vendor's active subscription:**
-
-```
-[dokan-my-subscription]
-```
-
----
-
-## Part 12: Vendor Widgets
-
-### Top Vendors
-
-**Sidebar widget for top vendors:**
-
-```
-[dokan-top-vendors 
-    count="5"
-    show_avatar="yes"
-    show_rating="yes"]
-```
-
-### Recent Products
-
-**Latest vendor products:**
-
-```
-[dokan-recent-products 
-    vendor_id="5"
-    count="6"
-    columns="2"]
-```
-
-### Store Info
-
-**Vendor information widget:**
-
-```
-[dokan-store-info 
-    vendor_id="5"
-    show_banner="yes"
-    show_rating="yes"
-    show_location="yes"]
-```
-
----
-
-## Part 13: Advanced Combinations
-
-### Complete Marketplace Homepage
-
-```html
-<!-- Hero Section -->
-<div class="marketplace-hero">
-    <h1>Welcome to Our Marketplace</h1>
-    [dokan-store-search]
-</div>
-
-<!-- Stats -->
-[dokan-marketplace-stats]
-
-<!-- Featured Vendors -->
-<h2>Featured Stores</h2>
-[dokan-stores featured="yes" per_page="6" columns="3"]
-
-<!-- Best Sellers -->
-[dokan-best-selling-product no_of_product="8" title="Best Selling Products"]
-
-<!-- Top Rated -->
-[dokan-top-rated-product no_of_product="8" title="Customer Favorites"]
-
-<!-- All Stores -->
-<h2>Browse All Stores</h2>
-[dokan-stores per_page="12" columns="4"]
-```
-
-### Vendor Landing Page
-
-```html
-<!-- Store Header -->
-[dokan-store-header vendor_id="5"]
-
-<!-- Store Categories -->
-<div class="store-categories">
-    [dokan-store-categories vendor_id="5"]
-</div>
-
-<!-- Store Products -->
-[dokan-vendor-products vendor_id="5" per_page="12"]
-
-<!-- Store Reviews -->
-<h3>Customer Reviews</h3>
-[dokan-store-reviews vendor_id="5"]
-
-<!-- Contact Form -->
-<h3>Contact Vendor</h3>
-[dokan-store-contact vendor_id="5"]
-```
-
-### Category Page
-
-```html
-<!-- Category Header -->
-<h1>Electronics Stores</h1>
-
-<!-- Stores in Category -->
-[dokan-stores category="electronics" per_page="12"]
-
-<!-- Products from Category -->
-[dokan-vendor-products category="electronics"]
-```
-
----
-
-## Part 14: Mobile Optimized Shortcodes
-
-### Mobile Store Grid
-
-```
-[dokan-stores 
-    columns="1" 
-    per_page="10"
-    search="yes"]
-```
-
-### Mobile Product Display
-
-```
-[dokan-vendor-products 
-    columns="2"
-    per_page="8"]
-```
-
----
-
-## Part 15: Conditional Shortcodes
-
-### Vendor Only Content
-
-**Show to vendors only:**
-
+#### Filter Default Parameters
 ```php
-[dokan-if-vendor]
-    [dokan-dashboard]
-[/dokan-if-vendor]
+add_filter('rda_dokan_store_listing_per_page', function($defaults) {
+    $defaults['per_page'] = 20;
+    $defaults['per_row'] = 4;
+    return $defaults;
+});
 ```
 
-### Customer Only Content
-
-**Show to customers only:**
-
+#### Modify Seller Query
 ```php
-[dokan-if-customer]
-    [dokan-customer-migration]
-[/dokan-if-customer]
+add_filter('rda_dokan_seller_listing_args', function($args) {
+    $args['orderby'] = 'registered';
+    $args['order'] = 'DESC';
+    $args['meta_key'] = 'dokan_enable_selling';
+    $args['meta_value'] = 'yes';
+    return $args;
+});
 ```
 
-### Guest Only Content
-
-**Show to non-logged users:**
-
+#### Customize Template Arguments
 ```php
-[dokan-if-guest]
-    [dokan-vendor-registration]
-[/dokan-if-guest]
+add_filter('rda_dokan_store_list_args', function($args) {
+    $args['show_products'] = true;
+    $args['image_size'] = 'medium';
+    $args['enable_pagination'] = true;
+    return $args;
+});
 ```
 
----
-
-## Part 16: Custom Queries
-
-### Custom Vendor Query
-
-```
-[dokan-stores 
-    orderby="total_sales"
-    order="DESC"
-    meta_key="store_rating"
-    meta_value="4"
-    meta_compare=">="]
-```
-
-### Custom Product Query
-
-```
-[dokan-vendor-products 
-    meta_key="featured"
-    meta_value="yes"
-    orderby="price"
-    order="ASC"]
-```
-
----
-
-## Styling Shortcode Output
-
-### Custom CSS Classes
-
-```
-[dokan-stores 
-    css_class="custom-vendor-grid"
-    wrapper_class="marketplace-section"]
-```
-
-### Custom Styling Examples
-
-```css
-/* Custom vendor grid */
-.custom-vendor-grid {
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.custom-vendor-grid .store-wrapper {
-    transition: transform 0.3s;
-}
-
-.custom-vendor-grid .store-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .custom-vendor-grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-```
-
----
-
-## Troubleshooting Shortcodes
-
-### Common Issues
-
-**"Shortcode not displaying"**
-- Check Dokan is activated
-- Verify shortcode spelling
-- Clear cache
-- Check user permissions
-
-**"No vendors showing"**
-- Verify vendors are approved
-- Check vendor products exist
-- Test without filters first
-
-**"Dashboard access denied"**
-- Verify user role
-- Check Dokan settings
-- Clear browser cookies
-
-### Testing Best Practices
-
-1. Test on draft page first
-2. Start with basic shortcode
-3. Add parameters gradually
-4. Check mobile display
-5. Test with different user roles
-
----
-
-## Performance Tips
-
-### Optimize Shortcode Usage
-
-**Do's:**
-- Cache shortcode output
-- Limit items per page
-- Use pagination
-- Lazy load images
-
-**Don'ts:**
-- Multiple complex shortcodes per page
-- Unlimited product displays
-- Nested shortcodes
-- Skip pagination
-
-### Caching Considerations
-
+#### Products Per Store
 ```php
-// Cache vendor list
-add_filter('dokan_store_listing_cache', '__return_true');
-add_filter('dokan_store_cache_time', function() {
-    return 3600; // 1 hour
+add_filter('rda_store_list_loop_products_to_display', function() {
+    return 4; // Show 4 products per store
 });
 ```
 
 ---
 
-## Advanced Tips
+## Advanced Customization
+
+### Custom Vendor Selection
+```php
+// Get specific vendors by criteria
+$vendor_ids = get_users(array(
+    'role' => 'seller',
+    'meta_key' => 'dokan_feature_seller',
+    'meta_value' => 'yes',
+    'fields' => 'ID'
+));
+$ids = implode(',', $vendor_ids);
+
+echo do_shortcode('[rda_dokan_vendors selected_vendors="' . $ids . '"]');
+```
 
 ### Dynamic Parameters
-
-**Use URL parameters:**
-
-```
-[dokan-stores category="{url_param:cat}"]
-```
-
-**Current vendor products:**
-
-```
-[dokan-vendor-products vendor_id="current"]
-```
-
-### Integration with Page Builders
-
-**Elementor:**
-- Use shortcode widget
-- Apply custom styling
-- Add animations
-
-**Gutenberg:**
-- Use shortcode block
-- Wrap in groups
-- Apply block styles
-
-**WPBakery:**
-- Raw HTML module
-- Custom CSS box
-- Responsive settings
-
----
-
-## Quick Copy Templates
-
-### Marketplace Homepage
-
-```html
-<div class="marketplace-home">
-    <!-- Search -->
-    [dokan-store-search]
-    
-    <!-- Stats -->
-    [dokan-marketplace-stats]
-    
-    <!-- Featured -->
-    [dokan-stores featured="yes" per_page="6"]
-    
-    <!-- Products -->
-    [dokan-best-selling-product]
-</div>
-```
-
-### Vendor Page Sidebar
-
-```html
-<!-- Store Info -->
-[dokan-store-info vendor_id="current"]
-
-<!-- Categories -->
-[dokan-store-categories vendor_id="current"]
-
-<!-- Contact -->
-[dokan-store-contact vendor_id="current"]
-```
-
-### Footer Widgets
-
-```html
-<!-- Top Vendors -->
-[dokan-top-vendors count="5"]
-
-<!-- Recent Products -->
-[dokan-recent-products count="4"]
-
-<!-- Stats -->
-[dokan-vendor-count]
-```
-
----
-
-## Custom Shortcode Creation
-
-### Create Your Own
-
 ```php
-function my_custom_vendor_grid() {
-    return do_shortcode('[dokan-stores 
-        featured="yes" 
-        per_page="8" 
-        columns="4"]');
-}
-add_shortcode('my_vendor_grid', 'my_custom_vendor_grid');
+// Dynamic shortcode generation
+$atts = array(
+    'per_page' => get_option('vendors_per_page', 12),
+    'search' => is_mobile() ? 'no' : 'yes',
+    'per_row' => is_mobile() ? 1 : 3
+);
 
-// Use: [my_vendor_grid]
+$shortcode = '[rda_dokan_store_listing';
+foreach ($atts as $key => $value) {
+    $shortcode .= ' ' . $key . '="' . $value . '"';
+}
+$shortcode .= ']';
+
+echo do_shortcode($shortcode);
+```
+
+### Conditional Display
+```php
+// Show different layouts based on context
+if (is_front_page()) {
+    echo do_shortcode('[rda_dokan_vendors show_featured_only="true" count="4"]');
+} elseif (is_page('vendors')) {
+    echo do_shortcode('[rda_dokan_store_listing per_page="20" search="yes"]');
+}
 ```
 
 ---
 
-**Pro Tips:**
+## Styling Guide
 
-💡 **Save favorite combinations** in a text file for reuse
+### Vendor Display Styling
+```css
+/* Customize vendor cards */
+.rda-dokan-vendors-wrapper .vendor-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
-🚀 **Test on staging** site first for complex layouts
+/* Vendor image */
+.vendor-item .vendor-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+```
 
-🎨 **Combine with CSS** for unique designs
+### Store Listing Styling
+```css
+/* Store grid customization */
+.rda-dokan-store-lists-wrapper {
+    display: grid;
+    gap: 20px;
+}
 
-📱 **Always check mobile** view for responsive display
-
-⏰ **Consider caching** for better performance
+/* Search bar styling */
+.dokan-seller-search {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f5f5f5;
+}
+```
 
 ---
 
-**Need Help with Shortcodes?**
-📧 Email: support@wbcomdesigns.com
-📚 Full docs: docs.wbcomdesigns.com/dokan
-💬 Community: facebook.com/groups/wbcom
-🎥 Video tutorials available
+## Performance Tips
+
+1. **Limit Results**: Don't display too many vendors at once
+   ```
+   [rda_dokan_vendors count="6"]
+   ```
+
+2. **Disable Search** on pages with many vendors
+   ```
+   [rda_dokan_store_listing search="no"]
+   ```
+
+3. **Use Pagination** for large vendor lists
+   ```
+   [rda_dokan_store_listing per_page="12"]
+   ```
+
+4. **Cache Output** when possible
+   ```php
+   $output = get_transient('vendor_listing');
+   if (!$output) {
+       $output = do_shortcode('[rda_dokan_vendors]');
+       set_transient('vendor_listing', $output, HOUR_IN_SECONDS);
+   }
+   echo $output;
+   ```
+
+---
+
+## Common Issues & Solutions
+
+### Vendors Not Displaying
+- Ensure vendors are approved in Dokan settings
+- Check vendors have at least one published product
+- Verify vendor role is properly assigned
+
+### Search Not Working
+- Check `search="yes"` is set
+- Ensure no JavaScript errors in console
+- Verify search parameter name: `dokan_seller_search`
+
+### Layout Breaking
+- Check `per_row` value is appropriate for container width
+- Ensure CSS is loading properly
+- Clear cache after changes
+
+### Slider Not Working
+- Verify `enable_slider="true"` is set correctly
+- Check slider JavaScript is loaded
+- Ensure sufficient vendors for sliding
+
+---
+
+## Migration from Dokan Shortcodes
+
+If migrating from standard Dokan shortcodes:
+
+| Dokan Shortcode | Reign Equivalent |
+|-----------------|------------------|
+| `[dokan-stores]` | `[rda_dokan_store_listing]` |
+| `[dokan-best-selling-vendor]` | `[rda_dokan_vendors show_featured_only="true"]` |
+
+---
+
+## Testing Checklist
+
+- [ ] Basic shortcode displays vendors/stores
+- [ ] Parameters change output correctly
+- [ ] Search functionality works
+- [ ] Pagination displays and functions
+- [ ] Featured filter works
+- [ ] Specific vendor selection works
+- [ ] Slider mode activates
+- [ ] Responsive layout adjusts per row
+
+---
+
+## Support
+
+- **Documentation**: This guide
+- **Templates**: Check `/dokan/` directory in plugin
+- **Support**: Contact WBcom Designs
+- **Updates**: Check changelog for new parameters
+
+---
+
+*Shortcode reference verified against Reign Dokan Addon v3.5.4*

@@ -1,314 +1,271 @@
 # Reign Dokan Addon - Developer Guide
 
-## Architecture Overview
+## Plugin Architecture (Actual Structure)
 
-### Plugin Structure
-
+### Directory Structure
 ```
 reign-dokan-addon/
-├── reign-dokan-addon.php          # Main plugin file
-├── inc/
-│   ├── class-reign-dokan-loader.php
-│   ├── class-reign-dokan-public.php
-│   ├── class-reign-dokan-admin.php
-│   ├── class-reign-dokan-templates.php
-│   ├── class-reign-dokan-widgets.php
-│   └── class-reign-dokan-buddypress.php
-├── templates/
-│   ├── store/
-│   ├── vendor/
-│   └── widgets/
-└── assets/
-    ├── css/
-    ├── js/
-    └── images/
+├── admin/
+│   ├── class-reign-dokan-admin-settings.php
+│   └── reign-dokan-vertical-tabs-skeleton.php
+├── assets/
+│   ├── css/
+│   ├── images/
+│   └── js/
+├── buddypress/
+│   ├── class-reign-dokan-buddypress-addon.php
+│   ├── class-reign-dokan-favourite-product-profile-tab.php
+│   └── reign-dokan-activity.php
+├── core/
+│   ├── class-reign-dokan-favourite-product.php
+│   ├── class-reign-dokan-single-product.php
+│   ├── class-reign-dokan-theme-hooks.php
+│   └── reign-dokan-functions.php
+├── dokan/                              # Template overrides
+│   ├── orders/
+│   │   └── listing.php
+│   ├── products/
+│   │   ├── products-listing.php
+│   │   └── products-listing-row.php
+│   ├── review/
+│   │   ├── listing.php
+│   │   └── listing-table-tr.php
+│   ├── store-header.php
+│   ├── store-lists.php
+│   ├── store-lists-loop.php
+│   ├── store-reviews.php
+│   ├── store-sidebar.php
+│   ├── store-toc.php
+│   ├── store.php
+│   └── vendor-biography.php
+├── edd-license/                        # License management
+├── languages/                          # Translations
+├── rda-shortcodes/
+│   └── class-reign-dokan-shortcodes.php
+├── rda-widgets/                        # Custom widgets
+├── readme.txt
+└── reign-dokan-addon.php              # Main plugin file
 ```
 
-### Class Hierarchy
+## Main Plugin Class
+
+### File: `/reign-dokan-addon.php`
 
 ```php
-Reign_Dokan_Addon
-├── Reign_Dokan_Loader
-├── Reign_Dokan_Public
-├── Reign_Dokan_Admin
-├── Reign_Dokan_Templates
-├── Reign_Dokan_Widgets
-└── Reign_Dokan_BuddyPress
-```
-
-## Core Classes
-
-### Main Plugin Class
-
-```php
-/**
- * Main plugin class
- */
 class Reign_Dokan_Addon {
-    
-    /**
-     * Plugin version
-     */
-    const VERSION = '3.5.4';
-    
-    /**
-     * Plugin instance
-     */
-    private static $instance = null;
-    
-    /**
-     * Get plugin instance
-     */
-    public static function get_instance() {
-        if (null === self::$instance) {
-            self::$instance = new self();
+    // Version
+    public $version = '3.5.4';
+
+    // Singleton instance
+    protected static $_instance = null;
+
+    // Get instance
+    public static function instance() {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new self();
         }
-        return self::$instance;
+        return self::$_instance;
     }
-    
-    /**
-     * Constructor
-     */
-    private function __construct() {
+
+    // Constructor
+    public function __construct() {
         $this->define_constants();
         $this->includes();
         $this->init_hooks();
-    }
-    
-    /**
-     * Define constants
-     */
-    private function define_constants() {
-        define('REIGN_DOKAN_VERSION', self::VERSION);
-        define('REIGN_DOKAN_PATH', plugin_dir_path(__FILE__));
-        define('REIGN_DOKAN_URL', plugin_dir_url(__FILE__));
+        do_action('reign_dokan_addon_loaded');
     }
 }
 ```
 
-### Template Loader Class
+## Core Hooks and Filters
 
+### Actions
+
+#### `reign_dokan_addon_loaded`
+Fired after plugin initialization
 ```php
-/**
- * Template management
- */
-class Reign_Dokan_Templates {
-    
-    /**
-     * Get template
-     */
-    public static function get_template($template_name, $args = array()) {
-        // Extract args
-        if ($args) {
-            extract($args);
-        }
-        
-        // Look for template in theme
-        $template = locate_template(array(
-            'reign-dokan/' . $template_name,
-            $template_name
-        ));
-        
-        // Fallback to plugin template
-        if (!$template) {
-            $template = REIGN_DOKAN_PATH . 'templates/' . $template_name;
-        }
-        
-        // Allow filtering
-        $template = apply_filters('reign_dokan_get_template', $template, $template_name, $args);
-        
-        if (file_exists($template)) {
-            include $template;
-        }
-    }
-    
-    /**
-     * Get template part
-     */
-    public static function get_template_part($slug, $name = '') {
-        $template = '';
-        
-        // Look in theme
-        if ($name) {
-            $template = locate_template(array(
-                "reign-dokan/{$slug}-{$name}.php",
-                "reign-dokan/{$slug}.php"
-            ));
-        }
-        
-        // Get default from plugin
-        if (!$template && $name && file_exists(REIGN_DOKAN_PATH . "templates/{$slug}-{$name}.php")) {
-            $template = REIGN_DOKAN_PATH . "templates/{$slug}-{$name}.php";
-        }
-        
-        if (!$template) {
-            $template = REIGN_DOKAN_PATH . "templates/{$slug}.php";
-        }
-        
-        // Allow filtering
-        $template = apply_filters('reign_dokan_get_template_part', $template, $slug, $name);
-        
-        if ($template) {
-            load_template($template, false);
-        }
-    }
-}
+do_action('reign_dokan_addon_loaded');
 ```
 
-## Hooks and Filters
+### Filters
 
-### Action Hooks
-
+#### `dokan_get_template_part`
+Override Dokan template parts
 ```php
-/**
- * Available action hooks
- */
-
-// Store listing
-do_action('reign_dokan_before_store_listing');
-do_action('reign_dokan_after_store_listing');
-do_action('reign_dokan_store_card_before', $vendor_id);
-do_action('reign_dokan_store_card_after', $vendor_id);
-
-// Single store
-do_action('reign_dokan_before_store_header', $vendor_id);
-do_action('reign_dokan_after_store_header', $vendor_id);
-do_action('reign_dokan_before_store_tabs', $vendor_id);
-do_action('reign_dokan_after_store_tabs', $vendor_id);
-
-// Vendor dashboard
-do_action('reign_dokan_dashboard_before');
-do_action('reign_dokan_dashboard_after');
-do_action('reign_dokan_dashboard_widget', $widget_id);
+add_filter('dokan_get_template_part', array($this, 'dokan_get_template_part'), 10, 3);
 ```
 
-### Filter Hooks
-
+#### `dokan_locate_template`
+Modify template locations
 ```php
-/**
- * Available filter hooks
- */
+add_filter('dokan_locate_template', array($this, 'reign_dokan_locate_template'), 10, 3);
+```
 
-// Store query
-add_filter('reign_dokan_store_query_args', function($args) {
-    // Modify store query
-    $args['meta_query'] = array(
-        array(
-            'key' => 'featured_vendor',
-            'value' => 'yes'
-        )
-    );
+#### `rda_dokan_seller_listing_args`
+Customize seller query
+```php
+add_filter('rda_dokan_seller_listing_args', function($args) {
+    $args['number'] = 20;
+    $args['orderby'] = 'registered';
     return $args;
 });
+```
 
-// Store data
-add_filter('reign_dokan_store_data', function($data, $vendor_id) {
-    // Add custom data
-    $data['custom_field'] = get_user_meta($vendor_id, 'custom_field', true);
-    return $data;
-}, 10, 2);
+#### `rda_dokan_store_list_args`
+Modify store list template arguments
+```php
+add_filter('rda_dokan_store_list_args', function($args) {
+    $args['show_products'] = true;
+    $args['image_size'] = 'full';
+    return $args;
+});
+```
 
-// Template paths
-add_filter('reign_dokan_template_path', function($path, $template) {
-    // Change template path
-    return $path;
-}, 10, 2);
+#### `rda_store_list_loop_products_to_display`
+Control products per store in listings
+```php
+add_filter('rda_store_list_loop_products_to_display', function() {
+    return 5; // Show 5 products per store
+});
+```
+
+#### `rda_dokan_store_listing_per_page`
+Modify store listing defaults
+```php
+add_filter('rda_dokan_store_listing_per_page', function($defaults) {
+    $defaults['per_page'] = 20;
+    return $defaults;
+});
+```
+
+## Shortcode Implementation
+
+### File: `/rda-shortcodes/class-reign-dokan-shortcodes.php`
+
+#### Register Shortcodes
+```php
+class Reign_Dokan_Shortcodes {
+    public function __construct() {
+        $this->init_hooks();
+    }
+
+    private function init_hooks() {
+        add_shortcode('rda_dokan_vendors', array($this, 'render_rda_dokan_vendors'));
+        add_shortcode('rda_dokan_store_listing', array($this, 'render_rda_dokan_store_listing'));
+    }
+}
+```
+
+#### Vendor Shortcode Implementation
+```php
+public function render_rda_dokan_vendors($atts = array()) {
+    $atts = wp_parse_args((array) $atts, array(
+        'title' => __('Featured Vendor', 'reign-dokan'),
+        'per_row' => '3',
+        'count' => '6',
+        'show_featured_only' => false,
+        'enable_slider' => false,
+        'layout' => 'layout-type-1',
+        'selected_vendors' => '',
+    ));
+
+    // Template output
+    dokan_get_template_part('widgets/rda-sellers', '', array('atts' => $atts));
+}
+```
+
+## BuddyPress Integration
+
+### File: `/buddypress/class-reign-dokan-buddypress-addon.php`
+
+#### Add Store Tab to Profiles
+```php
+class Reign_Dokan_BuddyPress_Addon {
+    public function add_store_tab() {
+        // Adds vendor store tab to BuddyPress profiles
+        // Shows vendor products
+        // Manages favorite products
+    }
+}
+```
+
+### File: `/buddypress/class-reign-dokan-favourite-product-profile-tab.php`
+
+#### Favorite Products Feature
+```php
+class Reign_Dokan_Favourite_Product_Profile_Tab {
+    // Adds favorite products tab
+    // Manages user favorites
+    // Ajax handlers for marking favorites
+}
 ```
 
 ## Template Override System
 
-### Override Templates in Theme
+### How It Works
+1. Plugin checks theme directory: `/wp-content/themes/your-theme/dokan/`
+2. Falls back to addon templates: `/wp-content/plugins/reign-dokan-addon/dokan/`
+3. Finally uses original Dokan templates
 
+### Override a Template
 ```php
-/**
- * Template hierarchy
- */
+// Copy from:
+/wp-content/plugins/reign-dokan-addon/dokan/store-header.php
 
-// Theme template locations (in order of priority):
-// 1. /theme/reign-dokan/store-listing.php
-// 2. /theme/templates/reign-dokan/store-listing.php
-// 3. /plugin/templates/store-listing.php (fallback)
+// To:
+/wp-content/themes/your-theme/dokan/store-header.php
 
-// Example: Override store header
-// Copy from: /plugins/reign-dokan-addon/templates/store-header.php
-// Paste to: /themes/reign-theme/reign-dokan/store-header.php
+// Edit the copied file
 ```
 
-### Creating Custom Templates
+## Working with Theme Settings
 
+### Read Settings
 ```php
-/**
- * Custom template example
- */
-
-// In theme's functions.php
-add_filter('reign_dokan_get_template', function($template, $template_name, $args) {
-    if ($template_name === 'store/featured-badge.php') {
-        // Use custom template
-        return get_stylesheet_directory() . '/custom-templates/featured-badge.php';
-    }
-    return $template;
-}, 10, 3);
+// Get theme mod values
+$header_location = get_theme_mod('reign_dokan_store_header_location', true);
+$show_vendor_info = get_theme_mod('reign_dokan_show_vendor_info_in_pro_page', false);
+$products_count = get_theme_mod('reign_dokan_num_of_vendor_pros_on_pro_page', 10);
 ```
 
-## Widget Development
-
-### Creating Custom Widget
-
+### Use in Conditionals
 ```php
-/**
- * Custom Dokan widget
- */
+if (get_theme_mod('reign_dokan_show_vendor_pros_on_pro_page', false)) {
+    // Display vendor products section
+    $count = get_theme_mod('reign_dokan_num_of_vendor_pros_on_pro_page', 10);
+    // Query and display products
+}
+```
+
+## Ajax Implementation
+
+### Favorite Products Ajax
+```php
+// Ajax action for marking favorites
+add_action('wp_ajax_reign_dokan_mark_favorite', 'handle_favorite');
+add_action('wp_ajax_nopriv_reign_dokan_mark_favorite', 'handle_favorite');
+
+function handle_favorite() {
+    // Verify nonce
+    // Process favorite action
+    // Return JSON response
+}
+```
+
+## Custom Widget Development
+
+### Creating a Custom Widget
+```php
 class Reign_Dokan_Custom_Widget extends WP_Widget {
-    
     public function __construct() {
         parent::__construct(
             'reign_dokan_custom',
-            __('Reign Dokan Custom Widget', 'reign-dokan'),
-            array('description' => __('Custom widget for Dokan stores', 'reign-dokan'))
+            __('Reign Dokan Widget', 'reign-dokan')
         );
     }
-    
+
     public function widget($args, $instance) {
-        // Get current vendor
-        $vendor_id = get_query_var('author');
-        
-        if (!dokan_is_store_page() || !$vendor_id) {
-            return;
-        }
-        
-        $vendor = dokan()->vendor->get($vendor_id);
-        
-        echo $args['before_widget'];
-        
-        if (!empty($instance['title'])) {
-            echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
-        }
-        
-        // Widget content
-        Reign_Dokan_Templates::get_template('widgets/custom-widget.php', array(
-            'vendor' => $vendor,
-            'instance' => $instance
-        ));
-        
-        echo $args['after_widget'];
-    }
-    
-    public function form($instance) {
-        // Widget admin form
-        $title = !empty($instance['title']) ? $instance['title'] : '';
-        ?>
-        <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>">
-                <?php esc_attr_e('Title:', 'reign-dokan'); ?>
-            </label>
-            <input class="widefat" 
-                   id="<?php echo esc_attr($this->get_field_id('title')); ?>" 
-                   name="<?php echo esc_attr($this->get_field_name('title')); ?>" 
-                   type="text" 
-                   value="<?php echo esc_attr($title); ?>">
-        </p>
-        <?php
+        // Widget output
     }
 }
 
@@ -318,482 +275,143 @@ add_action('widgets_init', function() {
 });
 ```
 
-## AJAX Implementation
+## Database Queries
 
-### AJAX Handler
-
+### Get Vendor Products
 ```php
-/**
- * AJAX functionality
- */
-class Reign_Dokan_Ajax {
-    
-    public function __construct() {
-        // Public AJAX
-        add_action('wp_ajax_nopriv_reign_dokan_filter', array($this, 'filter_stores'));
-        add_action('wp_ajax_reign_dokan_filter', array($this, 'filter_stores'));
-        
-        // Private AJAX
-        add_action('wp_ajax_reign_dokan_follow', array($this, 'follow_vendor'));
-    }
-    
-    /**
-     * Filter stores
-     */
-    public function filter_stores() {
-        // Verify nonce
-        if (!wp_verify_nonce($_POST['nonce'], 'reign_dokan_nonce')) {
-            wp_die('Security check failed');
-        }
-        
-        // Get filter parameters
-        $category = sanitize_text_field($_POST['category']);
-        $location = sanitize_text_field($_POST['location']);
-        $rating = intval($_POST['rating']);
-        
-        // Build query
-        $args = array(
-            'role' => 'seller',
-            'number' => 12,
-            'paged' => $_POST['page'] ?? 1
-        );
-        
-        // Add meta query
-        if ($category) {
-            $args['meta_query'][] = array(
-                'key' => 'store_category',
-                'value' => $category
-            );
-        }
-        
-        // Get vendors
-        $vendors = new WP_User_Query($args);
-        
-        // Build response
-        ob_start();
-        
-        if ($vendors->results) {
-            foreach ($vendors->results as $vendor) {
-                Reign_Dokan_Templates::get_template('store-card.php', array(
-                    'vendor' => $vendor
-                ));
-            }
-        } else {
-            echo '<p>' . __('No stores found', 'reign-dokan') . '</p>';
-        }
-        
-        $html = ob_get_clean();
-        
-        wp_send_json_success(array(
-            'html' => $html,
-            'found' => $vendors->total_users,
-            'max_pages' => ceil($vendors->total_users / 12)
-        ));
-    }
-}
+// Query vendor products
+$vendor_id = get_current_user_id();
+$args = array(
+    'post_type' => 'product',
+    'author' => $vendor_id,
+    'posts_per_page' => 10
+);
+$products = new WP_Query($args);
 ```
 
-### JavaScript Integration
-
-```javascript
-/**
- * AJAX JavaScript
- */
-(function($) {
-    'use strict';
-    
-    var ReignDokan = {
-        
-        init: function() {
-            this.bindEvents();
-        },
-        
-        bindEvents: function() {
-            $(document).on('click', '.reign-dokan-filter', this.filterStores);
-            $(document).on('click', '.reign-follow-vendor', this.followVendor);
-        },
-        
-        filterStores: function(e) {
-            e.preventDefault();
-            
-            var $button = $(this);
-            var data = {
-                action: 'reign_dokan_filter',
-                nonce: reign_dokan_vars.nonce,
-                category: $('#store-category').val(),
-                location: $('#store-location').val(),
-                rating: $('#store-rating').val()
-            };
-            
-            $button.addClass('loading');
-            
-            $.post(reign_dokan_vars.ajax_url, data, function(response) {
-                if (response.success) {
-                    $('.dokan-store-listing').html(response.data.html);
-                    
-                    // Update pagination
-                    if (response.data.max_pages > 1) {
-                        // Show pagination
-                    }
-                }
-                $button.removeClass('loading');
-            });
-        },
-        
-        followVendor: function(e) {
-            e.preventDefault();
-            
-            if (!reign_dokan_vars.is_logged_in) {
-                alert('Please login to follow vendors');
-                return;
-            }
-            
-            var $button = $(this);
-            var vendor_id = $button.data('vendor-id');
-            
-            $.post(reign_dokan_vars.ajax_url, {
-                action: 'reign_dokan_follow',
-                nonce: reign_dokan_vars.nonce,
-                vendor_id: vendor_id
-            }, function(response) {
-                if (response.success) {
-                    $button.toggleClass('following');
-                    $button.text(response.data.button_text);
-                }
-            });
-        }
-    };
-    
-    $(document).ready(function() {
-        ReignDokan.init();
-    });
-    
-})(jQuery);
-```
-
-## REST API Endpoints
-
-### Custom REST Routes
-
+### Get Featured Vendors
 ```php
-/**
- * Register REST API endpoints
- */
-add_action('rest_api_init', function() {
-    
-    // Get stores endpoint
-    register_rest_route('reign-dokan/v1', '/stores', array(
-        'methods' => 'GET',
-        'callback' => 'reign_dokan_get_stores',
-        'permission_callback' => '__return_true',
-        'args' => array(
-            'per_page' => array(
-                'default' => 10,
-                'sanitize_callback' => 'absint'
-            ),
-            'page' => array(
-                'default' => 1,
-                'sanitize_callback' => 'absint'
-            ),
-            'category' => array(
-                'sanitize_callback' => 'sanitize_text_field'
-            )
-        )
-    ));
-    
-    // Get store details
-    register_rest_route('reign-dokan/v1', '/store/(?P<id>\d+)', array(
-        'methods' => 'GET',
-        'callback' => 'reign_dokan_get_store',
-        'permission_callback' => '__return_true'
-    ));
-});
-
-/**
- * Get stores callback
- */
-function reign_dokan_get_stores($request) {
-    $args = array(
-        'role' => 'seller',
-        'number' => $request['per_page'],
-        'paged' => $request['page']
-    );
-    
-    if ($request['category']) {
-        $args['meta_query'] = array(
-            array(
-                'key' => 'store_category',
-                'value' => $request['category']
-            )
-        );
-    }
-    
-    $vendors = new WP_User_Query($args);
-    $stores = array();
-    
-    foreach ($vendors->results as $vendor) {
-        $store = dokan()->vendor->get($vendor->ID);
-        $stores[] = array(
-            'id' => $vendor->ID,
-            'name' => $store->get_shop_name(),
-            'url' => $store->get_shop_url(),
-            'logo' => $store->get_avatar(),
-            'banner' => $store->get_banner(),
-            'rating' => $store->get_rating(),
-            'products' => $store->get_product_count()
-        );
-    }
-    
-    return new WP_REST_Response($stores, 200);
-}
-```
-
-## Database Operations
-
-### Custom Tables
-
-```php
-/**
- * Create custom tables
- */
-function reign_dokan_create_tables() {
-    global $wpdb;
-    
-    $charset_collate = $wpdb->get_charset_collate();
-    
-    $sql = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}reign_dokan_follows (
-        id bigint(20) NOT NULL AUTO_INCREMENT,
-        user_id bigint(20) NOT NULL,
-        vendor_id bigint(20) NOT NULL,
-        followed_at datetime DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id),
-        KEY user_id (user_id),
-        KEY vendor_id (vendor_id),
-        UNIQUE KEY user_vendor (user_id, vendor_id)
-    ) $charset_collate;";
-    
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
-}
-
-// Run on activation
-register_activation_hook(__FILE__, 'reign_dokan_create_tables');
-```
-
-### Data Queries
-
-```php
-/**
- * Custom queries
- */
-class Reign_Dokan_Query {
-    
-    /**
-     * Get featured vendors
-     */
-    public static function get_featured_vendors($limit = 6) {
-        global $wpdb;
-        
-        $results = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT user_id 
-                FROM {$wpdb->usermeta} 
-                WHERE meta_key = 'dokan_feature_seller' 
-                AND meta_value = 'yes' 
-                LIMIT %d",
-                $limit
-            )
-        );
-        
-        $vendors = array();
-        foreach ($results as $result) {
-            $vendors[] = dokan()->vendor->get($result->user_id);
-        }
-        
-        return $vendors;
-    }
-    
-    /**
-     * Get top rated vendors
-     */
-    public static function get_top_rated_vendors($limit = 10) {
-        global $wpdb;
-        
-        $results = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT vendor_id, AVG(rating) as avg_rating 
-                FROM {$wpdb->prefix}dokan_vendor_balance 
-                GROUP BY vendor_id 
-                ORDER BY avg_rating DESC 
-                LIMIT %d",
-                $limit
-            )
-        );
-        
-        return $results;
-    }
-}
-```
-
-## Performance Optimization
-
-### Caching Implementation
-
-```php
-/**
- * Cache management
- */
-class Reign_Dokan_Cache {
-    
-    /**
-     * Get cached data
-     */
-    public static function get($key) {
-        return get_transient('reign_dokan_' . $key);
-    }
-    
-    /**
-     * Set cached data
-     */
-    public static function set($key, $data, $expiration = 3600) {
-        return set_transient('reign_dokan_' . $key, $data, $expiration);
-    }
-    
-    /**
-     * Delete cached data
-     */
-    public static function delete($key) {
-        return delete_transient('reign_dokan_' . $key);
-    }
-    
-    /**
-     * Clear all cache
-     */
-    public static function flush() {
-        global $wpdb;
-        
-        $wpdb->query(
-            "DELETE FROM {$wpdb->options} 
-            WHERE option_name LIKE '_transient_reign_dokan_%' 
-            OR option_name LIKE '_transient_timeout_reign_dokan_%'"
-        );
-    }
-}
-
-// Usage example
-$vendors = Reign_Dokan_Cache::get('featured_vendors');
-
-if (!$vendors) {
-    $vendors = Reign_Dokan_Query::get_featured_vendors();
-    Reign_Dokan_Cache::set('featured_vendors', $vendors, HOUR_IN_SECONDS);
-}
+// Query featured vendors
+$vendors = dokan_get_sellers(array(
+    'featured' => 'yes',
+    'number' => 6
+));
 ```
 
 ## Security Best Practices
 
 ### Nonce Verification
-
 ```php
-/**
- * Security checks
- */
-function reign_dokan_verify_request() {
-    // Check nonce
-    if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'reign_dokan_action')) {
-        wp_die(__('Security check failed', 'reign-dokan'));
-    }
-    
-    // Check capabilities
-    if (!current_user_can('edit_posts')) {
-        wp_die(__('Permission denied', 'reign-dokan'));
-    }
-    
-    // Sanitize input
-    $vendor_id = absint($_POST['vendor_id']);
-    $action = sanitize_text_field($_POST['action']);
-    
-    // Validate vendor
-    if (!dokan_is_user_seller($vendor_id)) {
-        wp_die(__('Invalid vendor', 'reign-dokan'));
-    }
+// Always verify nonces in Ajax/form handlers
+if (!wp_verify_nonce($_POST['nonce'], 'reign_dokan_nonce')) {
+    wp_die('Security check failed');
 }
 ```
 
-## Testing
-
-### Unit Tests
-
+### Data Sanitization
 ```php
-/**
- * PHPUnit test example
- */
-class Test_Reign_Dokan extends WP_UnitTestCase {
-    
-    public function setUp() {
-        parent::setUp();
-        
-        // Create test vendor
-        $this->vendor_id = $this->factory->user->create(array(
-            'role' => 'seller'
-        ));
-        
-        // Set vendor meta
-        update_user_meta($this->vendor_id, 'dokan_enable_selling', 'yes');
-    }
-    
-    public function test_vendor_creation() {
-        $vendor = dokan()->vendor->get($this->vendor_id);
-        
-        $this->assertInstanceOf('WeDevs\Dokan\Vendor\Vendor', $vendor);
-        $this->assertTrue($vendor->is_vendor());
-    }
-    
-    public function test_store_url() {
-        $vendor = dokan()->vendor->get($this->vendor_id);
-        $url = $vendor->get_shop_url();
-        
-        $this->assertContains('/store/', $url);
-    }
+// Sanitize user input
+$vendor_id = absint($_POST['vendor_id']);
+$search_term = sanitize_text_field($_POST['search']);
+$html_content = wp_kses_post($_POST['content']);
+```
+
+### Capability Checks
+```php
+// Check user permissions
+if (!current_user_can('dokan_view_store')) {
+    return;
+}
+```
+
+## Performance Optimization
+
+### Caching
+```php
+// Cache expensive queries
+$cache_key = 'reign_dokan_featured_vendors';
+$vendors = get_transient($cache_key);
+
+if (false === $vendors) {
+    $vendors = dokan_get_sellers(array('featured' => 'yes'));
+    set_transient($cache_key, $vendors, HOUR_IN_SECONDS);
+}
+```
+
+### Lazy Loading
+```php
+// Load resources only when needed
+if (is_dokan_store_page()) {
+    wp_enqueue_script('reign-dokan-store');
 }
 ```
 
 ## Debugging
 
-### Debug Logger
-
+### Enable Debug Mode
 ```php
-/**
- * Debug logging
- */
-class Reign_Dokan_Debug {
-    
-    public static function log($message, $type = 'info') {
-        if (!defined('REIGN_DOKAN_DEBUG') || !REIGN_DOKAN_DEBUG) {
-            return;
-        }
-        
-        $log_file = WP_CONTENT_DIR . '/debug-reign-dokan.log';
-        $timestamp = current_time('mysql');
-        
-        $entry = sprintf(
-            "[%s] [%s] %s\n",
-            $timestamp,
-            strtoupper($type),
-            $message
-        );
-        
-        error_log($entry, 3, $log_file);
-    }
-}
-
-// Usage
-Reign_Dokan_Debug::log('Vendor query executed', 'info');
-Reign_Dokan_Debug::log('Error loading template: ' . $template, 'error');
+// In wp-config.php
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false);
 ```
+
+### Debug Helpers
+```php
+// Log to debug file
+error_log('Reign Dokan: ' . print_r($data, true));
+
+// Conditional debugging
+if (defined('WP_DEBUG') && WP_DEBUG) {
+    var_dump($vendor_data);
+}
+```
+
+## Common Development Tasks
+
+### Add Custom Tab to Store
+```php
+add_filter('dokan_store_tabs', function($tabs) {
+    $tabs['custom_tab'] = array(
+        'title' => __('Custom Tab', 'reign-dokan'),
+        'url' => dokan_get_store_url() . 'custom-tab'
+    );
+    return $tabs;
+});
+```
+
+### Modify Store Query
+```php
+add_action('pre_get_posts', function($query) {
+    if (is_dokan_store_listing()) {
+        $query->set('orderby', 'registered');
+        $query->set('order', 'DESC');
+    }
+});
+```
+
+### Add Custom Fields
+```php
+// Add field to vendor settings
+add_action('dokan_store_profile_saved', function($store_id, $settings) {
+    update_user_meta($store_id, 'custom_field', $settings['custom_field']);
+}, 10, 2);
+```
+
+## License Management
+
+### File: `/edd-license/`
+- Uses EDD Software Licensing
+- License key: `wbcom_reign_dokan_addon_license_key`
+- Status: `wbcom_reign_dokan_addon_license_status`
 
 ## Resources
 
-- [Dokan Documentation](https://wedevs.com/docs/dokan/)
-- [WordPress Plugin Handbook](https://developer.wordpress.org/plugins/)
-- [Reign Theme Developer Docs](https://wbcomdesigns.com/docs/reign-theme/)
-- [Support Forum](https://wbcomdesigns.com/support/)
+- **Plugin Files**: `/wp-content/plugins/reign-dokan-addon/`
+- **Templates**: `/dokan/` directory
+- **Hooks Reference**: This guide
+- **Support**: WBcom Designs
+
+---
+
+*Developer guide verified against Reign Dokan Addon v3.5.4 source code*

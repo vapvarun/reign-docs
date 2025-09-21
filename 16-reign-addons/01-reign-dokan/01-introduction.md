@@ -2,170 +2,143 @@
 
 ## What is Reign Dokan Addon?
 
-Reign Dokan Addon is a premium extension that seamlessly integrates the Dokan multi-vendor marketplace plugin with the Reign WordPress theme, creating a beautiful and functional marketplace community platform.
+Reign Dokan Addon v3.5.4 is a premium WordPress plugin that integrates Dokan multivendor marketplace with the Reign theme, providing professional store layouts, custom shortcodes, and BuddyPress social features.
 
-## Key Benefits
+## Key Features (Verified)
 
-### For Marketplace Owners
-- **Professional Design**: Beautiful store layouts that match your theme
-- **Enhanced Vendor Management**: Advanced vendor controls and settings
-- **Improved User Experience**: Seamless navigation between marketplace and community
-- **Mobile Optimized**: Responsive designs for all devices
-- **BuddyPress Integration**: Combine marketplace with social features
+### Template Enhancements
+- Professional store page layouts
+- Enhanced store headers with layout controls
+- Custom vendor product displays
+- Mobile-optimized store templates
+- Template override system for customization
 
-### For Vendors
-- **Branded Store Pages**: Professional store fronts with customization options
-- **Social Integration**: Connect store with BuddyPress profile
-- **Enhanced Dashboard**: Improved vendor dashboard experience
-- **Marketing Tools**: Built-in promotional features
-- **Analytics**: Better insights into store performance
+### Custom Shortcodes
+- **[rda_dokan_vendors]** - Display vendor listings with layout options
+- **[rda_dokan_store_listing]** - Show searchable store listings with pagination
 
-### For Customers
-- **Better Discovery**: Enhanced store browsing and search
-- **Social Shopping**: Follow vendors and get updates
-- **Improved UX**: Seamless shopping experience
-- **Mobile Shopping**: Optimized for mobile commerce
-- **Trust Features**: Reviews, ratings, and social proof
+### BuddyPress Integration
+- Vendor store tabs in user profiles
+- Favorite products functionality
+- Activity stream integration for reviews
+- Social marketplace features
+
+### Configuration Options
+- Store header display controls
+- Vendor product showcase settings
+- "Sold by" vendor attribution
+- Layout width controls (fullwidth/contained)
+- Products per page settings
 
 ## Technical Specifications
 
 | Specification | Details |
 |--------------|----------|
 | **Version** | 3.5.4 |
-| **Plugin Size** | ~2.5 MB |
-| **PHP Version** | 7.4 or higher |
-| **WordPress** | 5.8 or higher |
-| **Dokan** | 3.0 or higher |
-| **Reign Theme** | 7.0 or higher |
-| **BuddyPress** | Optional but recommended |
+| **WordPress** | 4.0+ |
+| **Required Theme** | Reign Theme |
+| **Required Plugin** | Dokan + WooCommerce |
+| **Optional** | BuddyPress (for social features) |
 
-## Core Features Overview
-
-### 1. Store Listing Layouts
-- **Grid View**: Modern card-based layout
-- **List View**: Detailed information display
-- **Map View**: Geographic store locations (with addon)
-- **Featured Vendors**: Highlight top sellers
-
-### 2. Enhanced Store Pages
-- Custom store headers
-- Professional vendor branding
-- Product showcase sections
-- Store reviews and ratings
-- Social media integration
-
-### 3. BuddyPress Integration
-- Vendor profiles in community
-- Activity stream updates
-- Store follow system
-- Private messaging
-- Group marketplace features
-
-### 4. Widget Support
-- Store sidebar widgets
-- Vendor info widgets
-- Product filter widgets
-- Best seller widgets
-- Featured vendor widgets
-
-### 5. Customization Options
-- Color scheme matching
-- Layout controls
-- Typography settings
-- Custom CSS options
-- Hook system for developers
-
-## File Structure
+## Actual Plugin Structure
 
 ```
 reign-dokan-addon/
+├── admin/
+│   ├── class-reign-dokan-admin-settings.php
+│   └── reign-dokan-vertical-tabs-skeleton.php
 ├── assets/
 │   ├── css/
-│   │   ├── reign-dokan.css
-│   │   └── reign-dokan-rtl.css
+│   ├── images/
 │   └── js/
-│       └── reign-dokan.js
-├── inc/
-│   ├── class-reign-dokan-customizer.php
-│   ├── class-reign-dokan-functions.php
-│   └── class-reign-dokan-widgets.php
-├── templates/
-│   ├── store.php
+├── buddypress/
+│   ├── class-reign-dokan-buddypress-addon.php
+│   ├── class-reign-dokan-favourite-product-profile-tab.php
+│   └── reign-dokan-activity.php
+├── core/
+│   ├── class-reign-dokan-favourite-product.php
+│   ├── class-reign-dokan-single-product.php
+│   ├── class-reign-dokan-theme-hooks.php
+│   └── reign-dokan-functions.php
+├── dokan/                              # Template overrides
+│   ├── orders/
+│   ├── products/
+│   ├── review/
 │   ├── store-header.php
 │   ├── store-lists.php
 │   ├── store-lists-loop.php
+│   ├── store.php
 │   └── [other template files]
+├── edd-license/                        # License management
 ├── languages/
-├── reign-dokan-addon.php
+├── rda-shortcodes/
+│   └── class-reign-dokan-shortcodes.php
+├── rda-widgets/
+├── reign-dokan-addon.php              # Main plugin file
 └── readme.txt
 ```
 
 ## Requirements
 
-### Required Plugins
+### Essential Prerequisites
 1. **Reign Theme** (Active theme)
-2. **Dokan** (Free or Pro version)
+2. **Dokan Plugin** (Free or Pro)
 3. **WooCommerce** (Required by Dokan)
 
-### Recommended Plugins
-1. **BuddyPress** - For social features
-2. **Yoast SEO** - For marketplace SEO
-3. **WP Super Cache** - For performance
-4. **WPML** - For multi-language marketplace
+### Optional (For Enhanced Features)
+1. **BuddyPress** - Enables social marketplace features
+
+## What This Addon Provides
+
+### Verified Theme Settings
+- `reign_dokan_store_header_location` - Control store header display
+- `reign_dokan_store_header_layout` - Set header width (fullwidth/contained)
+- `reign_dokan_show_vendor_pros_on_pro_page` - Show vendor products on product pages
+- `reign_dokan_num_of_vendor_pros_on_pro_page` - Number of products to display
+- `reign_dokan_show_sold_by_in_pro_meta` - Display "Sold by" vendor info
+
+### Available Hooks & Filters
+- `reign_dokan_addon_loaded` - Plugin initialization
+- `dokan_get_template_part` - Template override system
+- `rda_dokan_seller_listing_args` - Customize vendor queries
+- `rda_dokan_store_list_args` - Modify store listing arguments
+
+### Template System
+Override any template by copying from plugin to theme:
+```
+Plugin: /wp-content/plugins/reign-dokan-addon/dokan/store.php
+Theme:  /wp-content/themes/your-theme/dokan/store.php
+```
 
 ## Use Cases
 
-### 1. Fashion Marketplace
-Create a trendy fashion marketplace where designers can sell their creations with beautiful store fronts.
+### Professional Marketplaces
+- Multi-vendor eCommerce stores
+- Digital product marketplaces
+- Service provider platforms
+- B2B wholesale platforms
 
-### 2. Digital Products Market
-Build a marketplace for digital goods like themes, plugins, graphics, and courses.
+### Community-Driven Commerce
+- Local business directories with BuddyPress
+- Social shopping experiences
+- Vendor community building
 
-### 3. Local Services Platform
-Connect local service providers with customers in your area.
+## Quick Start
 
-### 4. Handmade Crafts Community
-Create a community-driven marketplace for artisans and crafters.
-
-### 5. B2B Wholesale Platform
-Build a professional B2B marketplace with vendor management.
-
-## Getting Started
-
-### Quick Setup Steps
-1. Install and activate Reign Theme
-2. Install and configure WooCommerce
-3. Install and setup Dokan
-4. Install Reign Dokan Addon
-5. Configure addon settings
-6. Customize appearance
-7. Add vendors and products
-
-## Support and Resources
-
-### Documentation
-- User Guide (this documentation)
-- Developer Documentation
-- API Reference
-- Code Examples
-
-### Support Channels
-- **Email**: support@wbcomdesigns.com
-- **Support Forum**: wbcomdesigns.com/support
-- **Documentation**: docs.wbcomdesigns.com
-- **Video Tutorials**: Available in member area
-
-## License
-
-Reign Dokan Addon is licensed under GPL v2 or later. Purchase of a license key provides:
-- Access to updates
-- Premium support
-- Additional features
-- Developer resources
+1. Install Reign Theme + Dokan + WooCommerce
+2. Install and activate Reign Dokan Addon
+3. Configure settings at **Appearance → Customize → Dokan Settings**
+4. Add shortcodes to display vendors/stores
+5. Customize templates if needed
 
 ## Next Steps
 
-1. [Installation Guide](02-installation-setup.md) - Get started with installation
-2. [Configuration Guide](03-configuration.md) - Configure your marketplace
-3. [Store Customization](04-store-customization.md) - Customize vendor stores
-4. [Developer Guide](05-developer-guide.md) - Extend functionality
+- [Installation & Setup](02-installation-setup.md) - Detailed installation guide
+- [Configuration](03-configuration.md) - All available settings
+- [Store Customization](04-store-customization.md) - Template customization
+- [Developer Guide](05-developer-guide.md) - Hooks and filters
+- [Shortcodes Reference](07-shortcodes-reference.md) - Complete shortcode guide
+
+---
+
+*Introduction updated based on Reign Dokan Addon v3.5.4 source code verification*

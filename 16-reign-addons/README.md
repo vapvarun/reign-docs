@@ -1,13 +1,9 @@
-# Reign Premium Addons - Extend Your Platform's Power
+# Reign Theme Addons Documentation
 
-## 🚀 Transform Your Site with Reign Premium Addons
+## Marketplace Integration Addons
 
-Reign offers specialized addons that seamlessly integrate with popular plugins, providing enhanced functionality, beautiful designs, and revenue-generating features that would typically require months of custom development.
-
-## 💎 Available Premium Addons
-
-### 1. Reign Dokan Addon
-**Transform Dokan into a Premium Marketplace**
+### E-Commerce Addons
+1. **[Reign Dokan Addon](./01-reign-dokan/index.md)** - Dokan multivendor integration with 2 custom shortcodes
 
 **What It Adds:**
 - 6 professional vendor store layouts
