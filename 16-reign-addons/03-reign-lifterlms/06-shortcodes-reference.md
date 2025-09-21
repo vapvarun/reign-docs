@@ -1,59 +1,359 @@
-# Reign LifterLMS Addon - Shortcodes Reference
+# Reign LifterLMS Addon - Shortcodes Reference (Complete)
 
-## What You'll Learn
-This guide provides a complete reference for all shortcodes available in the Reign LifterLMS addon. Learn how to display courses, student progress, and learning content anywhere on your site!
+## Available Shortcodes (Comprehensive Analysis)
 
-## Quick Overview  
-**Usage Level:** Easy (just copy and paste!)  
-**Where to use:** Pages, posts, widgets, anywhere!  
-**Pro tip:** Test shortcodes on a draft page first
+Reign LifterLMS Addon v2.4.1 provides 2 advanced shortcodes with extensive functionality based on comprehensive source code analysis:
 
 ---
 
-## Essential Course Shortcodes
+## Course Display Shortcodes
 
-### 1. Course Catalog
+### [reign_lifterlms_courses]
 
-**Display all courses in a grid:**
-```
-[lifterlms_courses]
-```
+Advanced course display with grid layouts, category filtering, and slider functionality.
 
-**With parameters:**
+**Basic Usage:**
 ```
-[lifterlms_courses 
-    per_page="12" 
-    columns="3" 
-    orderby="date" 
-    order="DESC"
-    category="web-development"]
+[reign_lifterlms_courses]
 ```
 
-**Parameters explained:**
+**Complete Parameters (from source code analysis):**
 
-| Parameter | Options | Default | What It Does |
-|-----------|---------|---------|---------------|
-| `per_page` | Any number | 12 | Courses per page |
-| `columns` | 1, 2, 3, 4, 6 | 3 | Grid columns |
-| `orderby` | date, title, menu_order, rand | date | Sort method |
-| `order` | ASC, DESC | DESC | Sort direction |
-| `category` | Category slug | All | Filter by category |
-| `tag` | Tag slug | All | Filter by tag |
-| `difficulty` | beginner, intermediate, advanced | All | Filter by level |
-| `featured` | yes, no | no | Show only featured |
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `posts_per_page` | -1 | Any number | Number of courses to display (-1 for all) |
+| `per_row` | 3 | 1-6 | Number of columns in grid layout |
+| `enable_slider` | false | true, false | Enable slider/carousel functionality |
+| `id` | - | Comma-separated IDs | Specific course IDs to display |
+| `category` | - | Category slug | Filter by course category |
 
-**Examples:**
+**Advanced Examples:**
 
 ```
-// Show 6 newest courses in 2 columns
-[lifterlms_courses per_page="6" columns="2" orderby="date"]
+// Complete course catalog with grid layout
+[reign_lifterlms_courses posts_per_page="12" per_row="3"]
 
-// Beginner courses only
-[lifterlms_courses difficulty="beginner" per_page="8"]
+// Course slider for homepage
+[reign_lifterlms_courses posts_per_page="6" per_row="3" enable_slider="true"]
 
-// Featured courses for homepage
-[lifterlms_courses featured="yes" per_page="4"]
+// Specific category courses
+[reign_lifterlms_courses category="web-development" per_row="4" posts_per_page="8"]
+
+// Featured courses with specific IDs
+[reign_lifterlms_courses id="123,456,789" per_row="3"]
+
+// All courses in slider format
+[reign_lifterlms_courses posts_per_page="-1" per_row="4" enable_slider="true"]
 ```
+
+### [reign_lifterlms_instructors]
+
+Professional instructor display with social media integration and responsive layouts.
+
+**Basic Usage:**
+```
+[reign_lifterlms_instructors]
+```
+
+**Complete Parameters (from source code analysis):**
+
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `per_row` | 4 | 1-6 | Number of columns for instructor display |
+| `total` | - | Any number | Limit number of instructors shown |
+| `enable_slider` | false | true, false | Enable slider/carousel functionality |
+
+**Advanced Examples:**
+
+```
+// Instructor directory with 4 columns
+[reign_lifterlms_instructors per_row="4"]
+
+// Limited instructor showcase
+[reign_lifterlms_instructors per_row="3" total="6"]
+
+// Instructor slider for homepage
+[reign_lifterlms_instructors per_row="4" enable_slider="true"]
+
+// Compact instructor display
+[reign_lifterlms_instructors per_row="2" total="4"]
+```
+
+---
+
+## Advanced Features
+
+### Course Display Features
+When using `[reign_lifterlms_courses]`:
+- **Responsive Grid Layouts**: Automatic column adjustment for mobile
+- **Category Filtering**: Display courses from specific categories
+- **Slider Functionality**: Optional carousel with navigation controls
+- **Exclude Current Course**: Automatically excludes current course on single course pages
+- **Professional Styling**: Enhanced Reign theme integration
+
+### Instructor Display Features
+When using `[reign_lifterlms_instructors]`:
+- **Social Media Integration**: Displays instructor social profiles from Yoast SEO
+- **Contact Information**: Shows email, website, AIM, Yahoo IM, Jabber
+- **Professional Avatars**: Enhanced instructor profile images
+- **Course Relationship**: Shows courses taught by each instructor
+- **Responsive Design**: Mobile-optimized instructor cards
+
+---
+
+## Widget Integration
+
+The addon provides 7 custom widgets that complement the shortcodes:
+
+### Course-Related Widgets
+
+#### 1. Course Categories Widget
+Display course category listings in sidebars:
+- Hierarchical category display
+- Course count per category
+- Customizable styling
+
+#### 2. Course Difficulties Widget
+Show course difficulty levels:
+- Beginner, Intermediate, Advanced filtering
+- Visual difficulty indicators
+- Course count per level
+
+#### 3. Course Search Widget
+LifterLMS-specific search functionality:
+- Course title search
+- Category filtering integration
+- Advanced search options
+
+#### 4. Course Listing Widget
+Customizable course displays for sidebars:
+- Featured courses display
+- Recent courses listing
+- Category-specific courses
+
+#### 5. Course Overview Widget
+Single course information display:
+- Course details summary
+- Enrollment information
+- Progress indicators
+
+### Membership & Student Widgets
+
+#### 6. Membership Listing Widget
+Display membership plans:
+- Membership plan showcases
+- Pricing information
+- Feature comparisons
+
+#### 7. Enrolled Students Widget
+Student count and enrollment displays:
+- Total enrolled students
+- Recent enrollments
+- Student avatars/profiles
+
+---
+
+## BuddyPress Integration Features
+
+### Activity Stream Integration
+Automatic activity logging for:
+- **Course Enrollment**: When students enroll in courses
+- **Course Completion**: When courses are completed
+- **Lesson Completion**: Individual lesson progress
+- **Quiz Activities**: Quiz participation and results (pass/fail)
+- **Certificate Activities**: Certificate earning notifications
+- **Achievement Activities**: Badge and achievement unlocks
+
+### Profile Integration
+Enhanced BuddyPress profiles with:
+- **Courses Tab**: Dedicated learning section in user profiles
+- **Activity Preferences**: Individual control over activity notifications
+- **Progress Display**: Course progress visualization
+- **Social Learning**: Learning achievements in social profiles
+
+### Group Learning Features
+- **Course-Group Linking**: Connect courses with BuddyPress groups
+- **Auto-Enrollment**: Automatic group membership for course students
+- **Group Activities**: Course-specific activity feeds within groups
+- **Bulk Management**: Streamlined student enrollment processes
+
+---
+
+## Enhanced Dashboard Integration
+
+### Student Dashboard Enhancement
+The addon enhances the LifterLMS student dashboard with:
+
+#### Dashboard Navigation Styles
+- **Style 1**: Traditional dashboard with sidebar navigation
+- **Style 2**: Modern tabbed interface with horizontal navigation
+
+#### Dashboard Configuration Options
+- **Dashboard Title**: Customizable dashboard title text
+- **Items Per Row**: Configurable layout for courses, memberships, achievements
+- **Display Elements**: Toggle visibility of various dashboard components
+
+---
+
+## Template System Integration
+
+### Distraction-Free Learning Mode
+Optional distraction-free layout for lessons:
+- Removes site header and footer on lesson pages
+- Minimal navigation for focused learning
+- Clean, distraction-free interface
+- Mobile-optimized layout
+
+### Template Override System
+Available templates for customization:
+- Single course page templates
+- Single lesson/quiz/assignment templates
+- Course archive page templates
+- Membership archive templates
+- Student dashboard section templates
+
+**Override Location:**
+```
+/wp-content/themes/reign-child/lifterlms/
+```
+
+---
+
+## Advanced Usage Examples
+
+### Learning Platform Homepage
+```
+<!-- Hero Section - Featured Courses -->
+[reign_lifterlms_courses posts_per_page="8" per_row="4" enable_slider="true"]
+
+<!-- Instructor Showcase -->
+[reign_lifterlms_instructors per_row="4" total="8" enable_slider="true"]
+
+<!-- Recent Courses -->
+[reign_lifterlms_courses posts_per_page="6" per_row="3"]
+
+<!-- Category-Specific Courses -->
+[reign_lifterlms_courses category="web-development" posts_per_page="6" per_row="3"]
+```
+
+### Course Category Pages
+```
+<!-- Web Development Courses -->
+[reign_lifterlms_courses category="web-development" posts_per_page="12" per_row="3"]
+
+<!-- Design Courses -->
+[reign_lifterlms_courses category="design" posts_per_page="12" per_row="3"]
+
+<!-- Business Courses -->
+[reign_lifterlms_courses category="business" posts_per_page="12" per_row="3"]
+```
+
+### Instructor Directory Page
+```
+<!-- All Instructors in Grid -->
+[reign_lifterlms_instructors per_row="3"]
+
+<!-- Top Instructors Slider -->
+[reign_lifterlms_instructors per_row="4" total="12" enable_slider="true"]
+```
+
+### Landing Page with Slider
+```
+<!-- Course Spotlight Slider -->
+[reign_lifterlms_courses posts_per_page="8" per_row="3" enable_slider="true"]
+
+<!-- Meet Our Instructors -->
+[reign_lifterlms_instructors per_row="4" enable_slider="true"]
+```
+
+### Sidebar Course Display
+```
+<!-- Featured Courses Widget Alternative -->
+[reign_lifterlms_courses posts_per_page="3" per_row="1"]
+
+<!-- Recent Courses -->
+[reign_lifterlms_courses posts_per_page="5" per_row="1"]
+```
+
+---
+
+## Review System Integration
+
+### Enhanced Course Reviews
+The addon enhances LifterLMS reviews with:
+- **Interactive Star Ratings**: AJAX-powered rating submission
+- **Review Analytics**: Detailed rating breakdowns (1-5 star distribution)
+- **Average Rating Display**: Calculated average ratings with review counts
+- **Social Integration**: BuddyPress activity stream integration for reviews
+
+---
+
+## Performance Optimization
+
+### Best Practices
+```
+// Use reasonable course counts for better performance
+[reign_lifterlms_courses posts_per_page="12"]
+
+// Enable slider for better UX with many courses
+[reign_lifterlms_courses posts_per_page="6" enable_slider="true"]
+
+// Use category filtering to reduce queries
+[reign_lifterlms_courses category="featured" posts_per_page="8"]
+```
+
+### Mobile Optimization
+- Responsive grid layouts that adjust to screen size
+- Touch-friendly slider controls
+- Optimized loading for mobile devices
+- Progressive image loading for course thumbnails
+
+---
+
+## Troubleshooting
+
+### Shortcode Not Displaying
+1. Verify plugin is activated (v2.4.1+)
+2. Check LifterLMS is properly configured
+3. Ensure courses exist and are published
+4. Clear all caches (page, object, plugin)
+
+### BuddyPress Features Not Working
+1. Verify BuddyPress is active and configured
+2. Check BuddyPress components are enabled (Activity, Groups)
+3. Ensure users have appropriate permissions
+4. Test activity logging with different user roles
+
+### Layout Issues
+1. Check theme compatibility with grid layouts
+2. Verify CSS conflicts with existing styles
+3. Test with default WordPress theme
+4. Clear browser and theme caches
+
+### Slider Not Working
+1. Ensure `enable_slider="true"` is set correctly
+2. Check JavaScript conflicts with other plugins
+3. Verify jQuery is loaded properly
+4. Test with minimal plugin configuration
+
+---
+
+## LifterLMS Core Shortcodes
+
+These shortcodes come from LifterLMS plugin itself and are enhanced by Reign styling:
+
+### Core LifterLMS Shortcodes
+- `[lifterlms_courses]` - Basic course listing (LifterLMS core)
+- `[lifterlms_memberships]` - Membership plans (LifterLMS core)
+- `[lifterlms_my_account]` - Student dashboard (LifterLMS core)
+- `[lifterlms_course_syllabus]` - Course curriculum (LifterLMS core)
+- `[lifterlms_course_progress]` - Progress tracking (LifterLMS core)
+
+These receive enhanced Reign theme styling when the addon is active.
+
+---
+
+*Comprehensive shortcodes reference based on complete analysis of Reign LifterLMS Addon v2.4.1 source code*
 
 ---
 

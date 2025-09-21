@@ -1,34 +1,242 @@
-# Reign LifterLMS Addon - Configuration Guide
+# Reign LifterLMS Addon - Configuration Guide (Complete)
 
-## What You'll Learn
-This guide shows you how to configure every aspect of your LifterLMS with the Reign addon. We'll explain each setting in simple terms so you can create the perfect learning experience for your students.
+## Overview
 
-## Quick Overview
-**Time needed:** 60-90 minutes for complete configuration  
-**Difficulty:** Easy (mostly clicking options!)  
-**Result:** A fully configured learning management system
+The Reign LifterLMS Addon v2.4.1 provides extensive configuration options for learning management, BuddyPress integration, course display customization, and enhanced student dashboards. This guide covers all available settings and customization options.
 
----
+## Shortcode Configuration
 
-## Part 1: Core LifterLMS Settings
+### [reign_lifterlms_courses] Settings
 
-### Step 1: General LMS Configuration
-
-**Where to go:**
+**Basic Configuration:**
 ```
-WP Admin → LifterLMS → Settings → General
+[reign_lifterlms_courses posts_per_page="12" per_row="3"]
 ```
 
-**Essential settings:**
+**Complete Parameter Options:**
 
-| Setting | Recommended Value | Why |
-|---------|------------------|-----|
-| **Country** | Your country | Legal and currency |
-| **Currency** | Your local currency | Student payments |
-| **Currency Position** | Left ($100) | Standard format |
-| **Thousand Separator** | Comma (,) | Readability |
-| **Decimal Separator** | Period (.) | Standard format |
-| **Number of Decimals** | 2 | Precise pricing |
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `posts_per_page` | -1 | Any number | Number of courses to display (-1 for all) |
+| `per_row` | 3 | 1-6 | Number of columns in grid layout |
+| `enable_slider` | false | true, false | Enable slider/carousel functionality |
+| `id` | - | Comma-separated IDs | Specific course IDs to display |
+| `category` | - | Category slug | Filter by course category |
+
+### [reign_lifterlms_instructors] Settings
+
+**Basic Configuration:**
+```
+[reign_lifterlms_instructors per_row="4"]
+```
+
+**Complete Parameter Options:**
+
+| Parameter | Default | Options | Description |
+|-----------|---------|---------|-------------|
+| `per_row` | 4 | 1-6 | Number of columns for instructor display |
+| `total` | - | Any number | Limit number of instructors shown |
+| `enable_slider` | false | true, false | Enable slider/carousel functionality |
+
+## BuddyPress Integration Configuration
+
+### Activity Stream Integration
+
+**Activity Types Configuration:**
+- Course enrollment activities
+- Course completion activities
+- Lesson completion activities
+- Quiz participation (pass/fail) activities
+- Certificate earning activities
+- Achievement earning activities
+
+**Settings Location:**
+```
+Reign Settings → LifterLMS → BuddyPress Integration
+```
+
+### Profile Integration
+
+**Enable BuddyPress Features:**
+```
+Reign Settings → LifterLMS → BuddyPress Integration
+```
+
+**Profile Integration Settings:**
+- Courses tab in member profiles
+- Individual activity preferences
+- Course progress display in social profiles
+- Learning achievements in profiles
+
+### Group Learning Features
+
+**Course-Group Integration:**
+- Link courses to BuddyPress groups
+- Auto-enroll course students in linked groups
+- Group-specific activity feeds within groups
+- Bulk student management processes
+
+## Widget System Configuration
+
+### Available Widgets (7 Types)
+
+#### 1. Course Categories Widget
+
+**Configuration Options:**
+- Hierarchical category display
+- Course count per category
+- Customizable styling options
+
+**Widget Settings:**
+```
+Appearance → Widgets → Course Categories Widget
+Show Course Count: Yes
+Hide Empty Categories: No
+Order By: Name
+Display Style: List
+```
+
+#### 2. Course Difficulties Widget
+
+**Display Settings:**
+- Beginner, Intermediate, Advanced filtering
+- Visual difficulty indicators
+- Course count per level
+
+#### 3. Course Search Widget
+
+**Search Features:**
+- Course title search functionality
+- Category filtering integration
+- Advanced search options
+
+#### 4. Course Listing Widget
+
+**Display Options:**
+- Featured courses display
+- Recent courses listing
+- Category-specific courses
+- Customizable course counts
+
+#### 5. Course Overview Widget
+
+**Information Display:**
+- Course details summary
+- Enrollment information
+- Progress indicators
+
+#### 6. Membership Listing Widget
+
+**Membership Features:**
+- Membership plan showcases
+- Pricing information display
+- Feature comparisons
+
+#### 7. Enrolled Students Widget
+
+**Student Display:**
+- Total enrolled students
+- Recent enrollments
+- Student avatars/profiles
+
+## Dashboard Configuration
+
+### Student Dashboard Enhancement
+
+**Dashboard Navigation Styles:**
+- **Style 1**: Traditional dashboard with sidebar navigation
+- **Style 2**: Modern tabbed interface with horizontal navigation
+
+**Configuration Location:**
+```
+Reign Settings → LifterLMS → Dashboard Settings
+```
+
+### Dashboard Layout Options
+
+**Settings:**
+- Dashboard title customization
+- Items per row for different sections
+- Course archive layout (courses per row)
+- Membership archive layout (memberships per row)
+- Dashboard items per row configuration
+
+### Display Element Controls
+
+**Toggle Options:**
+- Hide/show instructor tab
+- Hide/show course author
+- Hide/show course date
+- Hide/show course meta
+- Hide/show course thumbnail
+
+## Template System Configuration
+
+### Distraction-Free Learning Mode
+
+**Enable Distraction-Free Layout:**
+```
+Reign Settings → LifterLMS → Enable Distraction-Free Layout
+```
+
+**Features:**
+- Removes site header and footer on lesson pages
+- Minimal navigation for focused learning
+- Clean, distraction-free interface
+- Mobile-optimized layout
+
+### Template Override System
+
+**Available Templates for Override:**
+- Single course page templates
+- Single lesson/quiz/assignment templates
+- Course archive page templates
+- Membership archive page templates
+- Student dashboard section templates
+
+**Override Location:**
+```
+/wp-content/themes/reign-child/lifterlms/
+```
+
+## Review System Configuration
+
+### Enhanced Course Reviews
+
+**Review Features:**
+- Interactive AJAX-powered star ratings
+- Detailed rating breakdowns (1-5 star distribution)
+- Average rating calculations with review counts
+- BuddyPress activity stream integration for reviews
+
+**Configuration:**
+```
+LifterLMS → Settings → Reviews
+Enable Course Reviews: Yes
+Review Moderation: Optional
+Guest Reviews: Admin Choice
+Review Analytics: Enabled
+```
+
+## Related Courses Configuration
+
+### Algorithm Settings
+
+**Relationship Factors:**
+- Category-based recommendations (primary)
+- Tag-based associations
+- Instructor relationships
+- Course difficulty level matching
+- User enrollment history
+
+**Display Configuration:**
+```
+Reign Settings → LifterLMS → Related Courses
+Number of Related Courses: 6
+Related Courses Title: "You might also like"
+Display Template: Grid
+Show on Course Pages: Yes
+```
 
 ### Step 2: Course Access Settings
 

@@ -1,33 +1,180 @@
-# Reign LifterLMS Addon - Course Customization Guide
+# Reign LifterLMS Addon - Course Customization (Complete)
 
-## What You'll Learn
-This guide shows you how to make your courses look stunning and provide an engaging learning experience. We'll customize layouts, colors, and features to match your brand and captivate your students.
+## Overview
 
-## Quick Overview
-**Time needed:** 45-60 minutes  
-**Difficulty:** Easy (visual customization)  
-**Tools needed:** WordPress Customizer
+The Reign LifterLMS Addon v2.4.1 provides extensive course customization options including advanced shortcode configurations, BuddyPress social learning features, custom widgets, enhanced dashboard layouts, and comprehensive template customization for creating professional learning experiences.
 
----
+## Course Display Customization
 
-## Part 1: Course Layout Options
+### Advanced Course Shortcode Configuration
 
-### Choose Your Course Display Style
+#### [reign_lifterlms_courses] Customization
 
-**Where to customize:**
+**Grid Layout Customization:**
 ```
-Appearance → Customize → Reign LifterLMS → Course Layout
+[reign_lifterlms_courses posts_per_page="12" per_row="3" enable_slider="false"]
 ```
 
-### Available Layout Styles
+**Course Display Parameters:**
 
-| Layout Style | What It Looks Like | Best For |
-|--------------|-------------------|----------|
-| **Grid View** | Cards in neat rows | Visual learners |
-| **List View** | Detailed rows | Professional training |
-| **Masonry** | Pinterest-style | Mixed content types |
-| **Featured** | Hero course + grid | Homepage highlights |
-| **Slider** | Rotating course cards | Limited space |
+| Parameter | Default | Options | Customization Purpose |
+|-----------|---------|---------|----------------------|
+| `posts_per_page` | -1 | Any number | Control course count for performance |
+| `per_row` | 3 | 1-6 | Responsive grid layout |
+| `enable_slider` | false | true, false | Slider vs static grid |
+| `id` | - | Comma-separated IDs | Feature specific courses |
+| `category` | - | Category slug | Category-specific displays |
+
+**Responsive Grid Examples:**
+```
+// Homepage hero courses with slider
+[reign_lifterlms_courses posts_per_page="6" per_row="3" enable_slider="true"]
+
+// Category page courses
+[reign_lifterlms_courses category="web-development" posts_per_page="12" per_row="4"]
+
+// Sidebar featured courses
+[reign_lifterlms_courses posts_per_page="3" per_row="1" id="123,456,789"]
+```
+
+#### [reign_lifterlms_instructors] Customization
+
+**Instructor Display Options:**
+```
+[reign_lifterlms_instructors per_row="4" enable_slider="true"]
+```
+
+**Instructor Layout Parameters:**
+
+| Parameter | Default | Options | Customization Purpose |
+|-----------|---------|---------|----------------------|
+| `per_row` | 4 | 1-6 | Instructor grid columns |
+| `total` | - | Any number | Limit instructor count |
+| `enable_slider` | false | true, false | Carousel functionality |
+
+**Social Media Integration:**
+- Displays instructor social profiles from Yoast SEO
+- Shows contact information (email, website, AIM, Yahoo IM, Jabber)
+- Professional instructor avatars with course relationships
+
+### Course Category Display Customization
+
+**Enhanced Category Layouts:**
+```
+// Category grid display
+[reign_lifterlms_courses category="design" per_row="3" posts_per_page="9"]
+
+// Multiple category showcase
+[reign_lifterlms_courses category="web-development,design,business" per_row="2"]
+```
+
+## BuddyPress Social Learning Customization
+
+### Activity Stream Customization
+
+**Learning Activity Integration:**
+- Course enrollment activities
+- Course completion achievements
+- Lesson completion tracking
+- Quiz participation results (pass/fail)
+- Certificate earning notifications
+- Achievement badge unlocks
+
+**Activity Display Configuration:**
+```
+Reign Settings → LifterLMS → BuddyPress Integration
+Enable Course Activities: Yes
+Show Progress in Activities: Yes
+Activity Privacy: Public/Friends/Private
+```
+
+### Profile Integration Customization
+
+**Courses Tab Enhancement:**
+- Dedicated "Courses" tab in BuddyPress member profiles
+- Individual activity preferences control
+- Course progress visualization in social profiles
+- Learning achievements display
+
+**Profile Display Options:**
+```
+// Profile courses with progress
+[reign_lifterlms_courses enrolled="yes" show_progress="yes" per_row="2"]
+
+// Profile instructor courses
+[reign_lifterlms_courses instructor="current_user" per_row="3"]
+```
+
+### Group Learning Features
+
+**Course-Group Integration:**
+- Link courses to BuddyPress groups
+- Auto-enroll course students in linked groups
+- Group-specific activity feeds within groups
+- Bulk student management processes
+
+## Widget System Customization
+
+### Course Widgets Configuration (7 Available)
+
+#### 1. Course Categories Widget
+```
+Appearance → Widgets → Course Categories Widget
+Display Style: Hierarchical List
+Show Course Count: Yes
+Hide Empty Categories: No
+Order By: Name/Count
+```
+
+#### 2. Course Difficulties Widget
+```
+Appearance → Widgets → Course Difficulties Widget
+Show Difficulty Levels: Beginner, Intermediate, Advanced
+Visual Indicators: Progress bars/Icons
+Course Count per Level: Yes
+```
+
+#### 3. Course Search Widget
+```
+Appearance → Widgets → Course Search Widget
+Search Functionality: Course titles
+Category Integration: Yes
+Advanced Options: Instructor search, tag search
+```
+
+#### 4. Course Listing Widget
+```
+Appearance → Widgets → Course Listing Widget
+Display Type: Featured/Recent/Popular
+Course Count: 5
+Layout: Grid/List
+Show Thumbnails: Yes
+```
+
+#### 5. Course Overview Widget
+```
+Appearance → Widgets → Course Overview Widget
+Display Elements: Course details, enrollment info
+Progress Indicators: Yes (for enrolled students)
+Call-to-Action: Enrollment button
+```
+
+#### 6. Membership Listing Widget
+```
+Appearance → Widgets → Membership Listing Widget
+Membership Plans: Showcase pricing
+Feature Comparison: Yes
+Highlight Popular: Yes
+```
+
+#### 7. Enrolled Students Widget
+```
+Appearance → Widgets → Enrolled Students Widget
+Student Count: Total enrolled
+Recent Enrollments: Show recent
+Student Avatars: Yes
+Privacy Controls: Respect user preferences
+```
 
 ### Course Card Layouts
 

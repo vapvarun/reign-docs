@@ -1,20 +1,22 @@
-# Reign LifterLMS Addon - Installation & Setup Guide
+# Reign LifterLMS Addon - Installation & Setup (Complete)
 
-## What You'll Learn
-This guide will walk you through installing and setting up the Reign LifterLMS addon to create a beautiful, engaging learning management system. We'll make it simple - no technical knowledge required!
+## Overview
 
-## Before You Start - Essential Checklist ✅
+This guide provides comprehensive installation and setup instructions for Reign LifterLMS Addon v2.4.1, including advanced shortcode configuration, BuddyPress integration, widget setup, and dashboard customization.
 
-**You must have these installed first:**
-1. ✅ WordPress (version 5.0 or higher)
+## Prerequisites
+
+**Required Components:**
+1. ✅ WordPress 5.8+
 2. ✅ Reign Theme (latest version)
-3. ✅ LifterLMS plugin (free or premium)
-4. ✅ BuddyPress (optional but recommended)
+3. ✅ LifterLMS plugin (latest version)
+4. ✅ Reign LifterLMS Addon license
 
-**Also helpful to have:**
-- Your WBcom purchase receipt
-- About 25-30 minutes of time
-- A sample course idea ready
+**Optional Components:**
+- BuddyPress (for social learning features)
+- WooCommerce (for LifterLMS WooCommerce extension)
+
+## Installation Process
 
 ---
 
