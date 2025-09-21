@@ -398,6 +398,247 @@ wp option get reign_dokan_settings --format=json > dokan-settings.json
 wp option update reign_dokan_settings --format=json < dokan-settings.json
 ```
 
+## Complete Reign Dokan Settings
+
+### Main Settings Location
+
+**Access all Reign Dokan settings:**
+```
+WP Admin > Reign Settings > Dokan
+```
+
+### Store Header Configuration
+
+**Set Store Header Location:**
+- Above store banner
+- Below store banner
+- Inside banner overlay
+- Custom position via hook
+
+### Product Search in Header
+
+**Enable product search:**
+```php
+// Add to header
+add_action('reign_header_icons_group', 'reign_dokan_product_search');
+```
+
+### BuddyPress Features
+
+#### Show Products on Vendor BP Profile
+
+**Enable setting:**
+```
+Reign Settings > Dokan > Show product on Registered Vendor's BP Profile
+```
+
+Adds products tab to vendor's BuddyPress profile.
+
+#### BP Activity on Product Creation
+
+**Enable activity:**
+```
+Reign Settings > Dokan > Create Product Activity
+```
+
+Features:
+- Posts activity when vendor publishes product
+- Shows product image and price
+- Links to product page
+
+#### BP Activity on Product Review
+
+**Enable review activity:**
+```
+Reign Settings > Dokan > Add Review Activity
+```
+
+Creates activity when customers review products.
+
+### Favorite Products Feature
+
+#### Mark Products as Favorite
+
+**Enable favorites:**
+```
+Reign Settings > Dokan > Mark Products as Favourite
+```
+
+Features:
+- Heart icon on products
+- Favorites tab in BP profile
+- Activity stream integration
+- Customizable tab settings
+
+**Configuration options:**
+```php
+function reign_dokan_favorite_settings() {
+    return array(
+        'tab_label' => 'My Favorites',
+        'tab_slug' => 'favorites',
+        'tab_position' => 30,
+        'show_count' => true,
+        'activity_enabled' => true
+    );
+}
+```
+
+### Product Page Settings
+
+**Configure product pages:**
+```
+Reign Settings > Dokan > Product Page Settings
+```
+
+Options:
+- Vendor info position
+- More products section
+- Store location display
+- Contact vendor button
+
+### Withdraw Options
+
+**Configure withdrawals:**
+```
+Dokan > Settings > Withdraw
+```
+
+| Method | Min Amount | Schedule | Auto |
+|--------|-----------|----------|------|
+| PayPal | $50 | Weekly | Yes |
+| Bank | $100 | Monthly | No |
+| Stripe | $25 | Instant | Yes |
+
+### Store Page Appearance
+
+**Set store header template:**
+```
+Dokan > Settings > Appearance
+```
+
+Options:
+- Default (banner + info)
+- Compact (minimal)
+- Extended (with tabs)
+- Custom template
+
+**Vendor Setup Wizard Logo:**
+- Size: 270px × 90px
+- Falls back to site title
+
+### Widget Configuration
+
+#### How to Set Widgets
+
+**Add vendor widgets:**
+```
+Appearance > Widgets > Dokan Store Sidebar
+```
+
+**Available Reign widgets:**
+- Reign: Vendors (4 layouts)
+- Reign: Store Info
+- Reign: Top Products
+- Reign: Store Categories
+
+#### Widget Layouts
+
+1. **Layout 1:** Grid with overlay
+2. **Layout 2:** List with details
+3. **Layout 3:** Carousel slider
+4. **Layout 4:** Compact cards
+
+### Elementor Integration
+
+#### Single Store with Elementor
+
+1. Enable Dokan Elementor module
+2. Templates > Add New > Single Store
+3. Use Dokan Elementor widgets
+4. Customize and publish
+
+#### Reign Vendor Listing Widget
+
+**Setup Elementor widget:**
+- Drag Reign Vendor widget
+- Configure display options
+- Set responsive columns
+- Apply Elementor styling
+
+### StoreMate Compatibility
+
+#### Available Shortcodes
+
+```
+[rda_dokan_vendors
+    count="6"
+    per_row="3"
+    show_featured_only="1"
+    layout="layout-type-1"]
+
+[rda_dokan_store_listing
+    per_page="10"
+    featured="yes"
+    selected_vendors="1,2,3"]
+```
+
+#### StoreMate Filters
+
+```php
+// Customize store listing
+add_filter('rda_dokan_store_listing_per_page', function($num) {
+    return 20;
+});
+
+// Override templates
+add_filter('reign_dokan_locate_template', function($template, $name) {
+    // Custom template logic
+    return $template;
+}, 10, 2);
+```
+
+### Single Cart Icon
+
+**Configure unified cart:**
+```
+Reign Settings > Dokan > Single Cart Icon
+```
+
+Features:
+- Combine vendor carts
+- Show total items
+- Mini cart preview
+- Vendor grouping
+
+### Template Overrides
+
+**Templates overridden by addon:**
+- `store-listing.php`
+- `store-header.php`
+- `store-sidebar.php`
+- `vendor-products.php`
+- `store-toc.php`
+
+**Override location:**
+```
+/themes/reign-child/dokan/
+```
+
+### System Requirements
+
+**Minimum:**
+- WordPress 5.0+
+- Reign Theme (latest)
+- Dokan Lite 3.0+
+- WooCommerce 4.0+
+- PHP 7.2+
+- Memory: 256MB
+
+**Recommended:**
+- PHP 8.0+
+- Memory: 512MB
+- MySQL 5.7+
+
 ## Troubleshooting Configuration
 
 ### Debug Mode

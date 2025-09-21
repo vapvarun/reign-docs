@@ -588,6 +588,428 @@ Video: External hosting (Vimeo/Wistia)
 
 ---
 
+## Complete Reign LifterLMS Settings
+
+### Main Settings Location
+
+**Access all Reign LifterLMS settings:**
+```
+WP Admin → Reign Settings → LifterLMS
+```
+
+### License Configuration
+
+#### Add License
+
+**Activate your license:**
+```
+Reign Settings → License → LifterLMS Addon
+```
+
+License activation required for:
+- Automatic updates
+- Bug fixes
+- Security patches
+- WordPress compatibility
+- Premium support access
+
+#### Upgrade License
+
+**Available upgrades:**
+- Single site → 5 sites
+- 5 sites → Unlimited
+- Annual → Lifetime
+
+### General Settings
+
+#### General Setting Options
+
+**Configure core options:**
+```
+Reign Settings → LifterLMS → General Settings
+```
+
+Key settings:
+- Course catalog display
+- Student dashboard
+- Progress tracking
+- Certificate display
+- Achievement badges
+
+#### Account Settings
+
+**Configure user accounts:**
+```
+LifterLMS → Settings → Accounts
+```
+
+Options:
+- Registration fields
+- Login redirect
+- Dashboard tabs
+- Privacy settings
+- Data export
+
+### Course Configuration
+
+#### Global Course Settings
+
+**Set course defaults:**
+```
+Reign Settings → LifterLMS → Global Course Settings
+```
+
+Settings:
+- Course progression
+- Lesson dripping
+- Video autoplay
+- Course reviews
+- Social sharing
+
+#### Course Archive Page
+
+**Style course listing:**
+```
+Reign Settings → LifterLMS → Course Archive Page
+```
+
+Layout options:
+- Grid/List view
+- Columns (2, 3, 4)
+- Items per page
+- Sort options
+- Filter display
+
+#### Single Course Page
+
+**Style individual course pages:**
+```
+Reign Settings → LifterLMS → Single Course Page
+```
+
+Customizations:
+- Layout style
+- Sidebar position
+- Syllabus display
+- Instructor info
+- Reviews section
+
+#### Course Builder
+
+**Advanced course creation:**
+```
+LifterLMS → Course Builder
+```
+
+Features:
+- Drag-drop interface
+- Section organization
+- Lesson ordering
+- Quiz placement
+- Prerequisite setup
+
+#### How to Add New Course
+
+**Create a course:**
+1. Go to LifterLMS → Courses
+2. Click "Add New Course"
+3. Enter title and description
+4. Use Course Builder
+5. Add sections and lessons
+6. Configure access settings
+7. Publish course
+
+#### Reorder Lessons or Sections
+
+**How to reorganize content:**
+1. Open Course Builder
+2. Drag sections to reorder
+3. Drag lessons within sections
+4. Use arrows for fine control
+5. Save changes
+
+### Related Courses
+
+#### How Admin Can Set Related Courses
+
+**Configure course relationships:**
+```
+Reign Settings → LifterLMS → Related Courses
+```
+
+Options:
+- Auto-suggest by category
+- Manual selection
+- Based on tags
+- By instructor
+- Skill progression
+
+### Membership Configuration
+
+#### Membership Settings
+
+**Configure memberships:**
+```
+LifterLMS → Settings → Memberships
+```
+
+Settings:
+- Membership levels
+- Access restrictions
+- Payment plans
+- Trial periods
+- Expiration rules
+
+#### Style Membership Listing Page
+
+**Customize membership display:**
+```
+Reign Settings → LifterLMS → Membership Listing
+```
+
+Options:
+- Pricing tables
+- Feature comparison
+- Highlight popular
+- Custom badges
+- Call-to-action buttons
+
+#### Style Single Membership Page
+
+**Individual membership pages:**
+```
+Reign Settings → LifterLMS → Single Membership
+```
+
+Customizations:
+- Layout template
+- Course list display
+- Pricing display
+- Benefits section
+- FAQs
+
+### Checkout & Payment
+
+#### Checkout Page Settings
+
+**Configure checkout:**
+```
+LifterLMS → Settings → Checkout
+```
+
+Options:
+- Field requirements
+- Payment gateways
+- Coupon codes
+- Terms acceptance
+- Order confirmation
+
+### Engagement Features
+
+#### Engagements Settings
+
+**Set up automations:**
+```
+LifterLMS → Settings → Engagements
+```
+
+Engagement types:
+- Certificates
+- Achievements
+- Email triggers
+- Course tracks
+- Automation rules
+
+#### Create a Certificate
+
+**How to create certificates:**
+1. Go to LifterLMS → Certificates
+2. Click "Add New"
+3. Design certificate template
+4. Add merge codes
+5. Set award conditions
+6. Assign to courses
+
+#### Create an Achievement
+
+**How to create achievements:**
+1. Go to LifterLMS → Achievements
+2. Click "Add New"
+3. Design badge
+4. Set criteria
+5. Configure points
+6. Assign to activities
+
+### Quiz Configuration
+
+#### Quiz Review System
+
+**Access quiz reviews:**
+```
+LifterLMS → Reporting → Quizzes
+```
+
+Features:
+- Student attempts
+- Answer review
+- Grade adjustments
+- Feedback provision
+- Statistics
+
+### Notifications
+
+#### Notification Settings
+
+**Configure notifications:**
+```
+LifterLMS → Settings → Notifications
+```
+
+Notification types:
+- Enrollment confirmations
+- Course completions
+- Quiz results
+- Certificate awards
+- Payment receipts
+
+### Integration Settings
+
+#### Integration Setting
+
+**Third-party integrations:**
+```
+LifterLMS → Settings → Integrations
+```
+
+Available integrations:
+- Payment gateways
+- Email services
+- CRM systems
+- Analytics tools
+- Marketing platforms
+
+#### LifterLMS BuddyPress Integration
+
+**Enable BP features:**
+```
+Reign Settings → LifterLMS → BuddyPress Integration
+```
+
+Features:
+- Course tab in profiles
+- Achievement display
+- Social learning
+- Group courses
+- Activity stream
+
+### Widgets & Shortcodes
+
+#### LifterLMS Extra Widgets
+
+**How to set widgets:**
+```
+Appearance → Widgets → LifterLMS Sidebar
+```
+
+Available widgets:
+- Course progress
+- Course syllabus
+- Student dashboard
+- Course instructors
+- Pricing table
+
+#### Reign LifterLMS Shortcodes
+
+**Available shortcodes:**
+
+```
+[reign_lifterlms_courses
+    number="6"
+    columns="3"
+    category=""]
+
+[reign_lifterlms_memberships
+    number="3"
+    columns="3"]
+
+[reign_lifterlms_my_courses]
+
+[reign_lifterlms_instructors]
+```
+
+### Customizer Settings
+
+#### How Customizer Settings Work
+
+**For courses, lessons, and topics:**
+```
+Appearance → Customize → Reign LifterLMS
+```
+
+Customizable elements:
+- Colors and fonts
+- Layout options
+- Progress bar styles
+- Button designs
+- Mobile settings
+
+### Template Overrides
+
+#### Which Template Files are Overridden
+
+**Templates modified by addon:**
+- `course-list.php`
+- `single-course.php`
+- `lesson.php`
+- `membership-list.php`
+- `checkout.php`
+- `myaccount.php`
+
+**Override location:**
+```
+/themes/reign-child/lifterlms/
+```
+
+### System Requirements
+
+**Minimum requirements:**
+- WordPress 5.0+
+- Reign Theme (latest)
+- LifterLMS 4.0+
+- PHP 7.2+
+- Memory: 256MB
+
+**Recommended:**
+- PHP 8.0+
+- Memory: 512MB
+- MySQL 5.7+
+- SSL Certificate
+
+### Additional Features
+
+#### Plugin Installation
+
+**How to install:**
+1. Upload plugin ZIP
+2. Activate plugin
+3. Enter license key
+4. Configure settings
+5. Import sample courses (optional)
+
+#### Filters for Learnmate LifterLMS
+
+**Available filters:**
+```php
+// Customize course grid
+apply_filters('learnmate_course_grid_columns', 3);
+
+// Modify course meta
+apply_filters('learnmate_course_meta_display', $meta);
+
+// Custom enrollment text
+apply_filters('learnmate_enrollment_text', $text);
+```
+
 ## Advanced Configuration
 
 ### Custom Fields

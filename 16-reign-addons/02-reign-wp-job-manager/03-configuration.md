@@ -427,9 +427,419 @@ if (REIGN_JOB_DEBUG) {
 }
 ```
 
+## Complete Reign WP Job Manager Settings
+
+### Main Settings Location
+
+**Access all Reign WP Job Manager settings:**
+```
+WP Admin > Reign Settings > WP Job Manager
+```
+
+### License Configuration
+
+#### Add License
+
+**Activate your license key:**
+```
+Reign Settings > License > WP Job Manager Addon
+```
+
+License activation is required for:
+- Future updates of Reign WP Job Manager Addon
+- Latest bug fixes and security patches
+- WordPress compatibility updates
+- Premium support access
+- Access to JobMate theme features
+
+#### Upgrade License
+
+**License upgrade options:**
+- Single site → 5 sites
+- 5 sites → Unlimited sites
+- Annual → Lifetime
+
+### System Requirements
+
+**Minimum requirements:**
+- WordPress 5.0+
+- Reign Theme (latest version)
+- WP Job Manager Plugin (free or paid)
+- PHP 7.2+
+- Memory: 256MB
+
+**Recommended:**
+- PHP 8.0+
+- Memory: 512MB
+- MySQL 5.7+
+- SSL Certificate for applications
+
+### Map Settings Configuration
+
+**Configure job location maps:**
+```
+Reign Settings > WP Job Manager > Map Settings
+```
+
+**Map Features:**
+- Google Maps API integration
+- OpenStreetMap support
+- Radius search functionality
+- Cluster markers for multiple jobs
+- Custom map styles
+- Geolocation support
+
+```php
+// Map configuration example
+'reign_job_map_config' => array(
+    'provider' => 'google', // or 'openstreetmap'
+    'api_key' => 'YOUR_API_KEY',
+    'enable_clusters' => true,
+    'default_radius' => 25, // miles
+    'auto_locate' => true
+)
+```
+
+### Resume Archive Page Customization
+
+**Configure resume listings:**
+```
+Reign Settings > WP Job Manager > Resume Settings
+```
+
+**Resume Display Options:**
+- Grid layout (2, 3, 4 columns)
+- List layout with details
+- Card-based design
+- Candidate information display
+- Skills and experience highlight
+- Download resume option
+
+```php
+// Resume archive settings
+'reign_resume_archive' => array(
+    'layout' => 'grid',
+    'columns' => 3,
+    'show_photo' => true,
+    'show_skills' => true,
+    'show_experience' => true,
+    'enable_download' => false
+)
+```
+
+### Job and Resume Layout Settings
+
+#### Job Listing Layout
+
+**Customize job listing appearance:**
+```
+Reign Settings > WP Job Manager > Job Listing Layout
+```
+
+Layout options:
+- **Classic** - Traditional job board style
+- **Modern** - Card-based with hover effects
+- **Minimal** - Clean, text-focused design
+- **Map View** - Split screen with map
+
+#### Single Job Layout
+
+**Single job page configuration:**
+```
+Reign Settings > WP Job Manager > Single Job Layout
+```
+
+Features:
+- Header style (banner/compact)
+- Sidebar position
+- Related jobs display
+- Application method
+- Social sharing buttons
+
+#### Resume Listing Layout
+
+**Configure resume displays:**
+```
+Reign Settings > WP Job Manager > Resume Listing Layout
+```
+
+Options:
+- Display format (grid/list)
+- Information shown
+- Contact details visibility
+- Download permissions
+
+#### Single Resume Layout
+
+**Single resume page setup:**
+```
+Reign Settings > WP Job Manager > Single Resume Layout
+```
+
+Configuration:
+- Layout style
+- Contact form integration
+- Skills visualization
+- Experience timeline
+- Portfolio section
+
+### Sidebars and Widget Areas
+
+**Available widget areas:**
+```
+Appearance > Widgets
+```
+
+**Reign WP Job Manager Sidebars:**
+- **Job Listing Sidebar** - Shows on job archive
+- **Single Job Sidebar** - Shows on job pages
+- **Resume Sidebar** - Shows on resume pages
+- **Company Sidebar** - Shows on company profiles
+- **Dashboard Sidebar** - Shows in user dashboard
+
+**Available Widgets:**
+- Reign: Job Search
+- Reign: Featured Jobs
+- Reign: Recent Jobs
+- Reign: Job Categories
+- Reign: Job Types
+- Reign: Company List
+- Reign: Resume Search
+- Reign: Job Stats
+
+### JobMate Theme Integration
+
+#### Getting Started With JobMate
+
+**JobMate is a specialized job board theme that extends Reign:**
+```
+Reign Settings > JobMate Options
+```
+
+JobMate Features:
+- Pre-built job board layouts
+- Advanced search functionality
+- Employer dashboard
+- Candidate dashboard
+- Application tracking
+- Job alerts system
+
+#### JobMate Installation
+
+**Install JobMate child theme:**
+1. Download JobMate from your account
+2. Install as WordPress theme
+3. Activate JobMate child theme
+4. Import demo content
+5. Configure JobMate settings
+
+#### Installing Demo Content
+
+**Import JobMate demo data:**
+```
+Reign Settings > Demo Import > JobMate
+```
+
+Demo includes:
+- Sample job listings
+- Company profiles
+- Resume examples
+- Page templates
+- Widget configurations
+- Menu structures
+
+### Search Filter Configuration
+
+**Advanced search setup:**
+```
+Reign Settings > WP Job Manager > Search Filters
+```
+
+**Filter Options:**
+```php
+'reign_job_search_filters' => array(
+    'keywords' => array(
+        'enabled' => true,
+        'autocomplete' => true
+    ),
+    'location' => array(
+        'enabled' => true,
+        'radius_search' => true,
+        'geolocation' => true
+    ),
+    'category' => array(
+        'enabled' => true,
+        'hierarchical' => true,
+        'multiple' => true
+    ),
+    'job_type' => array(
+        'enabled' => true,
+        'checkboxes' => true
+    ),
+    'salary' => array(
+        'enabled' => true,
+        'range_slider' => true
+    ),
+    'date_posted' => array(
+        'enabled' => true,
+        'options' => array('24h', '3days', '7days', '30days')
+    )
+)
+```
+
+### Shortcode Extensions
+
+**Enhanced shortcode options:**
+```
+Reign Settings > WP Job Manager > Shortcodes
+```
+
+Additional parameters:
+- `layout="modern"` - Use Reign layouts
+- `columns="3"` - Grid columns
+- `featured_first="true"` - Prioritize featured
+- `show_filters="true"` - Display filters
+- `ajax_loading="true"` - AJAX pagination
+
+### API Reference Integration
+
+**Developer API access:**
+```php
+// Get Reign Job Manager instance
+$reign_jobs = Reign_WP_Job_Manager::get_instance();
+
+// Custom job query
+$jobs = $reign_jobs->get_jobs(array(
+    'posts_per_page' => 10,
+    'featured' => true,
+    'location' => 'New York'
+));
+
+// Add custom job fields
+add_filter('reign_job_fields', function($fields) {
+    $fields['custom_field'] = array(
+        'label' => 'Custom Field',
+        'type' => 'text'
+    );
+    return $fields;
+});
+```
+
+### Hook Usage Guide
+
+**Available hooks:**
+```php
+// Before job listing
+do_action('reign_before_job_listing');
+
+// After job listing
+do_action('reign_after_job_listing');
+
+// Job card customization
+add_action('reign_job_card_footer', function($job_id) {
+    // Add custom content
+});
+
+// Filter job query
+add_filter('reign_job_query_args', function($args) {
+    // Modify query
+    return $args;
+});
+```
+
+### Features Overview
+
+**Complete feature list:**
+- Modern job board layouts
+- Advanced search and filtering
+- Google Maps integration
+- Resume management
+- Company profiles
+- Application tracking
+- Email notifications
+- BuddyPress integration
+- Ajax-powered interactions
+- Mobile responsive design
+- SEO optimized
+- Translation ready
+- RTL support
+- Multisite compatible
+
+### Developer FAQ
+
+**Common developer questions:**
+
+Q: How to override templates?
+A: Copy templates from `/plugins/reign-wp-job-manager/templates/` to `/themes/reign-child/reign-job-manager/`
+
+Q: How to add custom job fields?
+A: Use the `job_manager_job_listing_data_fields` filter
+
+Q: How to modify job queries?
+A: Use the `reign_job_query_args` filter
+
+Q: How to customize email templates?
+A: Override templates in theme or use filters
+
+### Frequently Asked Questions - End Users
+
+**Common user questions:**
+
+Q: How do I post a job?
+A: Go to Dashboard > Post a Job, fill the form and submit
+
+Q: Can candidates apply without registration?
+A: Yes, if enabled in settings
+
+Q: How to feature a job listing?
+A: Select "Feature this listing" when posting or edit existing job
+
+Q: Can I import jobs from Indeed/LinkedIn?
+A: Yes, using compatible import plugins
+
+### Additional Features
+
+#### BuddyPress Job Manager Integration
+
+**Enhanced BuddyPress features:**
+- Jobs tab in user profiles
+- Job activity in streams
+- Private messaging for applications
+- Group job boards
+- Member job recommendations
+
+#### Notification System
+
+**Job notification settings:**
+```php
+'reign_job_notifications' => array(
+    'new_application' => true,
+    'job_approved' => true,
+    'job_expired' => true,
+    'resume_submitted' => true,
+    'daily_job_alerts' => true
+)
+```
+
+#### Backend Configuration
+
+**Admin panel setup:**
+```
+WP Admin > Jobs > Settings
+```
+
+Configure:
+- Submission settings
+- Listing duration
+- Moderation rules
+- Application methods
+- Email notifications
+- Payment integration
+
 ## Next Steps
 
 - [Job Listing Customization](04-job-listing-customization.md) - Customize job displays
 - [Developer Guide](05-developer-guide.md) - Advanced development
 - [Shortcode Reference](06-shortcodes-reference.md) - Available shortcodes
 - [Troubleshooting](07-troubleshooting.md) - Common issues
+- [FAQ](08-faq.md) - Frequently asked questions

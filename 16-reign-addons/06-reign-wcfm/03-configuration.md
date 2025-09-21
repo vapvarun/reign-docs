@@ -477,6 +477,175 @@ if (REIGN_WCFM_DEBUG) {
 }
 ```
 
+## Complete Reign WCFM Settings
+
+### Main Settings Location
+
+**Access all Reign WCFM settings:**
+```
+WP Admin > Reign Settings > WCFM
+```
+
+### License Configuration
+
+#### Add License
+
+**Activate your license key:**
+```
+Reign Settings > License > WCFM Addon
+```
+
+License activation is required for:
+- Future updates of Reign WCFM Addon
+- Latest bug fixes
+- Security patches
+- WordPress compatibility updates
+- Premium support access
+
+#### Upgrade License
+
+**License upgrade options:**
+- Single site → 5 sites
+- 5 sites → Unlimited sites
+- Annual → Lifetime
+
+### Store Layouts Configuration
+
+**Configure store layout options:**
+```
+Reign Settings > WCFM > Store Layouts
+```
+
+Available layouts:
+- **Grid Layout** - Modern card-based design
+- **List Layout** - Detailed information view
+- **Map Layout** - Location-based display
+- **Mixed Layout** - Combination view
+
+### Setup Header with Product Search
+
+**Enable product search in header:**
+```
+Reign Settings > WCFM > Setup Header with Product Search
+```
+
+Features:
+- Ajax-powered search
+- Category filter dropdown
+- Vendor filter option
+- Search suggestions
+- Mobile-optimized
+
+```php
+// Add to header
+add_action('reign_header_icons_group', 'reign_wcfm_product_search');
+```
+
+### BuddyPress Activity Features
+
+#### BP Activity on Product Creation
+
+**Enable product creation activities:**
+```
+Reign Settings > WCFM > Create Product Activity
+```
+
+When enabled:
+- Activity posted when vendor publishes product
+- Shows product image and price
+- Links to product page
+- Can be liked/commented
+
+#### BP Activity on Product Review
+
+**Enable review activities:**
+```
+Reign Settings > WCFM > Add Review Activity
+```
+
+Features:
+- Activity when customer reviews product
+- Shows rating stars
+- Displays review excerpt
+- Links to full review
+
+### Widget Configuration
+
+#### How to Set Widgets in Reign WCFM Addon
+
+**Add WCFM widgets:**
+```
+Appearance > Widgets > WCFM Store Sidebar
+```
+
+**Available Reign WCFM Widgets:**
+- **Reign: Vendor List** - Display vendors
+- **Reign: Store Info** - Vendor information
+- **Reign: Top Products** - Best sellers
+- **Reign: Store Categories** - Categories
+- **Reign: Store Location** - Map widget
+
+**Widget Layouts:**
+1. Modern card design
+2. Classic list view
+3. Carousel slider
+4. Minimal design
+
+### System Requirements
+
+**Minimum requirements:**
+- WordPress 5.0+
+- Reign Theme (latest)
+- WCFM Free or Ultimate
+- WooCommerce 4.0+
+- PHP 7.2+
+- Memory: 256MB
+
+**Recommended:**
+- PHP 8.0+
+- Memory: 512MB
+- MySQL 5.7+
+- SSL Certificate
+
+### Additional Features
+
+#### Frontend WCFM Tabs
+
+Available vendor dashboard tabs:
+- Dashboard (overview)
+- Products (management)
+- Orders (processing)
+- Coupons (discounts)
+- Reports (analytics)
+- Withdrawal (payments)
+- Settings (store config)
+
+#### BuddyPress WCFM Backend Settings
+
+**Configure integration:**
+```
+BuddyPress > Settings > WCFM Integration
+```
+
+Options:
+- Show vendor tab in profiles
+- Display store products
+- Enable vendor messaging
+- Activity stream integration
+
+#### PeepSo WCFM Integration (Optional)
+
+**If using PeepSo:**
+```
+PeepSo > Configuration > WCFM
+```
+
+Features:
+- Vendor profiles
+- Activity generation
+- Product showcase
+- Social features
+
 ## Next Steps
 
 - [Store Customization](04-store-customization.md) - Customize vendor stores

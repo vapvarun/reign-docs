@@ -541,6 +541,399 @@ Security: Protected
 
 ---
 
+## Complete Reign LearnDash Settings
+
+### Main Settings Location
+
+**Access all Reign LearnDash settings:**
+```
+WP Admin → Reign Settings → LearnDash
+```
+
+### License Configuration
+
+#### Add License
+
+**Activate your license:**
+```
+Reign Settings → License → LearnDash Addon
+```
+
+License activation required for:
+- Future updates
+- Bug fixes
+- Security patches
+- WordPress compatibility
+- Premium support
+
+#### Upgrade License
+
+**Available upgrades:**
+- Single site → 5 sites
+- 5 sites → Unlimited
+- Annual → Lifetime
+
+### General Settings
+
+**Configure general options:**
+```
+Reign Settings → LearnDash → General Settings
+```
+
+Key settings:
+- Enable course grid
+- Show progress bars
+- Display certificates
+- Course catalog layout
+- Student dashboard settings
+
+### Course Display Settings
+
+#### Course Archive Page
+
+**Configure course listing:**
+```
+Reign Settings → LearnDash → Course Archive Page
+```
+
+Options:
+- Grid/List layout
+- Columns (2, 3, 4)
+- Items per page
+- Sort order
+- Filter display
+
+#### Enable/Disable Filters on Course Archive
+
+**Control filter visibility:**
+```
+Reign Settings → LearnDash → Course Archive Filters
+```
+
+Available filters:
+- Category filter
+- Price filter
+- Difficulty level
+- Duration filter
+- Instructor filter
+
+### Single Course Configuration
+
+#### Single Course Layout Customization
+
+**Manage course page layout:**
+```
+Reign Settings → LearnDash → Single Course Layout
+```
+
+Layout options:
+- **Layout 1:** Sidebar right
+- **Layout 2:** Sidebar left
+- **Layout 3:** Full width
+- **Layout 4:** Tabbed view
+
+#### Multiple Layouts for Single Course Page
+
+**How to manage multiple layouts:**
+1. Go to course edit page
+2. Select layout from metabox
+3. Override global settings
+4. Preview changes
+5. Publish course
+
+#### Hide Course Content Tab
+
+**Remove content tab from single course:**
+```php
+// Add to functions.php
+add_filter('reign_learndash_course_tabs', function($tabs) {
+    unset($tabs['content']);
+    return $tabs;
+});
+```
+
+#### Display Custom Course Features
+
+**Show custom features on single course:**
+```
+Reign Settings → LearnDash → Course Features
+```
+
+Features to display:
+- Course duration
+- Skill level
+- Language
+- Certificate
+- Prerequisites
+- Course materials
+
+### Course Reviews
+
+#### Enable/Disable Course Review Display
+
+**Control review visibility:**
+```
+Reign Settings → LearnDash → Course Reviews
+```
+
+Options:
+- Enable reviews
+- Show rating stars
+- Review count
+- Review form position
+- Moderation required
+
+#### Prevent Guest Users from Submitting Reviews
+
+**Restrict reviews to enrolled students:**
+```
+Reign Settings → LearnDash → Review Restrictions
+```
+
+Settings:
+- Require enrollment
+- Require course completion
+- One review per student
+- Edit own reviews only
+
+### Lesson & Topic Settings
+
+#### Single Lesson Layout Customization
+
+**Configure lesson pages:**
+```
+Reign Settings → LearnDash → Single Lesson Layout
+```
+
+Options:
+- Video position
+- Navigation style
+- Progress indicator
+- Materials section
+
+#### Single Topic Layout Customization
+
+**Configure topic pages:**
+```
+Reign Settings → LearnDash → Single Topic Layout
+```
+
+Customizations:
+- Content width
+- Sidebar widgets
+- Navigation arrows
+- Timer display
+
+### Related Courses
+
+#### Manage Related Courses
+
+**Set up course relationships:**
+```
+Reign Settings → LearnDash → Related Courses
+```
+
+Options:
+- Auto-suggest related
+- Manual selection
+- Category-based
+- Tag-based
+- Instructor-based
+
+#### Related Course Settings
+
+**Configure display:**
+```php
+// Related courses configuration
+'related_courses' => array(
+    'enabled' => true,
+    'number' => 3,
+    'columns' => 3,
+    'position' => 'after_content'
+)
+```
+
+### BuddyPress Integration
+
+#### LearnDash BuddyPress Integration
+
+**Enable BP features:**
+```
+Reign Settings → LearnDash → BuddyPress Integration
+```
+
+Features:
+- Course tab in profiles
+- Achievement display
+- Progress sharing
+- Study groups
+- Course discussions
+
+#### Redirect to Instructor's BP Profile
+
+**Enable instructor profile links:**
+```
+Reign Settings → LearnDash → Instructor Profile Redirect
+```
+
+When enabled:
+- Instructor name links to BP profile
+- Shows instructor courses
+- Displays achievements
+- Social features enabled
+
+### Group Features
+
+#### LearnDash Group Settings
+
+**Configure group features:**
+```
+Reign Settings → LearnDash → Group Settings
+```
+
+Options:
+- Group courses
+- Group leaders
+- Group enrollment
+- Group reports
+
+#### Group Archive Page
+
+**Configure group listing:**
+```
+Reign Settings → LearnDash → Group Archive Page
+```
+
+Settings:
+- Layout style
+- Groups per page
+- Sort order
+- Filter options
+
+#### Single Group Layouts
+
+**Customize group pages:**
+```
+Reign Settings → LearnDash → Single Group Layouts
+```
+
+Layout options:
+- **Layout 1:** Classic
+- **Layout 2:** Modern
+- **Layout 3:** Minimal
+- **Layout 4:** Extended
+
+#### Custom Group Features
+
+**Additional group features:**
+- Group forums
+- Group assignments
+- Group certificates
+- Group leaderboards
+- Private messaging
+
+### Course & Group Sync
+
+#### LearnDash Course Sync
+
+**Sync courses with BuddyPress groups:**
+```
+Reign Settings → LearnDash → Course Sync
+```
+
+Sync options:
+- Auto-create groups
+- Sync enrollments
+- Sync instructors
+- Sync discussions
+
+#### LearnDash Group Sync
+
+**Sync LearnDash groups:**
+```
+Reign Settings → LearnDash → Group Sync
+```
+
+Features:
+- BP group integration
+- Member sync
+- Activity stream
+- Group courses
+
+### Shortcodes
+
+#### Modern Courses Shortcode
+
+**Display courses with modern layout:**
+```
+[reign_learndash_courses
+    number="6"
+    columns="3"
+    orderby="date"
+    order="DESC"
+    category=""
+    show="all"]
+```
+
+Parameters:
+- `number` - Courses to display
+- `columns` - Grid columns
+- `orderby` - Sort field
+- `order` - Sort direction
+- `category` - Filter by category
+- `show` - all/enrolled/not-enrolled
+
+#### Modern Groups Shortcode
+
+**Display groups with modern layout:**
+```
+[reign_learndash_groups
+    number="6"
+    columns="3"
+    show_progress="yes"
+    show_users="yes"]
+```
+
+Parameters:
+- `number` - Groups to display
+- `columns` - Grid columns
+- `show_progress` - Progress bar
+- `show_users` - User count
+
+### System Requirements
+
+**Minimum requirements:**
+- WordPress 5.0+
+- Reign Theme (latest)
+- LearnDash LMS 3.0+
+- PHP 7.2+
+- Memory: 256MB
+
+**Recommended:**
+- PHP 8.0+
+- Memory: 512MB
+- MySQL 5.7+
+- SSL Certificate
+
+### Additional Features
+
+#### Installation
+
+**How to install Reign LearnDash Addon:**
+1. Upload plugin ZIP file
+2. Activate plugin
+3. Enter license key
+4. Configure settings
+5. Start creating courses
+
+#### Plugin Requirements
+
+**Does it require any other plugin?**
+- Yes, requires LearnDash LMS
+- Optional: BuddyPress for social features
+- Optional: WooCommerce for payments
+- Optional: bbPress for forums
+
 ## Testing Your Configuration
 
 ### Essential Tests Before Launch

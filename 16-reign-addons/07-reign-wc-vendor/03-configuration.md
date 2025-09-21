@@ -593,6 +593,258 @@ Location: Radius-based
 
 ---
 
+## Complete Reign WC Vendors Settings
+
+### Main Settings Location
+
+**Access all Reign WC Vendors settings:**
+```
+WP Admin > Reign Settings > WC Vendors
+```
+
+### License Configuration
+
+#### Add License
+
+**Activate your license:**
+```
+Reign Settings > License > WC Vendors Addon
+```
+
+License activation required for:
+- Automatic updates
+- Security patches
+- Premium support
+- New features
+- Compatibility updates
+
+#### Upgrade License
+
+**Available upgrades:**
+- Single site → 5 sites
+- 5 sites → Unlimited
+- Annual → Lifetime
+
+### BuddyPress Integration
+
+#### Configure BuddyPress Integration
+
+**Enable BP features:**
+```
+Reign Settings > WC Vendors > BuddyPress Integration
+```
+
+Features:
+- Vendor tab in BP profiles
+- Product listings in profile
+- Store information display
+- Activity stream integration
+- Social vendor features
+
+#### BP Activity on Product Creation
+
+**Enable product activities:**
+```
+Reign Settings > WC Vendors > Create Product Activity
+```
+
+When enabled:
+- Activity posted when vendor adds product
+- Shows product image and price
+- Links to product page
+- Appears in activity stream
+
+#### Product Review Activity
+
+**Enable review activities:**
+```
+Reign Settings > WC Vendors > Product Review Activity
+```
+
+Features:
+- Activity when customer reviews
+- Shows rating stars
+- Review excerpt displayed
+- Links to full review
+
+### Page Mapping
+
+#### How to Map WC Vendors Pages
+
+**Configure vendor pages:**
+```
+WC Vendors > Settings > General > Page Setup
+```
+
+Pages to map:
+- **Vendor Dashboard** - Main vendor panel
+- **Shop Settings** - Store configuration
+- **Orders Page** - Order management
+- **Vendors List** - All vendors page
+- **Terms Page** - Vendor agreement
+
+### Store Settings Management
+
+#### How to Manage Store Settings for Vendors
+
+**Configure what vendors can control:**
+```
+WC Vendors > Settings > Capabilities
+```
+
+Store settings vendors can manage:
+- Store name and description
+- Store banner and logo
+- Social media links
+- Store policies
+- Vacation mode
+- SEO settings
+
+### Widget Configuration
+
+#### Setup Reign WC Vendors Widget
+
+**Add vendor widgets:**
+```
+Appearance > Widgets > WC Vendors Sidebar
+```
+
+**Available widgets:**
+- **Reign: Vendor List** - Display vendors
+- **Shop Owner Widget** - Store owner info
+- **Vendors Profile Widget** - Vendor details
+- **Seller List** - Featured sellers
+
+#### Vendor List Widget
+
+**Configuration options:**
+- Layout style (grid/list)
+- Number of vendors
+- Sort order
+- Show featured only
+- Enable pagination
+
+#### Shop Owner Widget
+
+**Display options:**
+- Owner avatar
+- Store name
+- Contact button
+- Social links
+- Store rating
+
+#### Vendors Profile Widget
+
+**Profile elements:**
+- Vendor bio
+- Location
+- Member since
+- Total products
+- Average rating
+
+### Shortcode Configuration
+
+#### Seller List Shortcode
+
+**Display vendor list:**
+```
+[wcv_vendorlist
+    per_page="12"
+    columns="3"
+    orderby="registered"
+    order="DESC"
+    show_products="yes"]
+```
+
+Parameters:
+- `per_page` - Vendors per page
+- `columns` - Grid columns
+- `orderby` - Sort field
+- `order` - Sort direction
+- `show_products` - Display products
+
+### Store Layout Configuration
+
+#### Store Listing Layout
+
+**Configure vendor list page:**
+```
+Reign Settings > WC Vendors > Store Listing Layout
+```
+
+Layout options:
+- **Grid View** - Card-based layout
+- **List View** - Detailed information
+- **Map View** - Location-based
+- **Mixed View** - Combination
+
+#### Single Store Page UI
+
+**Customize vendor store pages:**
+```
+Reign Settings > WC Vendors > Single Store Page UI
+```
+
+Customization options:
+- Header style
+- Banner position
+- Product layout
+- Sidebar widgets
+- Contact form
+- Store tabs
+
+### Template Overrides
+
+#### Which Template Files are Overridden
+
+**Templates modified by addon:**
+- `dashboard.php` - Vendor dashboard
+- `store-header.php` - Store header
+- `vendor-list.php` - Vendor listing
+- `vendor-sold-by.php` - Vendor info
+- `orders.php` - Order management
+
+**Override location:**
+```
+/themes/reign-child/wc-vendors/
+```
+
+### PeepSo Integration (Optional)
+
+#### Integration with PeepSo
+
+**If using PeepSo:**
+```
+PeepSo > Configuration > WC Vendors
+```
+
+Features:
+- Vendor profiles in PeepSo
+- Activity stream integration
+- Social vendor features
+- Product showcases
+
+### Additional Features
+
+#### Vendor Capabilities
+
+Manage what vendors can do:
+- Add/edit products
+- View orders
+- Manage coupons
+- Upload files
+- Set shipping rates
+- Export data
+
+#### Commission Reports
+
+Available reports:
+- Sales by vendor
+- Commission earned
+- Top selling products
+- Vendor performance
+- Payout history
+
 ## Quick Settings Reference
 
 ### Most Important Settings Locations
