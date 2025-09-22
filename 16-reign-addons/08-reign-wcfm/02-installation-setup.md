@@ -114,7 +114,7 @@ If BuddyPress is active:
 ### Common Issues
 
 #### Plugin Not Activating
-1. Verify all required plugins are active
+1. Verify all recommended plugins are active
 2. Check Reign theme is activated
 3. Ensure sufficient server resources
 

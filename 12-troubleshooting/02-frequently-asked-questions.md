@@ -4,7 +4,7 @@
 
 ### What is Reign Theme?
 
-**Answer:** Reign is a premium WordPress theme specifically designed for creating online communities, social networks, and marketplaces. It's fully compatible with BuddyPress, BuddyBoss Platform, WooCommerce, and includes 7+ demos and extensive customization options.
+**Answer:** Reign is a premium WordPress theme specifically designed for creating online communities, social networks, and marketplaces. It's fully compatible with BuddyPress, BuddyBoss Platform, WooCommerce, and includes demo content and extensive customization options.
 
 ### Where do I purchase Reign Theme?
 
@@ -15,7 +15,7 @@
 **Answer:**
 - Reign Theme files
 - Child theme
-- 7+ demo content
+- Demo content (via Wbcom Demo Installer plugin)
 - Lifetime updates
 - 6 months support (extendable to 12 months)
 - Documentation access
@@ -61,11 +61,12 @@ Common reasons:
 ### How do I import demo content?
 
 **Answer:**
-1. Install required plugins: `Appearance → Install Plugins`
-2. Go to `Reign Settings → Demo Import`
-3. Choose your demo
-4. Click "Import"
-5. Wait for completion (5-10 minutes)
+1. Install recommended plugins: `Appearance → Install Plugins`
+2. Install and activate the Wbcom Demo Installer plugin
+3. Go to `Reign Settings → Demo Import`
+4. Choose your demo
+5. Click "Import"
+6. Wait for completion (5-10 minutes)
 
 ### Why did demo import fail?
 
@@ -73,7 +74,7 @@ Common reasons:
 Common causes:
 - PHP timeout (increase max_execution_time)
 - Memory limit (increase to 256MB)
-- Missing required plugins
+- Missing recommended plugins
 - Server blocking external requests
 
 ## Customization Questions
@@ -82,7 +83,7 @@ Common causes:
 
 **Answer:**
 1. `Customizer → Header → Header Layout`
-2. Choose from 4 layouts (V1-V4)
+2. Choose from 4 header layouts (V1-V4)
 3. Configure settings for each layout
 4. Preview and publish
 

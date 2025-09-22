@@ -43,7 +43,7 @@ This guide helps you solve common issues with the Reign Sensei addon quickly and
    Your version: Admin → Dashboard → At a Glance
    ```
 
-2. **Verify required plugins are installed:**
+2. **Verify recommended plugins are installed:**
    ```
    Required:
    - Sensei LMS (free or premium)
