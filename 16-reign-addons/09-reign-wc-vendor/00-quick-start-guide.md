@@ -1,4 +1,4 @@
-# Reign WC Vendors Addon - Quick Start Guide
+# 🚀 Launch Your Profitable Marketplace in 25 Minutes - Quick Start Guide
 
 ## What This Addon Provides
 
