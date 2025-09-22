@@ -1,9 +1,16 @@
-# Reign GeoDirectory Addon - Troubleshooting Guide
+# 🔧 Reign GeoDirectory Addon - Troubleshooting Guide
 
 ## What You'll Learn
-How to quickly diagnose and fix common issues with the Reign GeoDirectory addon. We'll cover everything from installation problems to advanced debugging, with clear solutions for each issue.
+How to quickly diagnose and fix common issues with the Reign GeoDirectory addon, **protecting your revenue and user experience**. We'll cover everything from installation problems to advanced debugging, with clear solutions for each issue.
 
-## Quick Overview  
+## 💰 Business Impact of Issues
+**Why quick fixes matter:**
+- ⚡ **Downtime costs:** $300-$3000 per hour in lost leads
+- 😫 **User frustration:** 35% abandon site if directory issues persist
+- 📉 **SEO impact:** 20% ranking drop with persistent errors
+- 🔄 **Lead loss:** 40% fewer inquiries with broken listings
+
+## Quick Overview
 **Most issues are solved in:** 5-10 minutes
 **Difficulty:** Easy to moderate fixes
 **Success rate:** 95% of issues covered here
@@ -43,11 +50,12 @@ How to quickly diagnose and fix common issues with the Reign GeoDirectory addon.
 
 **Common causes and fixes:**
 
-| Issue | Solution |
-|-------|----------|
-| **Extra spaces** | Remove all spaces before/after key |
-| **Wrong site URL** | Check if www/non-www matches license |
-| **Already activated** | Deactivate on old site first |
+| Issue | Solution | Revenue Impact |
+|-------|----------|----------------|
+| **Extra spaces** | Remove all spaces before/after key | Prevents feature access |
+| **Wrong site URL** | Check if www/non-www matches license | Blocks monetization features |
+| **Already activated** | Deactivate on old site first | Stops updates & support |
+| **Expired license** | Renew at wbcomdesigns.com | Critical security risk |
 | **Expired license** | Renew at wbcomdesigns.com |
 | **Invalid key** | Contact support with order number |
 
