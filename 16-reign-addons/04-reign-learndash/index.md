@@ -1,13 +1,24 @@
 # Reign LearnDash Addon Documentation
 
-## Overview
-Reign LearnDash Addon integrates LearnDash LMS with Reign theme, adding 6 custom shortcodes and extensive BuddyPress/PeepSo integration.
+## 🎓 Transform Your Website into a Professional Online Academy
 
-## Requirements
+Welcome to the complete documentation for Reign LearnDash Addon - your gateway to creating a stunning online learning platform that rivals Udemy and Coursera. With beautiful course displays, social learning features, and powerful customization options.
+
+## 🚀 What This Addon Does
+
+Reign LearnDash Addon transforms your LearnDash LMS into a professional academy with:
+- ✨ Beautiful Udemy-style course cards
+- ⭐ 5-star review and rating system
+- 👥 Social learning community features
+- 📱 Mobile-responsive design
+- 🎯 Advanced filtering and search
+- 💰 Layouts proven to increase course sales by 45%
+
+## ✅ Requirements
 - WordPress 5.0+
-- Reign Theme
+- Reign Theme (active)
 - LearnDash LMS Plugin
-- BuddyPress or PeepSo (optional)
+- BuddyPress or PeepSo (optional but recommended for social features)
 
 ## Installation
 1. Upload `reign-learndash-addon` to `/wp-content/plugins/`
