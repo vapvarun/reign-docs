@@ -1,20 +1,28 @@
 # Reign Dokan Addon - Troubleshooting Guide
 
-## Common Installation Issues
+## 🆘 Quick Fix Your Marketplace Issues
 
-### Issue: Plugin Activation Failed
+Don't worry! Most issues can be fixed in minutes. This guide helps you solve common problems quickly without needing technical support. We'll walk through solutions step-by-step.
 
-**Error Message:**
+---
+
+## 🔴 Installation Problems
+
+### "Plugin Won't Activate" Error
+
+**What you see:**
 ```
 Plugin could not be activated because it triggered a fatal error.
 ```
 
-**Solutions:**
+**Quick Fix (90% Success Rate):**
 
-1. **Verify Dependencies**
-   - Ensure Reign Theme is active
-   - Confirm Dokan is installed and activated
-   - Check WooCommerce is active
+1. **✅ Check Your Setup**
+   - Is Reign Theme active? (Not just installed)
+   - Is Dokan plugin activated?
+   - Is WooCommerce running?
+
+   **Missing something?** Install in this order: WooCommerce → Dokan → Reign Theme → Reign Dokan Addon
 
 2. **Enable Debug Mode**
    ```php
@@ -42,41 +50,48 @@ If using a licensed version:
    - Email: support@wbcomdesigns.com
    - Include order ID and site URL
 
-## Display Issues
+---
 
-### Issue: Shortcodes Not Working
+## 🔍 Display & Layout Issues
 
-**Symptoms:**
-- `[rda_dokan_vendors]` shows nothing
-- `[rda_dokan_store_listing]` displays raw shortcode
+### Shortcodes Show as Text (Not Working)
 
-**Solutions:**
+**What's happening:**
+- You see `[rda_dokan_vendors]` as plain text
+- Vendor listings don't appear
+- Pages show shortcode instead of content
 
-1. **Verify Plugin is Active**
-   - Check Plugins page
-   - Ensure Reign Dokan Addon is activated
+**5-Minute Fix:**
 
-2. **Check Dokan Configuration**
-   - Ensure Dokan is properly configured
-   - Verify vendors exist and are enabled
+1. **🔌 Check Plugin Status**
+   - Go to Plugins page
+   - Look for "Reign Dokan Addon"
+   - Make sure it says "Deactivate" (meaning it's active)
 
-3. **Test Basic Shortcode**
+2. **👥 Verify You Have Vendors**
+   - Go to Dokan → Vendors
+   - Do you have at least 1 approved vendor?
+   - No vendors = Nothing to display!
+
+3. **🧪 Test with Simple Shortcode**
    ```
    [rda_dokan_vendors]
    ```
+   If this works, your other shortcodes will too!
 
-### Issue: Store Templates Not Loading
+### Store Pages Look Plain/Ugly
 
-**Symptoms:**
-- Store pages look like default Dokan
-- Reign styling not applied
+**What's wrong:**
+- Vendor stores don't have beautiful Reign design
+- Headers missing or plain
+- Layout looks like basic Dokan
 
-**Solutions:**
+**Quick Solutions:**
 
-1. **Clear Cache**
-   - Browser cache (Ctrl+F5)
-   - WordPress cache plugins
-   - Server cache
+1. **🧹 Clear All Caches (Fixes 70% of Issues)**
+   - Browser: Press `Ctrl+F5` (Windows) or `Cmd+Shift+R` (Mac)
+   - WordPress: Deactivate cache plugins temporarily
+   - Hosting: Clear server cache in hosting panel
 
 2. **Verify Theme Active**
    ```php

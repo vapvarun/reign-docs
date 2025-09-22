@@ -1,6 +1,10 @@
 # Reign Dokan Addon - Developer Guide
 
-## Plugin Architecture (Actual Structure)
+## 🛠️ Build Amazing Marketplace Features
+
+This comprehensive guide provides everything developers need to extend, customize, and integrate with Reign Dokan Addon. From simple hooks to advanced customizations - we've got you covered.
+
+## 📦 Plugin Architecture (Complete Structure)
 
 ### Directory Structure
 ```
@@ -77,17 +81,23 @@ class Reign_Dokan_Addon {
 }
 ```
 
-## Core Hooks and Filters
+---
 
-### Actions
+## 🎯 Core Hooks and Filters
 
-#### `reign_dokan_addon_loaded`
-Fired after plugin initialization
+### 🚀 Essential Actions
+
+#### Plugin Initialization Hook
+**`reign_dokan_addon_loaded`** - Your entry point for customizations
 ```php
-do_action('reign_dokan_addon_loaded');
+// Hook into plugin initialization
+add_action('reign_dokan_addon_loaded', function() {
+    // Your custom marketplace features here
+});
 ```
+**Use this for:** Adding custom features, registering post types, enqueueing assets
 
-### Filters
+### 🔧 Powerful Filters
 
 #### `dokan_get_template_part`
 Override Dokan template parts
@@ -298,31 +308,43 @@ $vendors = dokan_get_sellers(array(
 ));
 ```
 
-## Security Best Practices
+---
 
-### Nonce Verification
+## 🔒 Security Best Practices (Essential!)
+
+### ✅ Nonce Verification (Always Required)
 ```php
-// Always verify nonces in Ajax/form handlers
+// Protect all Ajax and form handlers
 if (!wp_verify_nonce($_POST['nonce'], 'reign_dokan_nonce')) {
     wp_die('Security check failed');
 }
 ```
+**Why:** Prevents CSRF attacks and unauthorized actions
 
-### Data Sanitization
+### 🧹 Data Sanitization (Clean All Input)
 ```php
-// Sanitize user input
-$vendor_id = absint($_POST['vendor_id']);
-$search_term = sanitize_text_field($_POST['search']);
-$html_content = wp_kses_post($_POST['content']);
+// Sanitize different types of user input
+$vendor_id = absint($_POST['vendor_id']);           // Numbers only
+$search_term = sanitize_text_field($_POST['search']); // Plain text
+$html_content = wp_kses_post($_POST['content']);     // Safe HTML
+$email = sanitize_email($_POST['email']);            // Email addresses
+$url = esc_url_raw($_POST['website']);               // URLs
 ```
+**Rule:** Never trust user input - always sanitize!
 
-### Capability Checks
+### 👤 Capability Checks (Permission Control)
 ```php
-// Check user permissions
+// Always check user permissions
 if (!current_user_can('dokan_view_store')) {
-    return;
+    wp_die('Permission denied');
 }
+
+// Common capability checks
+if (current_user_can('manage_options')) {}      // Admin only
+if (current_user_can('dokan_add_product')) {}   // Vendor only
+if (is_user_logged_in()) {}                     // Members only
 ```
+**Best Practice:** Check permissions before any sensitive operation
 
 ## Performance Optimization
 
@@ -367,36 +389,55 @@ if (defined('WP_DEBUG') && WP_DEBUG) {
 }
 ```
 
-## Common Development Tasks
+---
 
-### Add Custom Tab to Store
+## 💼 Popular Development Tasks (Copy & Use)
+
+### 🎴 Add Custom Tab to Vendor Stores
+**Example: Add "Certifications" tab to stores**
 ```php
+// Add to functions.php or custom plugin
 add_filter('dokan_store_tabs', function($tabs) {
-    $tabs['custom_tab'] = array(
-        'title' => __('Custom Tab', 'reign-dokan'),
-        'url' => dokan_get_store_url() . 'custom-tab'
+    $tabs['certifications'] = array(
+        'title' => __('Certifications', 'reign-dokan'),
+        'url' => dokan_get_store_url() . 'certifications'
     );
     return $tabs;
 });
 ```
+**Result:** New tab appears on all vendor store pages
 
-### Modify Store Query
+### 🔍 Customize Store Directory Query
+**Example: Show newest vendors first**
 ```php
 add_action('pre_get_posts', function($query) {
     if (is_dokan_store_listing()) {
         $query->set('orderby', 'registered');
-        $query->set('order', 'DESC');
+        $query->set('order', 'DESC');  // Newest first
+        $query->set('posts_per_page', 20); // Show 20 per page
     }
 });
 ```
+**Use Case:** Perfect for "New Vendors" sections
 
-### Add Custom Fields
+### ➕ Add Custom Fields to Vendor Profiles
+**Example: Add social media links**
 ```php
-// Add field to vendor settings
+// Save custom field when vendor updates profile
 add_action('dokan_store_profile_saved', function($store_id, $settings) {
-    update_user_meta($store_id, 'custom_field', $settings['custom_field']);
+    update_user_meta($store_id, 'vendor_instagram', $settings['instagram']);
+    update_user_meta($store_id, 'vendor_facebook', $settings['facebook']);
 }, 10, 2);
+
+// Display in store header
+add_action('dokan_store_header_info_fields', function($store_id) {
+    $instagram = get_user_meta($store_id, 'vendor_instagram', true);
+    if ($instagram) {
+        echo '<a href="' . esc_url($instagram) . '">Instagram</a>';
+    }
+});
 ```
+**Result:** Vendors can add social links to their stores
 
 ## License Management
 

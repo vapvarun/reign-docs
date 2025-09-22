@@ -1,14 +1,23 @@
 # Reign Dokan Addon Documentation
 
-## Overview
-Reign Dokan Addon v3.5.4 integrates Dokan multivendor marketplace with Reign theme, providing template overrides, BuddyPress integration, and custom shortcodes.
+## 🛍️ Transform Your Website into a Thriving Multi-Vendor Marketplace
 
-## Requirements
+Welcome to the complete documentation for Reign Dokan Addon - your gateway to creating a professional, beautiful marketplace where vendors can sell and customers can shop from multiple stores in one place.
+
+## 🚀 What This Addon Does
+
+Reign Dokan Addon seamlessly integrates your Dokan marketplace with the stunning Reign theme, providing:
+- ✨ Beautiful vendor store designs
+- 🎯 Powerful shortcodes for vendor displays
+- 👥 Social marketplace features with BuddyPress
+- 🎨 Complete customization control
+
+## ✅ Requirements
 - WordPress 4.0+
-- Reign Theme
-- Dokan Plugin
+- Reign Theme (active)
+- Dokan Plugin (free or pro)
 - WooCommerce
-- BuddyPress (optional)
+- BuddyPress (optional but recommended)
 
 ## Installation
 1. Upload `reign-dokan-addon` to `/wp-content/plugins/`
